@@ -14,7 +14,6 @@ const NAV = [
 ];
 
 const SERVICES = [
-  { slug:"physiotherapy", name:"Physiotherapy", desc:"Assessment, diagnosis, treatment and rehabilitation tailored to the root cause of the problem.", icon:"⊕" },
   { slug:"initial-assessment", name:"Initial Assessment", desc:"The first appointment for understanding your pain, goals and the best route into treatment.", icon:"⌖" },
   { slug:"follow-up", name:"Follow Up", desc:"Ongoing treatment and rehabilitation sessions designed to build progress over time.", icon:"↻" },
   { slug:"acupuncture", name:"Acupuncture", desc:"A treatment option that can help reduce pain, relax tight muscles and support healing.", icon:"╳" },
@@ -37,8 +36,8 @@ const CONDITION_GROUPS = [
 ];
 
 const CLINICIANS = [
-  { slug:"cam", name:"Cam", role:"Lead Physiotherapist", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
-  { slug:"stef", name:"Stef", role:"Physiotherapist", teaser:"MSK physiotherapist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", teaser:"MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
 ];
 
 const COMPARISON = [
@@ -111,22 +110,76 @@ function Rotator(){
 }
 
 /* ========================= NAV ========================= */
+const LEFT_NAV = [
+  { href:"#", label:"Home", active:true },
+  { href:"#about", label:"About" },
+  { href:"#services", label:"Services", dd:"services" },
+  { href:"#conditions", label:"Conditions", dd:"conditions" },
+  { href:"#who", label:"Who we help", dd:"who" },
+];
+const RIGHT_NAV = [
+  { href:"#team", label:"Team" },
+  { href:"#faqs", label:"FAQs" },
+  { href:"#blog", label:"Blog" },
+  { href:"#reviews", label:"Reviews" },
+  { href:"#contact", label:"Contact" },
+];
+const WHO_WE_HELP = [
+  { name:"Runners & athletes",       href:"#who" },
+  { name:"Office & desk workers",    href:"#who" },
+  { name:"Tradespeople",             href:"#who" },
+  { name:"Active over-60s",          href:"#who" },
+  { name:"Post-operative patients",  href:"#who" },
+  { name:"Persistent pain",          href:"#who" },
+];
+
+function NavItem({item}){
+  const dd = item.dd;
+  return (
+    <div className="nav-item">
+      <a href={item.href} className={item.active ? "active" : ""}>
+        {item.label}{dd && <span className="caret">▼</span>}
+      </a>
+      {dd === "services" && (
+        <div className="nav-dd">
+          {SERVICES.map(s => (
+            <a key={s.slug} href={`#service-${s.slug}`}>{s.name}<span className="arr">→</span></a>
+          ))}
+        </div>
+      )}
+      {dd === "conditions" && (
+        <div className="nav-dd">
+          {CONDITION_GROUPS.map(g => (
+            <a key={g.title} href="#conditions">{g.title}<span className="arr">→</span></a>
+          ))}
+          <a href="#conditions" style={{borderTop:"1px solid var(--line)",marginTop:6,paddingTop:12,color:"var(--teal)",fontWeight:700}}>All conditions<span className="arr">→</span></a>
+        </div>
+      )}
+      {dd === "who" && (
+        <div className="nav-dd">
+          {WHO_WE_HELP.map(w => (
+            <a key={w.name} href={w.href}>{w.name}<span className="arr">→</span></a>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Nav(){
   return (
     <header className="nav">
       <div className="wrap nav-inner">
-        <a href="#" className="brand">
+        <div className="nav-side left">
+          {LEFT_NAV.map(n => <NavItem item={n} key={n.label}/>)}
+        </div>
+        <a href="#" className="nav-brand">
           <span className="mark"><img src="assets/logo-bp.webp" alt="Blackwater Physiotherapy"/></span>
           <span className="name">Blackwater<span>Physiotherapy</span></span>
         </a>
-        <nav aria-label="Primary">
-          <ul>
-            {NAV.map(n => (
-              <li key={n.label}><a href={n.href} className={n.active ? "active" : ""}>{n.label}</a></li>
-            ))}
-          </ul>
-        </nav>
-        <a className="btn btn-primary" href="#book">Book Now <Icon name="arrow" size={14}/></a>
+        <div className="nav-side right">
+          {RIGHT_NAV.map(n => <NavItem item={n} key={n.label}/>)}
+        </div>
       </div>
     </header>
   );
@@ -142,17 +195,17 @@ function Hero(){
       <div className="wrap hero-inner">
         <div className="hero-eyebrow">
           <span className="dot"></span>
-          <span>Blackwater, Essex · Est. 2019</span>
+          <span>Maldon, Essex · Est. 2019</span>
         </div>
         <h1>
           <span className="line">Move better.</span>
           <span className="line line2">Recover stronger.</span>
         </h1>
         <p className="hero-sub">
-          Expert physiotherapy on the Essex coast — built around recovery, performance and longevity.
+          Maldon's clinician-owned physiotherapy practice — built around your recovery, performance and longevity.
         </p>
         <div className="hero-actions">
-          <a className="btn btn-primary btn-primary-xl" href="#book">Book Initial Assessment <Icon name="arrow" size={14}/></a>
+          <a className="btn btn-primary btn-primary-xl" href="#contact">Book Initial Assessment <Icon name="arrow" size={14}/></a>
           <a className="btn btn-outline-light" href="#approach">Our Approach</a>
         </div>
         <div className="hero-meta">
@@ -175,6 +228,11 @@ function QuadRow(){
   return (
     <section className="quad">
       <div className="wrap">
+        <div className="quad-eyebrow">
+          <span className="bar"></span>
+          <span>Where to start</span>
+          <span className="t" style={{color:"var(--slate)",fontWeight:500,letterSpacing:".02em",textTransform:"none",fontSize:14}}>— pick the path that fits.</span>
+        </div>
         <div className="quad-grid">
           {/* 1 — Conditions */}
           <div className="qcard">
@@ -191,30 +249,9 @@ function QuadRow(){
             </a>
           </div>
 
-          {/* 2 — Services */}
-          <div className="qcard">
-            <div className="qnum">02 — Services</div>
-            <div className="qhead"><h3>Services</h3></div>
-            <p className="qsub">Two service paths sit at the centre of every patient journey.</p>
-            <div className="svc-list">
-              <div className="svc-item">
-                <div className="nm">Initial Assessment</div>
-                <div className="ds">Comprehensive evaluation and a personalised treatment plan you can trust.</div>
-              </div>
-              <hr className="svc-rule"/>
-              <div className="svc-item">
-                <div className="nm">Follow-Up Sessions</div>
-                <div className="ds">Ongoing care, progression and support across the full recovery journey.</div>
-              </div>
-            </div>
-            <a href="#services" className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
-              All services <Icon name="arrow" size={12}/>
-            </a>
-          </div>
-
-          {/* 3 — Booking (dark anchor) */}
+          {/* 2 — Booking (dark anchor, centre) */}
           <div className="qcard dark">
-            <div className="qnum">03 — Contact</div>
+            <div className="qnum">02 — Contact</div>
             <div className="qhead"><h3>Book &amp; Contact</h3></div>
             <p className="qsub">Same-week appointments usually available. Call, email, or book online in under two minutes.</p>
             <div style={{display:"flex",flexDirection:"column",gap:10}}>
@@ -234,9 +271,30 @@ function QuadRow(){
               </a>
             </div>
             <div className="contact-actions">
-              <a className="btn btn-on-dark btn-block" href="#book">Book Online Now <Icon name="arrow" size={12}/></a>
+              <a className="btn btn-on-dark btn-block" href="#contact">Book Online Now <Icon name="arrow" size={12}/></a>
               <a className="btn btn-ghost-on-dark btn-block" href="#contact">Contact Us</a>
             </div>
+          </div>
+
+          {/* 3 — Services */}
+          <div className="qcard">
+            <div className="qnum">03 — Services</div>
+            <div className="qhead"><h3>Services</h3></div>
+            <p className="qsub">Two service paths sit at the centre of every patient journey.</p>
+            <div className="svc-list">
+              <div className="svc-item">
+                <div className="nm">Initial Assessment</div>
+                <div className="ds">Comprehensive evaluation and a personalised treatment plan you can trust.</div>
+              </div>
+              <hr className="svc-rule"/>
+              <div className="svc-item">
+                <div className="nm">Follow-Up Sessions</div>
+                <div className="ds">Ongoing care, progression and support across the full recovery journey.</div>
+              </div>
+            </div>
+            <a href="#services" className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
+              All services <Icon name="arrow" size={12}/>
+            </a>
           </div>
         </div>
       </div>
@@ -244,24 +302,42 @@ function QuadRow(){
   );
 }
 
-/* ========================= ACCREDITATIONS ========================= */
+/* ========================= ACCREDITATIONS + INSURANCE STRIP ========================= */
 const ACCRED_LOGOS = [
   { name:"HCPC — Health & Care Professions Council", src:"assets/accred/hcpc.png" },
   { name:"Chartered Society of Physiotherapy",        src:"assets/accred/csp.webp" },
   { name:"International Association of Manual Medicine", src:"assets/accred/iaomm.png" },
 ];
+const INSURERS = [
+  { name:"Bupa",  src:"assets/insurance/bupa.png" },
+  { name:"AXA",   src:"assets/insurance/axa.png" },
+  { name:"WPA",   src:"assets/insurance/wpa.png" },
+  { name:"HCML",  src:"assets/insurance/hcml.png" },
+];
 
 function Accred(){
   return (
-    <section className="accred" style={{marginTop:96}}>
+    <section className="accred" style={{marginTop:0}}>
       <div className="wrap accred-inner">
-        <div className="lbl">Registered &amp; accredited by</div>
-        <div className="logos">
-          {ACCRED_LOGOS.map(a => (
-            <div className="accred-logo" key={a.name} title={a.name}>
-              <img src={a.src} alt={a.name}/>
-            </div>
-          ))}
+        <div className="accred-row">
+          <div className="lbl">Registered &amp; accredited</div>
+          <div className="logos">
+            {ACCRED_LOGOS.map(a => (
+              <div className="accred-logo" key={a.name} title={a.name}>
+                <img src={a.src} alt={a.name}/>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="accred-row">
+          <div className="lbl">Insurers we work with</div>
+          <div className="logos">
+            {INSURERS.map(i => (
+              <div className="accred-logo" key={i.name} title={i.name}>
+                <img src={i.src} alt={i.name}/>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -284,11 +360,12 @@ function About(){
   return (
     <section className="sec" id="about" style={{paddingBottom:64}}>
       <div className="wrap">
-        <SecHead tag="01 — About" title={<>We treat the <span className="em">person</span>, not just the problem.</>} blurb="Clinician-owned MSK and rehab practice on the Essex coast. Every appointment is one-to-one, every plan is built around your goals."/>
+        <SecHead tag="01 — About" title={<>Trusted <span className="em">physiotherapy</span>.</>} blurb="Personalised, evidence-based care for Maldon, Chelmsford and the surrounding Essex villages."/>
         <div className="about-grid">
           <div className="about-copy">
-            <p className="lead">Blackwater Physiotherapy is a small, clinician-owned practice. The person who assesses you is the person who treats you — no locums, no handoffs, no rushed appointments.</p>
-            <p>Whether you're an athlete returning to sport, a parent trying to lift without wincing, or someone managing pain that's lingered too long, we work with you, not at you. Every plan is goal-focused, every session ends with something practical to take away.</p>
+            <p className="lead">Being injured or living with pain can be frustrating, overwhelming, and disheartening. Finding the right support can also feel confusing at a time when you need clarity and confidence most.</p>
+            <p>At Blackwater Physiotherapy, we take a personalised, evidence-based approach to every patient, beginning with a thorough assessment to understand your condition, goals, lifestyle, and the demands of work, sport, and daily life.</p>
+            <p>We focus on the root cause of symptoms rather than pain alone, using hands-on treatment, tailored rehabilitation, and clear guidance to support recovery across Essex, including Maldon, Chelmsford, and surrounding areas.</p>
             <div className="about-stats">
               <div className="stat-card">
                 <div className="k">96%</div>
@@ -301,10 +378,10 @@ function About(){
             </div>
           </div>
           <div className="about-photo">
-            <img src="assets/about-dropin.jpeg" alt="Cam and Stef at a community drop-in clinic"/>
+            <img src="assets/about-dropin.jpeg" alt="Cam and Stef at a community drop-in clinic in Maldon"/>
             <div className="badge">
               <div className="t">Est. 2019</div>
-              <div className="s">Blackwater · Essex</div>
+              <div className="s">Maldon · Essex</div>
             </div>
           </div>
         </div>
@@ -336,7 +413,7 @@ function Approach(){
   return (
     <section className="sec" id="approach">
       <div className="wrap">
-        <SecHead tag="02 — Approach" title={<>What sets <span className="em">Blackwater</span> apart.</>} blurb="A side-by-side of how we work versus the appointment-shaped approach most patients are used to."/>
+        <SecHead tag="02 — Approach" title={<>What sets <span className="em">us</span> apart.</>} blurb="How we work versus the appointment-shaped approach most patients are used to."/>
         <div className="compare">
           <div className="ccol bw">
             <div>
@@ -371,10 +448,10 @@ function ServicesFull(){
   return (
     <section className="sec" id="services" style={{paddingTop:0}}>
       <div className="wrap">
-        <SecHead tag="03 — Services" title={<>Care, structured around what <span className="em">you need</span>.</>} blurb="Six service paths, all rooted in the same thorough assessment-and-plan framework. Mix and match as recovery progresses."/>
+        <SecHead tag="03 — Services" title={<>Our <span className="em">services</span>.</>} blurb="Five service paths, all rooted in the same thorough assessment-and-plan framework."/>
         <div className="svc-grid">
           {SERVICES.map((s,i) => {
-            const icons = ["target","refresh","wave","needle","activity","home"];
+            const icons = ["target","refresh","needle","wave","home"];
             return (
               <a className="svc-card" href={`#service-${s.slug}`} key={s.slug}>
                 <div className="ico"><Icon name={icons[i]} size={22}/></div>
@@ -391,12 +468,43 @@ function ServicesFull(){
   );
 }
 
+/* ========================= FINAL CTA ========================= */
+function FinalCTA(){
+  return (
+    <section className="sec" id="final-cta" style={{paddingTop:0}}>
+      <div className="wrap">
+        <div className="final">
+          <div className="final-photo">
+            <img src="assets/entrance.jpeg" alt="Blackwater Physiotherapy clinic entrance"/>
+            <div className="pin">Maldon · Essex</div>
+          </div>
+          <div className="final-body">
+            <h2>Ready to feel <span className="em">like yourself</span> again?</h2>
+            <div className="final-side">
+              <p>Book a thorough initial assessment online in under two minutes. Same-week appointments usually available — we'll always confirm by phone before your first visit.</p>
+              <div className="final-actions">
+                <a className="btn btn-primary btn-primary-xl" href="#contact">Book Online <Icon name="arrow" size={14}/></a>
+                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+              </div>
+              <div className="final-meta">
+                <div className="row"><b>Mon–Fri</b> 7am–8pm</div>
+                <div className="row"><b>Saturday</b> 8am–2pm</div>
+                <div className="row"><b>Visit</b> 14 Maldon Road, Maldon, Essex</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ========================= CONDITIONS ========================= */
 function ConditionsFull(){
   return (
     <section className="sec" id="conditions" style={{paddingTop:0}}>
       <div className="wrap">
-        <SecHead tag="04 — Conditions" title={<>Find your way in by <span className="em">what's bothering you</span>.</>} blurb="A curated route through the conditions we treat most often — grouped so you can recognise yours quickly."/>
+        <SecHead tag="04 — Conditions" title={<>Conditions <span className="em">we treat</span>.</>} blurb="Grouped by area so you can recognise yours quickly without scrolling a wall of symptoms."/>
         <div className="cgrid">
           {CONDITION_GROUPS.map((g,i) => (
             <div className="cgroup" key={g.title}>
@@ -426,11 +534,11 @@ function Team(){
   return (
     <section className="sec" id="team" style={{paddingTop:0}}>
       <div className="wrap">
-        <SecHead tag="05 — Team" title={<>Meet the people who'll be <span className="em">treating you</span>.</>} blurb="Two clinicians. No locums, no rotating juniors. The person who assesses you is the person who treats you."/>
+        <SecHead tag="05 — Team" title={<>Meet <span className="em">your</span> team.</>} blurb="Two co-directors. No locums, no rotating juniors. The person who assesses you is the person who treats you."/>
         <div className="team-hero">
-          <img src="assets/team.jpg" alt="Cam and Stef, Blackwater Physiotherapy clinicians"/>
+          <img src="assets/team.jpg" alt="Cam and Stef, co-directors of Blackwater Physiotherapy"/>
           <div className="caption">
-            <div className="l">The team</div>
+            <div className="l">Your team · Co-Directors</div>
             <div className="t">Cam &amp; Stef</div>
           </div>
         </div>
@@ -508,60 +616,122 @@ function Reviews(){
   );
 }
 
-/* ========================= INSURANCE ========================= */
-const INSURERS = [
-  { name:"Bupa",  src:"assets/insurance/bupa.png" },
-  { name:"AXA",   src:"assets/insurance/axa.png" },
-  { name:"WPA",   src:"assets/insurance/wpa.png" },
-  { name:"HCML",  src:"assets/insurance/hcml.png" },
-];
+/* ========================= INSURANCE (legacy section — no longer rendered, kept for reference) ========================= */
 
-function Insurance(){
+/* ========================= CONTACT (MAP + FORM) ========================= */
+function Contact(){
+  const [form, setForm] = React.useState({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
+  const [status, setStatus] = React.useState("");
+  const set = (k, v) => setForm(f => ({...f, [k]: v}));
+  const submit = (e) => {
+    e.preventDefault();
+    if (!form.first || !form.email || !form.message){ setStatus("Please fill in your name, email and message."); return; }
+    if (!form.consent){ setStatus("Please tick the consent box."); return; }
+    setStatus("ok:Thanks — we'll be in touch within one working day.");
+    setForm({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
+  };
+  const ok = status.startsWith("ok:");
+  const statusText = ok ? status.slice(3) : status;
+
   return (
-    <section className="sec" style={{paddingTop:0,paddingBottom:80}}>
+    <section className="sec contact-section" id="contact" style={{paddingTop:120}}>
       <div className="wrap">
-        <div className="ins">
-          <div className="l">Approved by major insurers</div>
-          <ul>
-            {INSURERS.map(i => (
-              <li key={i.name}>
-                <div className="ins-logo" title={i.name}>
-                  <img src={i.src} alt={i.name}/>
+        <SecHead tag="07 — Visit & Contact" title={<><span style={{display:"block"}}>Find us.</span><span className="em" style={{display:"block"}}>Get in touch.</span></>}><span></span></SecHead>
+        <div className="contact-grid">
+          <div className="contact-side">
+            <div className="map-wrap">
+              <span className="pin">Maldon · Essex</span>
+              <iframe
+                src="https://maps.google.com/maps?q=Maldon%2C%20Essex%2C%20UK&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                title="Map of Maldon, Essex"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div className="contact-info">
+              <div className="info-card">
+                <div className="ic"><Icon name="home" size={16}/></div>
+                <div>
+                  <div className="l">Clinic</div>
+                  <div className="v">14 Maldon Road,<br/>Maldon, Essex CM9 0AB</div>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ========================= FINAL CTA ========================= */
-function FinalCTA(){
-  return (
-    <section className="sec" id="book" style={{paddingTop:0}}>
-      <div className="wrap">
-        <div className="final">
-          <div className="final-photo">
-            <img src="assets/entrance.jpeg" alt="Blackwater Physiotherapy clinic entrance, Old Ironworks Gym building"/>
-            <div className="pin">Maldon Road · Blackwater</div>
-          </div>
-          <div className="final-body">
-            <h2>Ready to feel <span className="em">like yourself</span> again?</h2>
-            <div className="final-side">
-              <p>Book a thorough initial assessment online in under two minutes. Same-week appointments usually available — we'll always confirm by phone before your first visit.</p>
-              <div className="final-actions">
-                <a className="btn btn-primary btn-primary-xl" href="#book">Book Online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
               </div>
-              <div className="final-meta">
-                <div className="row"><b>Mon–Fri</b> 7am–8pm</div>
-                <div className="row"><b>Saturday</b> 8am–2pm</div>
-                <div className="row"><b>Visit</b> 14 Maldon Road, Blackwater</div>
+              <div className="info-card">
+                <div className="ic"><Icon name="refresh" size={16}/></div>
+                <div>
+                  <div className="l">Hours</div>
+                  <div className="v">Mon–Fri 7am–8pm<br/>Sat 8am–2pm</div>
+                </div>
+              </div>
+              <div className="info-card">
+                <div className="ic"><Icon name="phone" size={16}/></div>
+                <div>
+                  <div className="l">Phone</div>
+                  <div className="v"><a href="tel:+441621000000">01621 000 000</a></div>
+                </div>
+              </div>
+              <div className="info-card">
+                <div className="ic"><Icon name="mail" size={16}/></div>
+                <div>
+                  <div className="l">Email</div>
+                  <div className="v"><a href="mailto:hello@blackwaterphysio.co.uk">hello@blackwaterphysio.co.uk</a></div>
+                </div>
               </div>
             </div>
           </div>
+
+          <form className="form-card" onSubmit={submit} noValidate>
+            <div className="head">
+              <div className="lbl">Send a message</div>
+              <h3>Tell us how we can help.</h3>
+              <p>Short message, quick reply. We'll suggest a route in or book you straight in.</p>
+            </div>
+            <div className="form">
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="first">First name</label>
+                  <input id="first" type="text" value={form.first} onChange={e => set("first", e.target.value)} placeholder="Jane"/>
+                </div>
+                <div className="field">
+                  <label htmlFor="last">Last name</label>
+                  <input id="last" type="text" value={form.last} onChange={e => set("last", e.target.value)} placeholder="Smith"/>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="field">
+                  <label htmlFor="email">Email</label>
+                  <input id="email" type="email" value={form.email} onChange={e => set("email", e.target.value)} placeholder="jane@example.co.uk"/>
+                </div>
+                <div className="field">
+                  <label htmlFor="phone">Phone (optional)</label>
+                  <input id="phone" type="tel" value={form.phone} onChange={e => set("phone", e.target.value)} placeholder="07000 000000"/>
+                </div>
+              </div>
+              <div className="field">
+                <label htmlFor="topic">What can we help with?</label>
+                <select id="topic" value={form.topic} onChange={e => set("topic", e.target.value)}>
+                  <option>Initial Assessment</option>
+                  <option>Follow-Up Session</option>
+                  <option>Acupuncture</option>
+                  <option>Sports Massage</option>
+                  <option>Home Visits</option>
+                  <option>Insurance / billing enquiry</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div className="field">
+                <label htmlFor="message">Message</label>
+                <textarea id="message" value={form.message} onChange={e => set("message", e.target.value)} placeholder="A short summary of what's going on, and when you're free…"></textarea>
+              </div>
+              <label className="form-consent">
+                <input type="checkbox" checked={form.consent} onChange={e => set("consent", e.target.checked)}/>
+                <span>I'm happy for Blackwater Physiotherapy to contact me about my enquiry. We never share your details.</span>
+              </label>
+              <div className="form-submit">
+                <button type="submit" className="btn btn-on-dark">Send message <Icon name="arrow" size={12}/></button>
+                {status && <span className={"form-status " + (ok ? "ok" : "")}>{statusText}</span>}
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -573,53 +743,6 @@ function Footer(){
   return (
     <footer>
       <div className="wrap">
-        <div className="foot-top">
-          <div className="foot-statement">
-            <div className="fbrand">
-              <div className="mark"><img src="assets/logo-bp.webp" alt="Blackwater Physiotherapy"/></div>
-              <div className="name">Blackwater<span>Physiotherapy</span></div>
-            </div>
-            <h2>Move better. <span className="em">Recover stronger.</span></h2>
-            <p>Clinician-owned MSK and rehab on the Essex coast. Time, expertise, and follow-through — nothing more, nothing less.</p>
-          </div>
-
-          <div className="foot-visit">
-            <div className="vlabel">Plan your visit</div>
-            <h3>Maldon Road<br/>Blackwater</h3>
-            <div className="vrows">
-              <div className="vrow">
-                <div className="vic"><Icon name="home" size={16}/></div>
-                <div className="vinfo">
-                  <div className="l">Clinic</div>
-                  <div className="v">14 Maldon Road, Blackwater, Essex CO5 0AB</div>
-                </div>
-              </div>
-              <div className="vrow">
-                <div className="vic"><Icon name="phone" size={16}/></div>
-                <div className="vinfo">
-                  <div className="l">Phone</div>
-                  <div className="v"><a href="tel:+441621000000">01621 000 000</a></div>
-                </div>
-              </div>
-              <div className="vrow">
-                <div className="vic"><Icon name="mail" size={16}/></div>
-                <div className="vinfo">
-                  <div className="l">Email</div>
-                  <div className="v"><a href="mailto:hello@blackwaterphysio.co.uk">hello@blackwaterphysio.co.uk</a></div>
-                </div>
-              </div>
-              <div className="vrow">
-                <div className="vic"><Icon name="refresh" size={16}/></div>
-                <div className="vinfo">
-                  <div className="l">Hours</div>
-                  <div className="v">Mon–Fri 7am–8pm · Sat 8am–2pm</div>
-                </div>
-              </div>
-            </div>
-            <a className="btn btn-primary btn-block vcta" href="#book">Book online <Icon name="arrow" size={12}/></a>
-          </div>
-        </div>
-
         <div className="fgrid">
           <div>
             <h5>Practice</h5>
@@ -628,13 +751,13 @@ function Footer(){
               <li><a href="#approach">Our approach</a></li>
               <li><a href="#team">Team</a></li>
               <li><a href="#reviews">Reviews</a></li>
-              <li><a href="#book">Book now</a></li>
+              <li><a href="#contact">Contact</a></li>
             </ul>
           </div>
           <div>
             <h5>Services</h5>
             <ul>
-              {SERVICES.slice(0,6).map(s => (
+              {SERVICES.map(s => (
                 <li key={s.slug}><a href={`#service-${s.slug}`}>{s.name}</a></li>
               ))}
             </ul>
@@ -655,11 +778,15 @@ function Footer(){
               <div className="row"><img src="assets/accred/csp.webp" alt="Chartered Society of Physiotherapy"/></div>
               <div className="row"><img src="assets/accred/iaomm.png" alt="IAOMM member"/></div>
             </div>
+            <div className="fbrand foot-brand-bottom">
+              <div className="mark"><img src="assets/logo-bp.webp" alt="Blackwater Physiotherapy"/></div>
+              <div className="name">Blackwater<span>Physiotherapy</span></div>
+            </div>
           </div>
         </div>
 
         <div className="fbottom">
-          <span>© 2026 Blackwater Physiotherapy Ltd</span>
+          <span>© 2026 Blackwater Physiotherapy Ltd · Maldon, Essex</span>
           <span>HCPC reg. PH106842</span>
           <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
         </div>
@@ -688,15 +815,25 @@ function App(){
     r.style.setProperty("--teal-pale", t.pale);
   }, [t]);
 
-  // Scroll reveal
+  // Scroll-driven motion: reveal sections, mask-reveal images, stagger grids
   useEffect(() => {
-    const els = document.querySelectorAll(".sec, .quad, .band, .accred");
-    els.forEach(el => el.classList.add("reveal"));
+    // Tag sections for fade-rise
+    document.querySelectorAll(".sec, .quad, .accred").forEach(el => el.classList.add("reveal"));
+    // Tag image containers for mask reveal
+    document.querySelectorAll(
+      ".about-photo, .team-hero, .tphoto, .final-photo"
+    ).forEach(el => el.classList.add("image-mask"));
+    // Tag grids for staggered child reveal
+    document.querySelectorAll(
+      ".quad-grid, .svc-grid, .cgrid, .tgrid, .rev-track, .accred-row .logos, .contact-info"
+    ).forEach(el => el.classList.add("stagger"));
+
+    const els = document.querySelectorAll(".reveal, .image-mask, .stagger");
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
       });
-    }, { threshold: 0.08, rootMargin: "0px 0px -10% 0px" });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
     els.forEach(el => io.observe(el));
     return () => io.disconnect();
   }, []);
@@ -705,17 +842,16 @@ function App(){
     <div>
       <Nav/>
       <Hero/>
-      <QuadRow/>
       <Accred/>
+      <QuadRow/>
       <About/>
-      <Marquee/>
       <Approach/>
       <ServicesFull/>
+      <FinalCTA/>
       <ConditionsFull/>
       <Team/>
       <Reviews/>
-      <Insurance/>
-      <FinalCTA/>
+      <Contact/>
       <Footer/>
 
       <TweaksPanel>
