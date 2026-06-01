@@ -36,8 +36,9 @@ const CONDITION_GROUPS = [
 ];
 
 const CLINICIANS = [
-  { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
-  { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", teaser:"MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", img:"assets/team.jpg", pos:"25% center", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", img:"assets/team.jpg", pos:"75% center", teaser:"MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.png", pos:"center", placeholder:true, teaser:"Specialist in post-surgical rehabilitation and complex conditions. Team Lead for Surgical & Vascular services at Basildon University Hospital, with extensive NHS and community experience helping patients regain movement, strength and confidence.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
 ];
 
 const COMPARISON = [
@@ -110,14 +111,12 @@ function Rotator(){
 }
 
 /* ========================= NAV ========================= */
-const LEFT_NAV = [
+const MAIN_NAV = [
   { href:"#", label:"Home", active:true },
   { href:"#about", label:"About" },
   { href:"#services", label:"Services", dd:"services" },
   { href:"#conditions", label:"Conditions", dd:"conditions" },
   { href:"#who", label:"Who we help", dd:"who" },
-];
-const RIGHT_NAV = [
   { href:"#team", label:"Team" },
   { href:"#faqs", label:"FAQs" },
   { href:"#blog", label:"Blog" },
@@ -167,19 +166,26 @@ function NavItem({item}){
 }
 
 function Nav(){
+  const [scrolled, setScrolled] = React.useState(false);
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
-    <header className="nav">
+    <header className={"nav" + (scrolled ? " scrolled" : "")}>
       <div className="wrap nav-inner">
-        <div className="nav-side left">
-          {LEFT_NAV.map(n => <NavItem item={n} key={n.label}/>)}
-        </div>
-        <a href="#" className="nav-brand">
-          <span className="mark"><img src="assets/logo-bp.webp" alt="Blackwater Physiotherapy"/></span>
-          <span className="name">Blackwater<span>Physiotherapy</span></span>
+        <a href="#" className="nav-brand" aria-label="Blackwater Physiotherapy">
+          <span className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy" width="60" height="70"/></span>
+          <span className="name">
+            <span className="top"><span className="bw">Blackwater</span> <span className="py">Physiotherapy</span></span>
+            <span className="sub">Maldon · Essex</span>
+          </span>
         </a>
-        <div className="nav-side right">
-          {RIGHT_NAV.map(n => <NavItem item={n} key={n.label}/>)}
-        </div>
+        <nav className="nav-links" aria-label="Primary">
+          {MAIN_NAV.map(n => <NavItem item={n} key={n.label}/>)}
+        </nav>
       </div>
     </header>
   );
@@ -195,7 +201,7 @@ function Hero(){
       <div className="wrap hero-inner">
         <div className="hero-eyebrow">
           <span className="dot"></span>
-          <span>Maldon, Essex · Est. 2019</span>
+          <span>Maldon, Essex · Est. 2024</span>
         </div>
         <h1>
           <span className="line">Move better.</span>
@@ -215,7 +221,7 @@ function Hero(){
           </div>
           <div className="hero-stat">
             <div className="k">1,400+</div>
-            <div className="l">Patients since 2019</div>
+            <div className="l">Patients since 2024</div>
           </div>
         </div>
       </div>
@@ -228,11 +234,6 @@ function QuadRow(){
   return (
     <section className="quad">
       <div className="wrap">
-        <div className="quad-eyebrow">
-          <span className="bar"></span>
-          <span>Where to start</span>
-          <span className="t" style={{color:"var(--slate)",fontWeight:500,letterSpacing:".02em",textTransform:"none",fontSize:14}}>— pick the path that fits.</span>
-        </div>
         <div className="quad-grid">
           {/* 1 — Conditions */}
           <div className="qcard">
@@ -380,7 +381,7 @@ function About(){
           <div className="about-photo">
             <img src="assets/about-dropin.jpeg" alt="Cam and Stef at a community drop-in clinic in Maldon"/>
             <div className="badge">
-              <div className="t">Est. 2019</div>
+              <div className="t">Est. 2024</div>
               <div className="s">Maldon · Essex</div>
             </div>
           </div>
@@ -529,35 +530,68 @@ function ConditionsFull(){
   );
 }
 
-/* ========================= TEAM ========================= */
+/* ========================= TEAM (carousel, 2-up) ========================= */
 function Team(){
+  const [perView, setPerView] = useState(2);
+  const [i, setI] = useState(0);
+  const total = CLINICIANS.length;
+  useEffect(() => {
+    const calc = () => setPerView(window.innerWidth <= 1100 ? 1 : 2);
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+  const maxIndex = Math.max(0, total - perView);
+  useEffect(() => { setI(v => Math.min(v, maxIndex)); }, [maxIndex]);
+  const step = 100 / perView;
+  const prev = () => setI(v => Math.max(0, v - 1));
+  const next = () => setI(v => Math.min(maxIndex, v + 1));
   return (
     <section className="sec" id="team" style={{paddingTop:0}}>
       <div className="wrap">
-        <SecHead tag="05 — Team" title={<>Meet <span className="em">your</span> team.</>} blurb="Two co-directors. No locums, no rotating juniors. The person who assesses you is the person who treats you."/>
+        <SecHead tag="05 — Team" title={<>Meet <span className="em">your</span> team.</>} blurb="No locums, no rotating juniors. The person who assesses you is the person who treats you."/>
         <div className="team-hero">
-          <img src="assets/team.jpg" alt="Cam and Stef, co-directors of Blackwater Physiotherapy"/>
+          <img src="assets/team.jpg" alt="The Blackwater Physiotherapy team"/>
           <div className="caption">
-            <div className="l">Your team · Co-Directors</div>
-            <div className="t">Cam &amp; Stef</div>
+            <div className="l">Your team</div>
+            <div className="t">Cam · Stef · Laurie</div>
           </div>
         </div>
-        <div className="tgrid">
-          {CLINICIANS.map((c,idx) => (
-            <article className="tcard" key={c.slug}>
-              <div className={"tphoto " + c.slug}>
-                <img src="assets/team.jpg" alt={c.name}/>
-              </div>
-              <div className="tbody">
-                <div className="role">{c.role}</div>
-                <h3>{c.name}</h3>
-                <p>{c.teaser}</p>
-                <div className="tcreds">
-                  {c.creds.map(([k,v]) => <span className="tcred" key={k}><b>{k}</b>{v}</span>)}
+
+        <div className="team-carousel">
+          <div className="tc-viewport">
+            <div className="tc-track" style={{transform:`translateX(-${i*step}%)`}}>
+              {CLINICIANS.map(c => (
+                <div className="tc-slide" key={c.slug} style={{flex:`0 0 ${step}%`}}>
+                  <article className="tcard">
+                    <div className={"tphoto " + c.slug}>
+                      <img src={c.img} alt={c.name} style={{objectPosition:c.pos}}/>
+                      {c.placeholder && <span className="tphoto-tag">Placeholder image</span>}
+                    </div>
+                    <div className="tbody">
+                      <div className="role">{c.role}</div>
+                      <h3>{c.name}</h3>
+                      <p>{c.teaser}</p>
+                      <div className="tcreds">
+                        {c.creds.map(([k,v]) => <span className="tcred" key={k}><b>{k}</b>{v}</span>)}
+                      </div>
+                    </div>
+                  </article>
                 </div>
-              </div>
-            </article>
-          ))}
+              ))}
+            </div>
+          </div>
+          <div className="tc-nav">
+            <div className="tc-dots">
+              {Array.from({length: maxIndex + 1}).map((_,idx) => (
+                <button key={idx} className={"d" + (idx === i ? " on" : "")} onClick={() => setI(idx)} aria-label={`Page ${idx+1}`}/>
+              ))}
+            </div>
+            <div className="tc-arrows">
+              <button className="arr" onClick={prev} aria-label="Previous" disabled={i === 0}>←</button>
+              <button className="arr" onClick={next} aria-label="Next" disabled={i === maxIndex}>→</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -779,7 +813,7 @@ function Footer(){
               <div className="row"><img src="assets/accred/iaomm.png" alt="IAOMM member"/></div>
             </div>
             <div className="fbrand foot-brand-bottom">
-              <div className="mark"><img src="assets/logo-bp.webp" alt="Blackwater Physiotherapy"/></div>
+              <div className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy"/></div>
               <div className="name">Blackwater<span>Physiotherapy</span></div>
             </div>
           </div>
@@ -821,11 +855,11 @@ function App(){
     document.querySelectorAll(".sec, .quad, .accred").forEach(el => el.classList.add("reveal"));
     // Tag image containers for mask reveal
     document.querySelectorAll(
-      ".about-photo, .team-hero, .tphoto, .final-photo"
+      ".about-photo, .team-hero, .final-photo"
     ).forEach(el => el.classList.add("image-mask"));
     // Tag grids for staggered child reveal
     document.querySelectorAll(
-      ".quad-grid, .svc-grid, .cgrid, .tgrid, .rev-track, .accred-row .logos, .contact-info"
+      ".quad-grid, .svc-grid, .cgrid, .rev-track, .accred-row .logos, .contact-info"
     ).forEach(el => el.classList.add("stagger"));
 
     const els = document.querySelectorAll(".reveal, .image-mask, .stagger");
@@ -843,7 +877,6 @@ function App(){
       <Nav/>
       <Hero/>
       <Accred/>
-      <QuadRow/>
       <About/>
       <Approach/>
       <ServicesFull/>

@@ -58,24 +58,35 @@
   .btn .arrow{display:inline-block;transition:transform .2s ease}
   .btn:hover .arrow{transform:translateX(3px)}
 
-  /* NAV — centralised brand, split left/right links */
-  .nav{position:sticky;top:0;z-index:50;background:rgba(247,250,250,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .nav-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:96px;gap:32px}
-  .nav-side{display:flex;align-items:center;gap:28px;font-family:var(--manrope);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);font-weight:600}
-  .nav-side.left{justify-content:flex-end}
-  .nav-side.right{justify-content:flex-start}
+  /* NAV — centred brand lockup on top, all links on one line beneath; condenses to icon on scroll */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(247,250,250,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;flex-direction:column;align-items:center;gap:14px;padding:22px 0 16px;transition:padding .35s ease, gap .35s ease}
+
+  /* Horizontal brand lockup */
+  .nav-brand{display:flex;align-items:center;gap:18px;flex:0 0 auto;transition:gap .35s ease}
+  .nav-brand .mark{display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .nav-brand .mark img{height:70px;width:auto;object-fit:contain;display:block;transition:height .35s ease}
+  .nav-brand .name{display:flex;flex-direction:column;gap:2px;overflow:hidden;max-width:520px;opacity:1;transition:max-width .45s cubic-bezier(.6,.02,.2,1), opacity .3s ease, margin .35s ease}
+  .nav-brand .name .top{font-family:var(--teko);text-transform:uppercase;font-size:38px;font-weight:600;letter-spacing:.1em;line-height:.95;white-space:nowrap}
+  .nav-brand .name .top .bw{color:#5b5f61}
+  .nav-brand .name .top .py{color:var(--teal-deep)}
+  .nav-brand .name .sub{font-family:var(--manrope);font-size:11px;letter-spacing:.42em;text-transform:uppercase;font-weight:600;color:var(--slate);white-space:nowrap;padding-left:2px}
+
+  /* Links row — one line, centred */
+  .nav-links{display:flex;align-items:center;justify-content:center;gap:26px;font-family:var(--manrope);font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:600;flex-wrap:nowrap}
   .nav-item{position:relative}
-  .nav-item > a{display:inline-flex;align-items:center;gap:4px;padding:8px 0;color:var(--slate);transition:color .2s ease;cursor:pointer}
-  .nav-item > a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  .nav-item > a{display:inline-flex;align-items:center;gap:5px;padding:6px 0;color:var(--slate);transition:color .2s ease;cursor:pointer;white-space:nowrap}
+  .nav-item > a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
   .nav-item:hover > a,.nav-item > a.active{color:var(--ink)}
   .nav-item:hover > a::after,.nav-item > a.active::after{transform:scaleX(1)}
-  .nav-item .caret{font-size:9px;opacity:.6;transition:transform .2s ease}
+  .nav-item .caret{font-size:8px;opacity:.55;transition:transform .2s ease}
   .nav-item:hover .caret{transform:rotate(180deg);opacity:1}
-  .nav-brand{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;flex:0 0 auto}
-  .nav-brand .mark{width:54px;height:54px;background:#fff;border-radius:10px;padding:5px;display:grid;place-items:center;flex:0 0 auto;border:1px solid var(--line)}
-  .nav-brand .mark img{width:100%;height:100%;object-fit:contain;display:block}
-  .nav-brand .name{font-family:var(--teko);text-transform:uppercase;font-size:18px;font-weight:600;letter-spacing:.16em;line-height:1;color:var(--ink)}
-  .nav-brand .name span{display:block;font-family:var(--manrope);font-size:9.5px;letter-spacing:.2em;font-weight:600;color:var(--slate);margin-top:4px}
+
+  /* Scrolled (condensed) state — wordmark collapses, only the icon remains */
+  .nav.scrolled .nav-inner{padding:12px 0 10px;gap:10px}
+  .nav.scrolled .nav-brand{gap:0}
+  .nav.scrolled .nav-brand .mark img{height:50px}
+  .nav.scrolled .nav-brand .name{max-width:0;opacity:0;margin-left:0}
 
   /* Dropdown */
   .nav-dd{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:240px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:2px;box-shadow:0 24px 50px -20px rgba(22,25,27,.25);opacity:0;visibility:hidden;transition:all .2s ease;z-index:60}
@@ -314,25 +325,39 @@
   /* Team — with shared hero photo */
   .team-hero{position:relative;width:100%;aspect-ratio:21/9;border-radius:12px;overflow:hidden;margin-bottom:24px;background:#1b3a3d}
   .team-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .team-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,21,23,.6) 0%,transparent 40%)}
-  .team-hero .caption{position:absolute;left:32px;bottom:28px;z-index:2;color:#fff}
-  .team-hero .caption .l{font-family:var(--manrope);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.75);font-weight:600}
-  .team-hero .caption .t{font-family:var(--teko);font-size:42px;line-height:1;color:#fff;text-transform:uppercase;font-weight:500;letter-spacing:.01em;margin-top:8px}
+  .team-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg, rgba(11,21,23,.85) 0%, rgba(11,21,23,.55) 26%, rgba(11,21,23,.12) 50%, transparent 70%), linear-gradient(0deg, rgba(11,21,23,.5) 0%, transparent 32%)}
+  .team-hero .caption{position:absolute;left:36px;bottom:30px;z-index:2;color:#fff}
+  .team-hero .caption .l{font-family:var(--manrope);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85);font-weight:600;text-shadow:0 1px 12px rgba(11,21,23,.45)}
+  .team-hero .caption .t{font-family:var(--teko);font-size:44px;line-height:1;color:#fff;text-transform:uppercase;font-weight:500;letter-spacing:.01em;margin-top:8px;text-shadow:0 2px 18px rgba(11,21,23,.5)}
 
   .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
   .tcard{background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line);display:grid;grid-template-columns:.85fr 1.15fr}
   .tphoto{aspect-ratio:4/5;background:#1b3a3d;position:relative;overflow:hidden}
   .tphoto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-  .tphoto.cam img{object-position:25% center}
-  .tphoto.stef img{object-position:75% center}
   .tphoto .label{display:none}
-  .tbody{padding:28px 28px 24px;display:flex;flex-direction:column;gap:14px}
+  .tphoto-tag{position:absolute;left:12px;bottom:12px;z-index:3;font-family:var(--manrope);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(11,21,23,.5);backdrop-filter:blur(6px);padding:5px 9px;border-radius:4px}
+  .tbody{padding:30px 30px 26px;display:flex;flex-direction:column;gap:14px}
   .tbody .role{font-family:var(--manrope);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700}
-  .tbody h3{font-size:52px;color:var(--ink);font-weight:600;line-height:.95}
-  .tbody p{font-family:var(--body);font-size:14.5px;line-height:1.6;color:var(--slate)}
-  .tcreds{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:16px;border-top:1px solid var(--line)}
+  .tbody h3{font-size:42px;color:var(--ink);font-weight:600;line-height:.95;letter-spacing:.01em}
+  .tbody p{font-family:var(--body);font-size:14.5px;line-height:1.6;color:var(--slate);max-width:40ch}
+  .tcreds{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:18px;border-top:1px solid var(--line)}
   .tcred{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:6px;background:var(--teal-pale);font-family:var(--manrope);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
   .tcred b{color:var(--teal);font-weight:800}
+
+  /* Team carousel */
+  .team-carousel{position:relative}
+  .tc-viewport{overflow:hidden;margin:0 -12px;padding:2px 0}
+  .tc-track{display:flex;transition:transform .6s cubic-bezier(.6,.02,.2,1)}
+  .tc-slide{min-width:0;box-sizing:border-box;padding:0 12px}
+  .tc-slide .tcard{height:100%;min-height:380px}
+  .tc-nav{display:flex;align-items:center;justify-content:space-between;margin-top:28px}
+  .tc-dots{display:flex;gap:8px}
+  .tc-dots .d{width:9px;height:9px;border-radius:50%;background:#cad2d4;border:0;padding:0;cursor:pointer;transition:all .25s ease}
+  .tc-dots .d.on{background:var(--teal);width:28px;border-radius:5px}
+  .tc-arrows{display:flex;gap:10px}
+  .tc-arrows .arr{width:52px;height:52px;border-radius:50%;background:transparent;border:2px solid var(--teal);color:var(--teal);font-size:18px;display:grid;place-items:center;cursor:pointer;transition:all .2s ease}
+  .tc-arrows .arr:hover{background:var(--teal);color:#fff}
+  .tc-arrows .arr:disabled{opacity:.3;cursor:not-allowed;border-color:#c5cccf;color:#c5cccf;background:transparent}
 
   /* Reviews */
   .rev-head{display:grid;grid-template-columns:auto 1fr auto;gap:48px;align-items:end;padding-bottom:48px}
@@ -471,11 +496,11 @@
     .sec-title,.final h2{font-size:64px;max-width:24ch}
     .hero-meta{position:static;margin-top:36px}
     .quad{margin-top:32px}
-    .nav-inner{grid-template-columns:1fr auto;height:72px}
-    .nav-side{display:none}
-    .nav-brand .mark{width:42px;height:42px}
-    .nav-brand .name{font-size:14px;letter-spacing:.12em}
-    .nav-brand .name span{font-size:9px}
+    .nav-inner{padding:16px 0 12px}
+    .nav-links{flex-wrap:wrap;gap:14px 18px;font-size:12px;letter-spacing:.08em}
+    .nav-brand .mark img{height:54px}
+    .nav-brand .name .top{font-size:26px;letter-spacing:.06em}
+    .nav-brand .name .sub{font-size:9px;letter-spacing:.3em}
     .foot-top{grid-template-columns:1fr;gap:40px}
     .fgrid{grid-template-columns:1fr 1fr !important;gap:32px !important}
     .accred-row{flex-direction:column;align-items:flex-start;gap:14px}
