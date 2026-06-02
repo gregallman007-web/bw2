@@ -16,6 +16,7 @@ const NAV = [
 const SERVICES = [
   { slug:"initial-assessment", name:"Initial Assessment", desc:"The first appointment for understanding your pain, goals and the best route into treatment.", icon:"⌖" },
   { slug:"follow-up", name:"Follow Up", desc:"Ongoing treatment and rehabilitation sessions designed to build progress over time.", icon:"↻" },
+  { slug:"rehabilitation", name:"Rehabilitation Session", desc:"Focused, progressive exercise sessions that rebuild strength, mobility and confidence so you can return to the activities that matter — and stay there.", icon:"❂" },
   { slug:"acupuncture", name:"Acupuncture", desc:"A treatment option that can help reduce pain, relax tight muscles and support healing.", icon:"╳" },
   { slug:"sports-massage", name:"Sports Massage", desc:"Hands-on treatment to ease muscle tension, improve mobility and support recovery.", icon:"≋" },
   { slug:"home-visits", name:"Home Visits", desc:"Physiotherapy delivered in your own environment to improve movement, confidence and independence.", icon:"⌂" },
@@ -124,12 +125,10 @@ const MAIN_NAV = [
   { href:"#contact", label:"Contact" },
 ];
 const WHO_WE_HELP = [
-  { name:"Runners & athletes",       href:"#who" },
-  { name:"Office & desk workers",    href:"#who" },
-  { name:"Tradespeople",             href:"#who" },
-  { name:"Active over-60s",          href:"#who" },
-  { name:"Post-operative patients",  href:"#who" },
-  { name:"Persistent pain",          href:"#who" },
+  { name:"General population",  href:"#who" },
+  { name:"Older adults",       href:"#who" },
+  { name:"Athletes",           href:"#who" },
+  { name:"Children",           href:"#who" },
 ];
 
 function NavItem({item}){
@@ -177,15 +176,24 @@ function Nav(){
     <header className={"nav" + (scrolled ? " scrolled" : "")}>
       <div className="wrap nav-inner">
         <a href="#" className="nav-brand" aria-label="Blackwater Physiotherapy">
-          <span className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy" width="60" height="70"/></span>
+          <span className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy" width="45" height="52"/></span>
           <span className="name">
             <span className="top"><span className="bw">Blackwater</span> <span className="py">Physiotherapy</span></span>
-            <span className="sub">Maldon · Essex</span>
+            <span className="sub">Maldon <span className="bar">|</span> Essex</span>
           </span>
         </a>
         <nav className="nav-links" aria-label="Primary">
           {MAIN_NAV.map(n => <NavItem item={n} key={n.label}/>)}
         </nav>
+        {window.MobileMenu && (
+          <window.MobileMenu
+            mainNav={MAIN_NAV}
+            services={SERVICES}
+            conditionGroups={CONDITION_GROUPS}
+            whoWeHelp={WHO_WE_HELP}
+            Icon={Icon}
+          />
+        )}
       </div>
     </header>
   );
@@ -367,15 +375,17 @@ function About(){
             <p className="lead">Being injured or living with pain can be frustrating, overwhelming, and disheartening. Finding the right support can also feel confusing at a time when you need clarity and confidence most.</p>
             <p>At Blackwater Physiotherapy, we take a personalised, evidence-based approach to every patient, beginning with a thorough assessment to understand your condition, goals, lifestyle, and the demands of work, sport, and daily life.</p>
             <p>We focus on the root cause of symptoms rather than pain alone, using hands-on treatment, tailored rehabilitation, and clear guidance to support recovery across Essex, including Maldon, Chelmsford, and surrounding areas.</p>
-            <div className="about-stats">
-              <div className="stat-card">
-                <div className="k">96%</div>
-                <div className="l">Patients meet their primary goal</div>
-              </div>
-              <div className="stat-card">
-                <div className="k">45<span style={{fontSize:24,color:"var(--slate)"}}>min</span></div>
-                <div className="l">Average session length</div>
-              </div>
+            <div className="about-quotes">
+              <figure className="quote-card">
+                <span className="qmark">“</span>
+                <blockquote>[Patient quote one — client to provide copy.]</blockquote>
+                <figcaption><span className="stars">★★★★★</span><span className="src">Google review</span></figcaption>
+              </figure>
+              <figure className="quote-card">
+                <span className="qmark">“</span>
+                <blockquote>[Patient quote two — client to provide copy.]</blockquote>
+                <figcaption><span className="stars">★★★★★</span><span className="src">Google review</span></figcaption>
+              </figure>
             </div>
           </div>
           <div className="about-photo">
@@ -449,13 +459,16 @@ function ServicesFull(){
   return (
     <section className="sec" id="services" style={{paddingTop:0}}>
       <div className="wrap">
-        <SecHead tag="03 — Services" title={<>Our <span className="em">services</span>.</>} blurb="Five service paths, all rooted in the same thorough assessment-and-plan framework."/>
+        <SecHead tag="03 — Services" title={<>Our <span className="em">services</span>.</>} blurb="Six service paths, all rooted in the same thorough assessment-and-plan framework."/>
         <div className="svc-grid">
           {SERVICES.map((s,i) => {
-            const icons = ["target","refresh","needle","wave","home"];
+            const iconMap = {
+              "initial-assessment":"target", "follow-up":"refresh", "rehabilitation":"activity",
+              "acupuncture":"needle", "sports-massage":"wave", "home-visits":"home"
+            };
             return (
               <a className="svc-card" href={`#service-${s.slug}`} key={s.slug}>
-                <div className="ico"><Icon name={icons[i]} size={22}/></div>
+                <div className="ico"><Icon name={iconMap[s.slug] || "target"} size={22}/></div>
                 <div className="num">0{i+1}</div>
                 <h3>{s.name}</h3>
                 <p>{s.desc}</p>
@@ -476,7 +489,7 @@ function FinalCTA(){
       <div className="wrap">
         <div className="final">
           <div className="final-photo">
-            <img src="assets/entrance.jpeg" alt="Blackwater Physiotherapy clinic entrance"/>
+            <img src="assets/entrance-reception.jpg" alt="Blackwater Physiotherapy reception, Old Iron Works Studios, Maldon"/>
             <div className="pin">Maldon · Essex</div>
           </div>
           <div className="final-body">
@@ -521,7 +534,7 @@ function ConditionsFull(){
             </div>
           ))}
         </div>
-        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:32,fontFamily:"var(--manrope)",fontSize:14,color:"var(--slate)",fontWeight:500}}>
+        <div className="cond-footer">
           <span>Don't see your condition? It's almost certainly something we treat.</span>
           <a href="#conditions" className="btn btn-outline">View all conditions <Icon name="arrow" size={12}/></a>
         </div>
@@ -600,16 +613,55 @@ function Team(){
 
 /* ========================= REVIEWS ========================= */
 function Reviews(){
-  const [start, setStart] = useState(0);
-  const visible = 3;
+  const [idx, setIdx] = useState(0);
+  const [anim, setAnim] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [perView, setPerView] = useState(3);
   const total = REVIEWS.length;
-  const window_ = useMemo(() => {
-    const out = [];
-    for (let i = 0; i < visible; i++) out.push({...REVIEWS[(start + i) % total], _key: start + "-" + i});
-    return out;
-  }, [start, total]);
-  const prev = () => setStart(s => (s - 1 + total) % total);
-  const next = () => setStart(s => (s + 1) % total);
+  useEffect(() => {
+    const calc = () => setPerView(window.innerWidth <= 700 ? 1 : window.innerWidth <= 1100 ? 2 : 3);
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, []);
+  // Duplicate the list so we can slide forward continuously, then snap back.
+  const slides = useMemo(() => [...REVIEWS, ...REVIEWS.slice(0, perView)], [perView]);
+
+  const go = (n) => { setAnim(true); setIdx(n); };
+  const prev = () => go(idx <= 0 ? total - 1 : idx - 1);
+  const next = () => setIdx(i => i + 1);
+
+  // When we slide one full set past the end, snap back to 0 with no transition.
+  useEffect(() => {
+    if (idx === total){
+      const t = setTimeout(() => { setAnim(false); setIdx(0); }, 650);
+      return () => clearTimeout(t);
+    }
+    if (!anim){
+      const r = requestAnimationFrame(() => requestAnimationFrame(() => setAnim(true)));
+      return () => cancelAnimationFrame(r);
+    }
+  }, [idx, anim, total]);
+
+  // Auto-advance
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setIdx(i => i + 1), 4000);
+    return () => clearInterval(t);
+  }, [paused]);
+
+  const activeDot = idx % total;
+
+  const GoogleG = () => (
+    <svg viewBox="0 0 48 48" width="20" height="20" aria-hidden="true">
+      <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+      <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+      <path fill="#FBBC05" d="M11.69 28.18c-.44-1.32-.69-2.73-.69-4.18s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+      <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+    </svg>
+  );
+
   return (
     <section className="sec" id="reviews" style={{paddingTop:0}}>
       <div className="wrap">
@@ -617,29 +669,42 @@ function Reviews(){
           <div className="sec-tag"><span className="bar"></span><span className="t">06 — Reviews</span></div>
           <h2 className="sec-title">In their own words.</h2>
           <div className="rev-rating">
-            <div className="num">4.9</div>
-            <div style={{display:"flex",flexDirection:"column",gap:4}}>
-              <span className="stars">★★★★★</span>
-              <span className="meta">312 Google reviews</span>
+            <div className="g-badge">
+              <GoogleG/>
+              <span className="g-word"><span className="b">G</span><span className="o1">o</span><span className="y">o</span><span className="b">g</span><span className="g">l</span><span className="r">e</span></span>
+            </div>
+            <div className="rev-rating-score">
+              <span className="num">4.9</span>
+              <div style={{display:"flex",flexDirection:"column",gap:3}}>
+                <span className="stars">★★★★★</span>
+                <span className="meta">Based on 312 reviews</span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="rev-track">
-          {window_.map((r,i) => (
-            <div className={"rev" + (i === 1 ? " active" : "")} key={r._key}>
-              <div className="stars">★★★★★</div>
-              <p className="quote">"{r.quote}"</p>
-              <div className="who">
-                <span className="name">{r.name}</span>
-                <span>{r.meta}</span>
+        <div className="rev-viewport" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div className="rev-track" style={{transform:`translateX(-${idx * (100/perView)}%)`, transition: anim ? "transform .6s cubic-bezier(.6,.02,.2,1)" : "none"}}>
+            {slides.map((r,i) => (
+              <div className="rev" key={i} style={{flex:`0 0 calc(100%/${perView})`}}>
+                <div className="rev-inner">
+                  <div className="rev-top">
+                    <span className="stars">★★★★★</span>
+                    <GoogleG/>
+                  </div>
+                  <p className="quote">"{r.quote}"</p>
+                  <div className="who">
+                    <span className="name">{r.name}</span>
+                    <span>{r.meta}</span>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className="rev-nav">
           <div className="dots">
             {REVIEWS.map((_,i) => (
-              <button key={i} className={"d" + (i === start ? " on" : "")} onClick={() => setStart(i)} aria-label={`Review ${i+1}`}/>
+              <button key={i} className={"d" + (i === activeDot ? " on" : "")} onClick={() => go(i)} aria-label={`Review ${i+1}`}/>
             ))}
           </div>
           <button className="arr" onClick={prev} aria-label="Previous">←</button>
@@ -812,11 +877,12 @@ function Footer(){
               <div className="row"><img src="assets/accred/csp.webp" alt="Chartered Society of Physiotherapy"/></div>
               <div className="row"><img src="assets/accred/iaomm.png" alt="IAOMM member"/></div>
             </div>
-            <div className="fbrand foot-brand-bottom">
-              <div className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy"/></div>
-              <div className="name">Blackwater<span>Physiotherapy</span></div>
-            </div>
           </div>
+        </div>
+
+        <div className="fbrand foot-brand-bottom">
+          <div className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy"/></div>
+          <div className="name">Blackwater<span>Physiotherapy</span></div>
         </div>
 
         <div className="fbottom">
@@ -859,7 +925,7 @@ function App(){
     ).forEach(el => el.classList.add("image-mask"));
     // Tag grids for staggered child reveal
     document.querySelectorAll(
-      ".quad-grid, .svc-grid, .cgrid, .rev-track, .accred-row .logos, .contact-info"
+      ".quad-grid, .svc-grid, .cgrid, .accred-row .logos, .contact-info"
     ).forEach(el => el.classList.add("stagger"));
 
     const els = document.querySelectorAll(".reveal, .image-mask, .stagger");
@@ -880,12 +946,17 @@ function App(){
       <About/>
       <Approach/>
       <ServicesFull/>
-      <FinalCTA/>
       <ConditionsFull/>
       <Team/>
       <Reviews/>
+      <FinalCTA/>
       <Contact/>
       <Footer/>
+
+      <a className="nav-book-float" href="#contact" aria-label="Book now">
+        <span className="lbl">Book Now</span>
+        <Icon name="arrow" size={15}/>
+      </a>
 
       <TweaksPanel>
         <TweakSection label="Brand"/>
