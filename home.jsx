@@ -37,9 +37,9 @@ const CONDITION_GROUPS = [
 ];
 
 const CLINICIANS = [
-  { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", img:"assets/team.jpg", pos:"25% center", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
-  { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", img:"assets/team.jpg", pos:"75% center", teaser:"MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
-  { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.png", pos:"center", placeholder:true, teaser:"Specialist in post-surgical rehabilitation and complex conditions. Team Lead for Surgical & Vascular services at Basildon University Hospital, with extensive NHS and community experience helping patients regain movement, strength and confidence.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", img:"assets/team.webp", pos:"25% center", teaser:"Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds:[["MSc","Advanced Physio"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", img:"assets/team.webp", pos:"75% center", teaser:"MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
+  { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.webp", pos:"center", placeholder:true, teaser:"Specialist in post-surgical rehabilitation and complex conditions. Team Lead for Surgical & Vascular services at Basildon University Hospital, with extensive NHS and community experience helping patients regain movement, strength and confidence.", creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]] },
 ];
 
 const COMPARISON = [
@@ -176,7 +176,7 @@ function Nav(){
     <header className={"nav" + (scrolled ? " scrolled" : "")}>
       <div className="wrap nav-inner">
         <a href="#" className="nav-brand" aria-label="Blackwater Physiotherapy">
-          <span className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy" width="45" height="52"/></span>
+          <span className="mark"><img src="assets/logo-bp-full.webp" alt="Blackwater Physiotherapy" width="45" height="52"/></span>
           <span className="name">
             <span className="top"><span className="bw">Blackwater</span> <span className="py">Physiotherapy</span></span>
             <span className="sub">Maldon <span className="bar">|</span> Essex</span>
@@ -204,7 +204,7 @@ function Hero(){
   return (
     <section className="hero">
       <div className="hero-photo">
-        <img src="assets/hero.jpg" alt="Physiotherapy treatment in progress"/>
+        <img src="assets/hero.webp" alt="Physiotherapy treatment in progress"/>
       </div>
       <div className="wrap hero-inner">
         <div className="hero-eyebrow">
@@ -313,15 +313,15 @@ function QuadRow(){
 
 /* ========================= ACCREDITATIONS + INSURANCE STRIP ========================= */
 const ACCRED_LOGOS = [
-  { name:"HCPC — Health & Care Professions Council", src:"assets/accred/hcpc.png" },
+  { name:"HCPC — Health & Care Professions Council", src:"assets/accred/hcpc.webp" },
   { name:"Chartered Society of Physiotherapy",        src:"assets/accred/csp.webp" },
-  { name:"International Association of Manual Medicine", src:"assets/accred/iaomm.png" },
+  { name:"International Association of Manual Medicine", src:"assets/accred/iaomm.webp" },
 ];
 const INSURERS = [
-  { name:"Bupa",  src:"assets/insurance/bupa.png" },
-  { name:"AXA",   src:"assets/insurance/axa.png" },
-  { name:"WPA",   src:"assets/insurance/wpa.png" },
-  { name:"HCML",  src:"assets/insurance/hcml.png" },
+  { name:"Bupa",  src:"assets/insurance/bupa.webp" },
+  { name:"AXA",   src:"assets/insurance/axa.webp" },
+  { name:"WPA",   src:"assets/insurance/wpa.webp" },
+  { name:"HCML",  src:"assets/insurance/hcml.webp" },
 ];
 
 function Accred(){
@@ -389,7 +389,7 @@ function About(){
             </div>
           </div>
           <div className="about-photo">
-            <img src="assets/about-dropin.jpeg" alt="Cam and Stef at a community drop-in clinic in Maldon"/>
+            <img src="assets/about-dropin.webp" alt="Cam and Stef at a community drop-in clinic in Maldon"/>
             <div className="badge">
               <div className="t">Est. 2024</div>
               <div className="s">Maldon · Essex</div>
@@ -489,7 +489,7 @@ function FinalCTA(){
       <div className="wrap">
         <div className="final">
           <div className="final-photo">
-            <img src="assets/entrance-reception.jpg" alt="Blackwater Physiotherapy reception, Old Iron Works Studios, Maldon"/>
+            <img src="assets/entrance-reception.webp" alt="Blackwater Physiotherapy reception, Old Iron Works Studios, Maldon"/>
             <div className="pin">Maldon · Essex</div>
           </div>
           <div className="final-body">
@@ -564,7 +564,7 @@ function Team(){
       <div className="wrap">
         <SecHead tag="05 — Team" title={<>Meet <span className="em">your</span> team.</>} blurb="No locums, no rotating juniors. The person who assesses you is the person who treats you."/>
         <div className="team-hero">
-          <img src="assets/team.jpg" alt="The Blackwater Physiotherapy team"/>
+          <img src="assets/team.webp" alt="The Blackwater Physiotherapy team"/>
           <div className="caption">
             <div className="l">Your team</div>
             <div className="t">Cam · Stef · Laurie</div>
@@ -873,15 +873,15 @@ function Footer(){
           <div>
             <h5>Accreditation</h5>
             <div className="foot-accred">
-              <div className="row"><img src="assets/accred/hcpc.png" alt="HCPC registered"/></div>
+              <div className="row"><img src="assets/accred/hcpc.webp" alt="HCPC registered"/></div>
               <div className="row"><img src="assets/accred/csp.webp" alt="Chartered Society of Physiotherapy"/></div>
-              <div className="row"><img src="assets/accred/iaomm.png" alt="IAOMM member"/></div>
+              <div className="row"><img src="assets/accred/iaomm.webp" alt="IAOMM member"/></div>
             </div>
           </div>
         </div>
 
         <div className="fbrand foot-brand-bottom">
-          <div className="mark"><img src="assets/logo-bp-full.png" alt="Blackwater Physiotherapy"/></div>
+          <div className="mark"><img src="assets/logo-bp-full.webp" alt="Blackwater Physiotherapy"/></div>
           <div className="name">Blackwater<span>Physiotherapy</span></div>
         </div>
 

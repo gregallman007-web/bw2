@@ -50,7 +50,7 @@
         <aside className="m-panel" aria-hidden={!open} style={{transform: open ? "translateX(0)" : "translateX(100%)"}}>
           <div className="m-head">
             <span className="m-brand">
-              <img src="assets/logo-bp-full.png" alt="" width="34" height="40"/>
+              <img src="assets/logo-bp-full.webp" alt="" width="34" height="40"/>
               <span className="m-brand-name"><span className="bw">Blackwater</span> <span className="py">Physiotherapy</span></span>
             </span>
             <button className="m-close" onClick={close} aria-label="Close menu">✕</button>
