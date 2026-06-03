@@ -1,17 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Blackwater Physiotherapy</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<style>
-  :root{
+:root{
     --bg: #F7FAFA;
     --ink: #16191B;
     --slate: #48545C;
@@ -106,9 +93,9 @@
   .nav-dd a:hover .arr{opacity:1;transform:translateX(0)}
 
   /* HERO */
-  .hero{position:relative;color:#fff;overflow:hidden;min-height:680px}
-  .hero-photo{position:absolute;inset:0;z-index:0;will-change:transform;animation:heroDrift 22s ease-in-out infinite alternate;background:#0b1517 center/cover no-repeat}
-  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+  .hero{position:relative;color:#fff;overflow:hidden}
+  .hero-photo{position:absolute;inset:0;z-index:0;will-change:transform;animation:heroDrift 22s ease-in-out infinite alternate;background:#0b1517}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
   .hero-photo::before{
     content:"";position:absolute;inset:0;z-index:1;
     background:linear-gradient(105deg, rgba(11,21,23,.85) 0%, rgba(11,21,23,.55) 40%, rgba(11,21,23,.25) 70%, rgba(11,21,23,.1) 100%);
@@ -465,7 +452,7 @@
 
   /* Final CTA — with entrance photo */
   .final{position:relative;background:var(--ink);color:#fff;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1.15fr 1fr;gap:0;min-height:460px}
-  .final-photo{position:relative;overflow:hidden;background:#0b1517}
+  .final-photo{position:relative;overflow:hidden;background:#0b1517 center/cover no-repeat}
   .final-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
   .final-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(22,25,27,.2) 60%,rgba(22,25,27,.9) 100%)}
   .final-photo .pin{position:absolute;right:24px;bottom:24px;z-index:2;display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:rgba(11,21,23,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.18);font-family:var(--manrope);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:#fff;font-weight:600}
@@ -643,7 +630,6 @@
     .sec-blurb{font-size:15px}
 
     /* Hero */
-    .hero{min-height:0}
     .hero .hero-inner{padding-top:118px;padding-bottom:60px}
     .hero-eyebrow{margin-bottom:24px}
     .hero h1{font-size:clamp(44px,13vw,64px);line-height:.94;max-width:none}
@@ -704,21 +690,3 @@
     .tc-viewport{margin:0 -6px}
     .tc-slide{padding:0 6px}
   }
-</style>
-</head>
-<body>
-<template id="__bundler_thumbnail">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <rect width="200" height="200" fill="#16191B"/>
-  <circle cx="100" cy="100" r="56" fill="none" stroke="#2FAEAA" stroke-width="6"/>
-  <path d="M82 70 L82 130" stroke="#F7FAFA" stroke-width="6" stroke-linecap="round"/>
-  <path d="M82 70 L120 70 Q140 70 140 90 Q140 110 120 110 L82 110" fill="none" stroke="#2FAEAA" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</template>
-<div id="root"></div>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" src="mobile-menu.jsx"></script>
-<script type="text/babel" src="shared.jsx"></script>
-<script type="text/babel" src="home.jsx"></script>
-</body>
-</html>

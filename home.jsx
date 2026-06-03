@@ -1,4 +1,6 @@
 const { useState, useEffect, useRef, useMemo } = React;
+const BW_PAGES = (window.BW && window.BW.PAGES) || {};
+const BW_BOOKING = (window.BW && window.BW.BOOKING_URL) || "#contact";
 
 /* ========================= DATA ========================= */
 const ROTATING = ["movement", "confidence", "function", "active living", "hobbies", "quality of life"];
@@ -113,22 +115,22 @@ function Rotator(){
 
 /* ========================= NAV ========================= */
 const MAIN_NAV = [
-  { href:"#", label:"Home", active:true },
-  { href:"#about", label:"About" },
-  { href:"#services", label:"Services", dd:"services" },
-  { href:"#conditions", label:"Conditions", dd:"conditions" },
-  { href:"#who", label:"Who we help", dd:"who" },
-  { href:"#team", label:"Team" },
-  { href:"#faqs", label:"FAQs" },
-  { href:"#blog", label:"Blog" },
-  { href:"#reviews", label:"Reviews" },
-  { href:"#contact", label:"Contact" },
+  { href:BW_PAGES.home || "index.html", label:"Home", active:true },
+  { href:BW_PAGES.about || "About.html", label:"About" },
+  { href:BW_PAGES.services || "Services.html", label:"Services", dd:"services" },
+  { href:BW_PAGES.conditions || "Conditions.html", label:"Conditions", dd:"conditions" },
+  { href:BW_PAGES.who || "Who We Help.html", label:"Who we help", dd:"who" },
+  { href:BW_PAGES.team || "Team.html", label:"Team" },
+  { href:BW_PAGES.faqs || "FAQs.html", label:"FAQs" },
+  { href:BW_PAGES.blog || "Blog.html", label:"Blog" },
+  { href:BW_PAGES.reviews || "Reviews.html", label:"Reviews" },
+  { href:BW_PAGES.contact || "Contact.html", label:"Contact" },
 ];
 const WHO_WE_HELP = [
-  { name:"General population",  href:"#who" },
-  { name:"Older adults",       href:"#who" },
-  { name:"Athletes",           href:"#who" },
-  { name:"Children",           href:"#who" },
+  { name:"General population",  href:(BW_PAGES.who||"Who We Help.html")+"#general" },
+  { name:"Older adults",       href:(BW_PAGES.who||"Who We Help.html")+"#older-adults" },
+  { name:"Athletes",           href:(BW_PAGES.who||"Who We Help.html")+"#athletes" },
+  { name:"Children",           href:(BW_PAGES.who||"Who We Help.html")+"#children" },
 ];
 
 function NavItem({item}){
@@ -141,16 +143,16 @@ function NavItem({item}){
       {dd === "services" && (
         <div className="nav-dd">
           {SERVICES.map(s => (
-            <a key={s.slug} href={`#service-${s.slug}`}>{s.name}<span className="arr">→</span></a>
+            <a key={s.slug} href={(BW_PAGES.services||"Services.html")+"#service-"+s.slug}>{s.name}<span className="arr">→</span></a>
           ))}
         </div>
       )}
       {dd === "conditions" && (
         <div className="nav-dd">
           {CONDITION_GROUPS.map(g => (
-            <a key={g.title} href="#conditions">{g.title}<span className="arr">→</span></a>
+            <a key={g.title} href={BW_PAGES.conditions||"Conditions.html"}>{g.title}<span className="arr">→</span></a>
           ))}
-          <a href="#conditions" style={{borderTop:"1px solid var(--line)",marginTop:6,paddingTop:12,color:"var(--teal)",fontWeight:700}}>All conditions<span className="arr">→</span></a>
+          <a href={BW_PAGES.conditions||"Conditions.html"} style={{borderTop:"1px solid var(--line)",marginTop:6,paddingTop:12,color:"var(--teal)",fontWeight:700}}>All conditions<span className="arr">→</span></a>
         </div>
       )}
       {dd === "who" && (
@@ -203,9 +205,7 @@ function Nav(){
 function Hero(){
   return (
     <section className="hero">
-      <div className="hero-photo">
-        <img src="assets/hero.webp" alt="Physiotherapy treatment in progress"/>
-      </div>
+      <div className="hero-photo" style={{backgroundImage:"url('assets/hero.webp')"}} role="img" aria-label="Physiotherapy treatment in progress"></div>
       <div className="wrap hero-inner">
         <div className="hero-eyebrow">
           <span className="dot"></span>
@@ -219,17 +219,13 @@ function Hero(){
           Maldon's clinician-owned physiotherapy practice — built around your recovery, performance and longevity.
         </p>
         <div className="hero-actions">
-          <a className="btn btn-primary btn-primary-xl" href="#contact">Book Initial Assessment <Icon name="arrow" size={14}/></a>
+          <a className="btn btn-primary btn-primary-xl" href={BW_BOOKING} target="_blank" rel="noopener">Book Initial Assessment <Icon name="arrow" size={14}/></a>
           <a className="btn btn-outline-light" href="#approach">Our Approach</a>
         </div>
         <div className="hero-meta">
           <div className="hero-stat teal">
             <div className="k">4.9 ★</div>
             <div className="l">312 Google reviews</div>
-          </div>
-          <div className="hero-stat">
-            <div className="k">1,400+</div>
-            <div className="l">Patients since 2024</div>
           </div>
         </div>
       </div>
@@ -280,7 +276,7 @@ function QuadRow(){
               </a>
             </div>
             <div className="contact-actions">
-              <a className="btn btn-on-dark btn-block" href="#contact">Book Online Now <Icon name="arrow" size={12}/></a>
+              <a className="btn btn-on-dark btn-block" href={BW_BOOKING} target="_blank" rel="noopener">Book Online Now <Icon name="arrow" size={12}/></a>
               <a className="btn btn-ghost-on-dark btn-block" href="#contact">Contact Us</a>
             </div>
           </div>
@@ -320,8 +316,10 @@ const ACCRED_LOGOS = [
 const INSURERS = [
   { name:"Bupa",  src:"assets/insurance/bupa.webp" },
   { name:"AXA",   src:"assets/insurance/axa.webp" },
+  { name:"Aviva", src:"assets/insurance/aviva.webp" },
   { name:"WPA",   src:"assets/insurance/wpa.webp" },
   { name:"HCML",  src:"assets/insurance/hcml.webp" },
+  { name:"Proclaim Group", src:"assets/insurance/proclaim.webp" },
 ];
 
 function Accred(){
@@ -497,7 +495,7 @@ function FinalCTA(){
             <div className="final-side">
               <p>Book a thorough initial assessment online in under two minutes. Same-week appointments usually available — we'll always confirm by phone before your first visit.</p>
               <div className="final-actions">
-                <a className="btn btn-primary btn-primary-xl" href="#contact">Book Online <Icon name="arrow" size={14}/></a>
+                <a className="btn btn-primary btn-primary-xl" href={BW_BOOKING} target="_blank" rel="noopener">Book Online <Icon name="arrow" size={14}/></a>
                 <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
               </div>
               <div className="final-meta">
@@ -846,18 +844,18 @@ function Footer(){
           <div>
             <h5>Practice</h5>
             <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#approach">Our approach</a></li>
-              <li><a href="#team">Team</a></li>
-              <li><a href="#reviews">Reviews</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href={(BW_PAGES.about||"About.html")}>About</a></li>
+              <li><a href={(BW_PAGES.about||"About.html")+"#approach"}>Our approach</a></li>
+              <li><a href={(BW_PAGES.team||"Team.html")}>Team</a></li>
+              <li><a href={(BW_PAGES.reviews||"Reviews.html")}>Reviews</a></li>
+              <li><a href={(BW_PAGES.contact||"Contact.html")}>Contact</a></li>
             </ul>
           </div>
           <div>
             <h5>Services</h5>
             <ul>
               {SERVICES.map(s => (
-                <li key={s.slug}><a href={`#service-${s.slug}`}>{s.name}</a></li>
+                <li key={s.slug}><a href={(BW_PAGES.services||"Services.html")+"#service-"+s.slug}>{s.name}</a></li>
               ))}
             </ul>
           </div>
@@ -865,9 +863,9 @@ function Footer(){
             <h5>Conditions</h5>
             <ul>
               {CONDITION_GROUPS.map(g => (
-                <li key={g.title}><a href="#conditions">{g.title}</a></li>
+                <li key={g.title}><a href={BW_PAGES.conditions||"Conditions.html"}>{g.title}</a></li>
               ))}
-              <li><a href="#conditions">All conditions →</a></li>
+              <li><a href={BW_PAGES.conditions||"Conditions.html"}>All conditions →</a></li>
             </ul>
           </div>
           <div>
@@ -928,14 +926,20 @@ function App(){
       ".quad-grid, .svc-grid, .cgrid, .accred-row .logos, .contact-info"
     ).forEach(el => el.classList.add("stagger"));
 
-    const els = document.querySelectorAll(".reveal, .image-mask, .stagger");
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-    els.forEach(el => io.observe(el));
-    return () => io.disconnect();
+    const els = [...document.querySelectorAll(".reveal, .image-mask, .stagger")];
+    const vh = window.innerHeight || 800;
+    els.forEach(el => { if (el.getBoundingClientRect().top < vh * 0.92) el.classList.add("in"); });
+    let io;
+    if ("IntersectionObserver" in window){
+      io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); obs.unobserve(e.target); } });
+      }, { threshold: 0, rootMargin: "0px 0px -8% 0px" });
+      els.forEach(el => { if (!el.classList.contains("in")) io.observe(el); });
+    } else {
+      els.forEach(el => el.classList.add("in"));
+    }
+    const t = setTimeout(() => els.forEach(el => el.classList.add("in")), 2000);
+    return () => { clearTimeout(t); if (io) io.disconnect(); };
   }, []);
 
   return (
@@ -953,7 +957,7 @@ function App(){
       <Contact/>
       <Footer/>
 
-      <a className="nav-book-float" href="#contact" aria-label="Book now">
+      <a className="nav-book-float" href={BW_BOOKING} target="_blank" rel="noopener" aria-label="Book now">
         <span className="lbl">Book Now</span>
         <Icon name="arrow" size={15}/>
       </a>

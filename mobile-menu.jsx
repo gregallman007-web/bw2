@@ -36,8 +36,11 @@
     const toggle = (k) => setAcc(a => (a === k ? null : k));
 
     const subItems = (dd) => {
-      if (dd === "services") return services.map(s => ({ label:s.name, href:`#service-${s.slug}` }));
-      if (dd === "conditions") return [...conditionGroups.map(g => ({ label:g.title, href:"#conditions" })), { label:"All conditions", href:"#conditions", strong:true }];
+      const P = (window.BW && window.BW.PAGES) || {};
+      const svcBase = P.services || "";
+      const condBase = P.conditions || "";
+      if (dd === "services") return services.map(s => ({ label:s.name, href:`${svcBase}#service-${s.slug}` }));
+      if (dd === "conditions") return [...conditionGroups.map(g => ({ label:g.title, href:condBase })), { label:"All conditions", href:condBase, strong:true }];
       if (dd === "who") return whoWeHelp.map(w => ({ label:w.name, href:w.href }));
       return [];
     };
@@ -76,7 +79,7 @@
           </nav>
 
           <div className="m-foot">
-            <a className="btn m-book" href="#contact" onClick={close}>Book Now <Arrow/></a>
+            <a className="btn m-book" href={(window.BW && window.BW.BOOKING_URL) || "#contact"} target="_blank" rel="noopener" onClick={close}>Book Now <Arrow/></a>
             <div className="m-contact">
               <a href="tel:+441621000000">01621 000 000</a>
               <a href="mailto:hello@blackwaterphysio.co.uk">hello@blackwaterphysio.co.uk</a>
