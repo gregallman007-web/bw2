@@ -67,7 +67,7 @@
   /* Horizontal brand lockup */
   .nav-brand{display:flex;align-items:flex-end;gap:18px;flex:0 0 auto;transition:gap .35s ease}
   .nav-brand .mark{display:flex;align-items:flex-end;justify-content:center;flex:0 0 auto}
-  .nav-brand .mark img{height:56px;width:auto;object-fit:contain;display:block;transition:height .35s ease}
+  .nav-brand .mark img{height:46px;width:auto;object-fit:contain;display:block;transition:height .35s ease}
   .nav-brand .name{display:flex;flex-direction:column;gap:3px;flex:0 0 auto;overflow:visible;max-width:760px;opacity:1;transition:max-width .45s cubic-bezier(.6,.02,.2,1), opacity .3s ease, margin .35s ease}
   .nav-brand .name .top{font-family:var(--teko);text-transform:uppercase;font-size:34px;font-weight:600;letter-spacing:.08em;line-height:.95;white-space:nowrap}
   .nav-brand .name .top .bw{color:#5b5f61}
@@ -644,13 +644,16 @@
 
     /* Hero */
     .hero{min-height:0}
+    .hero-photo{background-position:72% center}
     .hero .hero-inner{padding-top:118px;padding-bottom:60px}
     .hero-eyebrow{margin-bottom:24px}
     .hero h1{font-size:clamp(44px,13vw,64px);line-height:.94;max-width:none}
     .hero-sub{font-size:16px;margin-top:20px;max-width:none}
     .hero-actions{margin-top:30px;gap:16px}
-    .hero-stat{min-width:0;width:100%;padding:14px 16px}
-    .hero-stat .k{font-size:32px}
+    .hero-meta{align-items:flex-start}
+    .hero-stat{min-width:0;width:auto;align-self:flex-start;padding:10px 16px;display:inline-flex;align-items:center;gap:12px}
+    .hero-stat .k{font-size:24px}
+    .hero-stat .l{margin-top:0}
     .btn-primary-xl{height:54px;min-width:0;width:100%;font-size:12.5px;padding:0 20px}
 
     /* About */

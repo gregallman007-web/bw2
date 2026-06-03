@@ -249,7 +249,7 @@ function QuadRow(){
               <div className="icon-box"><div className="ic"><Icon name="plus" size={18}/></div><div className="nm">Post-Op Rehab</div></div>
               <div className="icon-box"><div className="ic"><Icon name="pulse" size={18}/></div><div className="nm">Chronic Pain</div></div>
             </div>
-            <a href="#conditions" className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
+            <a href={(BW_PAGES.conditions||"Conditions.html")} className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
               See all conditions <Icon name="arrow" size={12}/>
             </a>
           </div>
@@ -297,7 +297,7 @@ function QuadRow(){
                 <div className="ds">Ongoing care, progression and support across the full recovery journey.</div>
               </div>
             </div>
-            <a href="#services" className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
+            <a href={(BW_PAGES.services||"Services.html")} className="more" style={{marginTop:"auto",fontFamily:"var(--manrope)",fontSize:12,letterSpacing:".16em",textTransform:"uppercase",color:"var(--teal)",fontWeight:700,display:"inline-flex",gap:8,alignItems:"center"}}>
               All services <Icon name="arrow" size={12}/>
             </a>
           </div>
@@ -465,7 +465,7 @@ function ServicesFull(){
               "acupuncture":"needle", "sports-massage":"wave", "home-visits":"home"
             };
             return (
-              <a className="svc-card" href={`#service-${s.slug}`} key={s.slug}>
+              <a className="svc-card" href={(BW_PAGES.services||"Services.html")+"#service-"+s.slug} key={s.slug}>
                 <div className="ico"><Icon name={iconMap[s.slug] || "target"} size={22}/></div>
                 <div className="num">0{i+1}</div>
                 <h3>{s.name}</h3>
@@ -534,7 +534,7 @@ function ConditionsFull(){
         </div>
         <div className="cond-footer">
           <span>Don't see your condition? It's almost certainly something we treat.</span>
-          <a href="#conditions" className="btn btn-outline">View all conditions <Icon name="arrow" size={12}/></a>
+          <a href={(BW_PAGES.conditions||"Conditions.html")} className="btn btn-outline">View all conditions <Icon name="arrow" size={12}/></a>
         </div>
       </div>
     </section>
@@ -603,6 +603,9 @@ function Team(){
               <button className="arr" onClick={next} aria-label="Next" disabled={i === maxIndex}>→</button>
             </div>
           </div>
+        </div>
+        <div style={{display:"flex",justifyContent:"center",marginTop:36}}>
+          <a className="btn btn-outline" href={BW_PAGES.team||"Team.html"}>Meet the team <Icon name="arrow" size={13}/></a>
         </div>
       </div>
     </section>

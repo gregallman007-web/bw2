@@ -54,7 +54,7 @@
   /* Horizontal brand lockup */
   .nav-brand{display:flex;align-items:flex-end;gap:18px;flex:0 0 auto;transition:gap .35s ease}
   .nav-brand .mark{display:flex;align-items:flex-end;justify-content:center;flex:0 0 auto}
-  .nav-brand .mark img{height:56px;width:auto;object-fit:contain;display:block;transition:height .35s ease}
+  .nav-brand .mark img{height:46px;width:auto;object-fit:contain;display:block;transition:height .35s ease}
   .nav-brand .name{display:flex;flex-direction:column;gap:3px;flex:0 0 auto;overflow:visible;max-width:760px;opacity:1;transition:max-width .45s cubic-bezier(.6,.02,.2,1), opacity .3s ease, margin .35s ease}
   .nav-brand .name .top{font-family:var(--teko);text-transform:uppercase;font-size:34px;font-weight:600;letter-spacing:.08em;line-height:.95;white-space:nowrap}
   .nav-brand .name .top .bw{color:#5b5f61}
