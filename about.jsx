@@ -49,10 +49,6 @@ function WhoWeAre(){
         </div>
         <div className="about-figure">
           <div className="af-photo" style={{backgroundImage:"url('assets/clinic/treatment-room.webp')"}}></div>
-          <div className="af-badge">
-            <div className="t">Est. 2024</div>
-            <div className="s">The Old Ironworks · Maldon</div>
-          </div>
         </div>
       </div>
     </section>
@@ -116,7 +112,7 @@ function TeamTeaser(){
           <div className="tt-body">
             <div className="sec-tag"><span className="bar"></span><span className="t">The team</span></div>
             <h2>Meet your <span className="em">clinicians.</span></h2>
-            <p>Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating juniors.</p>
+            <p>Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating staff.</p>
             <ul className="tt-list">
               {CLINICIANS.map(c => (
                 <li key={c.slug}><b>{c.name}</b><span>{c.role}</span></li>
@@ -142,7 +138,7 @@ function CTABand(){
               <p>Book a thorough initial assessment online in under two minutes, or call and we'll happily talk through how we can help.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
             </div>
           </div>

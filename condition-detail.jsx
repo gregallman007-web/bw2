@@ -3,53 +3,53 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
 const svcName = (slug) => (SERVICES.find(s => s.slug === slug) || {}).name || slug;
 
 const COND = {
-  "back-pain": {
-    name:"Back Pain", img:"assets/conditions/back-pain.webp", pos:"center", tag:"Spine & nerve pain",
-    lead:"Lower-back pain is one of the most common reasons people see us — and one of the most treatable with the right assessment and plan.",
-    overview:"Most back pain isn't serious, but it can be alarming and disruptive. Whether it came on suddenly or has built up over time, we assess how your spine, muscles and movement are working together, identify what's driving the pain, and give you a clear plan to settle it and prevent it returning.",
-    symptoms:["Aching or sharp lower-back pain","Stiffness, especially in the morning","Pain that worsens with sitting or bending","Muscle spasm or tightness"],
-    seek:["Pain following a fall or injury","Pain with numbness, tingling or leg weakness","Pain that wakes you at night","Symptoms that aren't improving"],
+  "back-neck-pain": {
+    name:"Back & Neck Pain", img:"assets/conditions/back-pain.webp", pos:"center", tag:"Back & neck",
+    lead:"From sudden strain to long-standing stiffness, headaches or pain into the arm — back and neck pain responds well to the right approach.",
+    overview:"Most back pain improves with the right approach, but that doesn't make it any less frustrating. Whether it came on suddenly or has built up over time, we assess how your spine, muscles, and movement are working together, identify what's driving the pain, and give you a clear plan to settle it and prevent it returning. Neck pain can develop for many reasons, from long days at work to sport, injury, or simply building up over time. Common symptoms include stiffness, headaches, and pain that travels into the arm. Whether your symptoms started suddenly or built up over time, we assess the neck, shoulder, and upper back as a whole. Treatment focuses on reducing pain, improving movement, and helping you return to normal activities without ongoing flare-ups.",
+    symptoms:["Aching or sharp back pain","Neck stiffness or restricted turning","Headaches or pain into the arm","Muscle spasm or tightness"],
+    seek:["Pain following a fall or injury","Pain with numbness, tingling or weakness","Pain that wakes you at night","Symptoms that aren't improving"],
     related:["initial-assessment","rehabilitation","sports-massage"],
-    faqs:[["Should I rest or keep moving?","Gentle movement is almost always better than bed rest — we'll guide you on what's safe and helpful."],["Do I need a scan?","Most back pain doesn't need imaging. We'll advise if a referral is appropriate."]],
+    faqs:[["Should I rest or keep moving?","Gentle movement is almost always better than bed rest — we'll guide you on what's safe and helpful."],["Do I need a scan?","In many cases, back pain can be assessed without scans or imaging. If we feel a referral is appropriate, we'll let you know."]],
   },
-  "neck-shoulder-pain": {
-    name:"Neck & Shoulder Pain", img:"assets/conditions/neck-shoulder-pain.webp", pos:"center", tag:"Spine & nerve pain",
-    lead:"Desk work, stress and posture often show up as neck and shoulder tension — stiffness, headaches and referred pain into the arm.",
-    overview:"Neck and shoulder pain frequently stems from how we sit, work and move. We assess the neck, shoulder and upper back together, ease the tension with hands-on treatment, and rebuild the strength and posture habits that keep it from coming back.",
-    symptoms:["Neck stiffness or restricted turning","Aching across the shoulders","Tension headaches","Pain or tingling into the arm"],
-    seek:["Pain after a whiplash-type injury","Persistent pins and needles or weakness","Severe or worsening headaches","Symptoms not settling with rest"],
-    related:["initial-assessment","acupuncture","sports-massage"],
-    faqs:[["Is my posture to blame?","Posture is part of it, but strength and movement variety matter more — we'll help with both."],["Can you help my headaches?","Many tension-type headaches are neck-related and respond well to treatment."]],
+  "shoulder-pain": {
+    name:"Shoulder Pain", img:"assets/conditions/neck-shoulder-pain.webp", pos:"center", tag:"Shoulder",
+    lead:"Stiffness, weakness or pain reaching and lifting can affect work, sport and sleep — but the shoulder responds well to the right plan.",
+    overview:"Shoulder pain can develop for many reasons — from injury or overuse to gradual wear, or simply building up over time. It often shows up as difficulty reaching, lifting or sleeping on the affected side. Whether your symptoms started suddenly or crept in slowly, we assess the shoulder, neck and upper back as a whole, identify what's driving the pain, and focus treatment on reducing pain, restoring movement and rebuilding strength so you can return to normal activities without ongoing flare-ups.",
+    symptoms:["Pain reaching, lifting or overhead","Stiffness or restricted movement","Weakness or difficulty sleeping on it","Aching around the shoulder or upper arm"],
+    seek:["Pain after a fall or injury","Significant weakness or inability to lift the arm","Sudden loss of movement","Symptoms not settling with rest"],
+    related:["initial-assessment","rehabilitation","sports-massage"],
+    faqs:[["Will it get better on its own?","Some shoulder pain settles, but the right plan speeds recovery and reduces the chance of it returning."],["Can you help if it's been there a while?","Yes — even long-standing shoulder pain usually responds well to assessment-led treatment and strengthening."]],
   },
-  "sciatica": {
-    name:"Sciatica & Nerve Pain", img:"assets/conditions/back-pain-active.webp", pos:"center", tag:"Spine & nerve pain",
-    lead:"Pain, pins and needles or weakness travelling into the leg can be frightening — but sciatica usually responds very well to physiotherapy.",
-    overview:"Sciatica describes symptoms from an irritated nerve, often felt down the leg. We assess where the nerve is being aggravated, calm the symptoms with targeted treatment and movement, and progress a plan to restore comfortable, confident movement.",
-    symptoms:["Pain radiating into the buttock or leg","Pins and needles or numbness","Pain worse with sitting or bending","A feeling of leg weakness"],
-    seek:["Significant or worsening leg weakness","Numbness around the saddle area","Loss of bladder or bowel control (urgent)","Symptoms after a significant injury"],
-    related:["initial-assessment","rehabilitation","follow-up"],
-    faqs:[["Will it go away on its own?","Many cases settle, but the right plan speeds recovery and reduces the chance of recurrence."],["Is exercise safe?","Specific, graded movement is usually a key part of recovery — we'll show you what helps."]],
-  },
-  "knee-pain": {
-    name:"Knee & Joint Pain", img:"assets/conditions/knee-pain.webp", pos:"center", tag:"Joint & movement",
-    lead:"Knee, hip and joint pain — from wear-and-tear to sudden injury — assessed thoroughly and rehabilitated properly.",
-    overview:"Joint pain can come from injury, overload or age-related change. We assess how the joint and surrounding muscles are working, reduce your pain, and build a strengthening plan that restores function and keeps you active — often avoiding the need for more invasive options.",
-    symptoms:["Pain on stairs, squatting or kneeling","Swelling or stiffness","Clicking, catching or giving way","Pain after activity"],
+  "knee-hip-pain": {
+    name:"Knee & Hip Pain", img:"assets/conditions/knee-pain.webp", pos:"center", tag:"Knee & hip",
+    lead:"From wear-and-tear to sudden injury, knee and hip pain responds well to a thorough assessment and a proper plan.",
+    overview:"Knee and hip pain can come from injury, overload or age-related change, and often affects walking, stairs, sport and sleep. Whether it came on suddenly or built up over time, we assess how the joint and surrounding muscles are working together, identify what's driving the pain, and build a clear, progressive plan that reduces pain, restores function and keeps you active — frequently avoiding the need for more invasive options.",
+    symptoms:["Pain on stairs, squatting or walking","Swelling or stiffness","Clicking, catching or giving way","Pain after activity or at night"],
     seek:["A locked or unstable joint","Significant swelling after injury","Inability to bear weight","Pain that's steadily worsening"],
     related:["initial-assessment","rehabilitation","sports-massage"],
     faqs:[["Is it just wear and tear?","Even age-related change responds well to strengthening — pain and damage aren't the same thing."],["Should I avoid exercise?","Usually not — the right loading is often the best medicine. We'll tailor it to you."]],
   },
-  "running-injuries": {
-    name:"Running Injuries", img:"assets/conditions/running-injuries.webp", pos:"center 35%", tag:"Sport & activity",
-    lead:"Shin pain, Achilles trouble, ITB and other overuse injuries — diagnosed accurately and built back to mileage.",
-    overview:"Most running injuries are load-related — too much, too soon, or a weak link in the chain. We assess your injury and your training, settle the symptoms, and build a structured return-to-running plan so you come back stronger and stay injury-free.",
-    symptoms:["Pain that builds during or after runs","Localised tenderness (shin, Achilles, knee)","Tightness or niggles that won't shift","Pain forcing you to cut runs short"],
-    seek:["Pain that's worsening week on week","Sharp pain altering how you run","Swelling or inability to weight-bear","Recurrent injuries in the same spot"],
+  "sports-injuries": {
+    name:"Sports Injuries", img:"assets/conditions/back-pain-active.webp", pos:"center 30%", tag:"Sport & activity",
+    lead:"Running injuries, muscle strains and overuse problems — diagnosed accurately and built back to full activity.",
+    overview:"Sports injuries can range from a sudden muscle strain to a gradual, load-related problem that builds over time — including running injuries, tendon pain and recurrent niggles. Whether you're training hard or returning to activity, we assess both the injury and the demands you're placing on your body, settle the symptoms, and build a structured return-to-sport plan so you come back stronger and stay injury-free.",
+    symptoms:["Pain that builds during or after activity","Localised tenderness or tightness","A sudden 'pull' or strain","Niggles that keep returning"],
+    seek:["Pain that's worsening week on week","Sharp pain altering how you move","Swelling or inability to weight-bear","Recurrent injuries in the same spot"],
     related:["initial-assessment","rehabilitation","sports-massage"],
-    faqs:[["Do I have to stop running?","Often not entirely — we'll usually modify rather than stop, where it's safe."],["Will you look at my training?","Yes — load management is central to fixing and preventing running injuries."]],
+    faqs:[["Do I have to stop training?","Often not entirely — we'll usually modify rather than stop, where it's safe."],["Will you look at my training load?","Yes — managing load is central to fixing and preventing sports injuries."]],
   },
-  "post-op-rehab": {
-    name:"Post-Operative Rehab", img:"assets/services/rehabilitation.webp", pos:"center", tag:"Recovery",
+  "other-joint-pain": {
+    name:"Other Joint Pain", img:"assets/conditions/running-injuries.webp", pos:"center 35%", tag:"Joint & movement",
+    lead:"Ankle, foot, elbow, wrist and other joint pain — assessed thoroughly and rehabilitated properly.",
+    overview:"Pain isn't limited to the big joints — ankles, feet, elbows and wrists can all be affected by injury, overuse or gradual change, and can have a real impact on daily life and activity. Whether it came on suddenly or built up over time, we assess how the joint and surrounding structures are working, identify what's driving the pain, and build a clear plan to reduce pain, restore movement and get you back to what matters.",
+    symptoms:["Pain with specific movements or loading","Swelling, stiffness or tenderness","Reduced grip, balance or control","Pain after activity"],
+    seek:["Inability to bear weight or use the joint","Significant swelling after injury","A locked or unstable joint","Pain that's steadily worsening"],
+    related:["initial-assessment","rehabilitation","sports-massage"],
+    faqs:[["Do you treat smaller joints too?","Yes — ankles, feet, elbows and wrists all respond well to assessment-led treatment and rehabilitation."],["Should I avoid using it?","Usually not entirely — we'll guide you on what's safe and helpful as it settles."]],
+  },
+  "post-op": {
+    name:"Post-Op", img:"assets/services/rehabilitation.webp", pos:"center", tag:"Recovery",
     lead:"Structured recovery after surgery to restore strength, movement and confidence — safely and at the right pace.",
     overview:"The right rehabilitation makes a real difference to surgical outcomes. Working alongside your surgical team's protocol, we guide you through each stage — protecting your recovery early, then progressively rebuilding strength, mobility and confidence to get you back to what matters.",
     symptoms:["Post-surgical stiffness and weakness","Reduced range of movement","Loss of confidence in the joint/limb","Uncertainty about what's safe to do"],
@@ -122,7 +122,7 @@ function Body(){
             <h3>Book an assessment</h3>
             <p>The fastest way to understand your {c.name.toLowerCase()} and what to do about it.</p>
             <a className="btn btn-primary btn-block" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={13}/></a>
-            <a className="btn btn-outline btn-block" href="tel:+441621000000">01621 000 000</a>
+            <a className="btn btn-outline btn-block" href="tel:+447790717056">07790 717056</a>
             <div className="side-rel">
               <span className="sr-label">How we treat it</span>
               {related.map(r => <a className="sr-link" href={"service-"+r.slug+".html"} key={r.slug}>{r.name}<Icon name="arrow" size={12}/></a>)}
@@ -156,7 +156,7 @@ function CTABand(){
               <p>Book a thorough assessment and get a clear plan — same-week appointments usually available.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
             </div>
           </div>

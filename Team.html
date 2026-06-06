@@ -34,10 +34,10 @@
   /* ===== Profile rows ===== */
   .profile{padding:88px 0;border-bottom:1px solid var(--line)}
   .profile:nth-child(even){background:linear-gradient(180deg,#eef5f4,var(--bg))}
-  .profile-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:center}
+  .profile-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:56px;align-items:start}
   .profile.flip .profile-grid{grid-template-columns:1.18fr .82fr}
   .profile.flip .profile-media{order:2}
-  .profile-media{position:relative}
+  .profile-media{position:sticky;top:108px;align-self:start}
   .pf-photo{aspect-ratio:4/5;border-radius:16px;background:#1b3a3d center top/cover no-repeat;box-shadow:0 34px 64px -34px rgba(22,25,27,.45)}
   .pf-tag{position:absolute;top:14px;left:14px;background:rgba(11,21,23,.7);color:#fff;font-family:var(--manrope);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:6px 11px;border-radius:999px}
   .pf-creds{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-wrap:wrap;gap:8px}
@@ -60,6 +60,7 @@
     .profile{padding:56px 0}
     .profile-grid{grid-template-columns:1fr;gap:28px}
     .profile.flip .profile-media{order:0}
+    .profile-media{position:static}
     .pf-photo{max-width:420px}
     .page-hero{min-height:0}
   }

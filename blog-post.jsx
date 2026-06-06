@@ -26,7 +26,7 @@ const POST = {
   ],
   related:[
     { label:"Initial Assessment", href:"service-initial-assessment.html" },
-    { label:"Back Pain", href:"condition-back-pain.html" },
+    { label:"Back Pain", href:"condition-back-neck-pain.html" },
     { label:"Rehabilitation Session", href:"service-rehabilitation.html" },
   ],
 };
@@ -123,7 +123,7 @@ function Article(){
             <h3>Book an assessment</h3>
             <p>Reading helps — but a tailored assessment is the fastest route to recovery.</p>
             <a className="btn btn-primary btn-block" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={13}/></a>
-            <a className="btn btn-outline btn-block" href="tel:+441621000000">01621 000 000</a>
+            <a className="btn btn-outline btn-block" href="tel:+447790717056">07790 717056</a>
           </div>
           <div className="rel-card-box">
             <span className="rc-label">Related</span>
@@ -166,7 +166,7 @@ function CTABand(){
               <p>Book a thorough initial assessment and get a clear, personalised plan for your recovery.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
             </div>
           </div>
@@ -183,7 +183,7 @@ function RecentPosts(){
     { title:"Returning to running after injury, the smart way", cat:"Recovery", img:"assets/conditions/running-injuries.webp", date:"28 April 2026", read:"5 min read" },
   ];
   return (
-    <section className="sec recent-sec" style={{paddingTop:0}}>
+    <section className="sec recent-sec">
       <div className="wrap">
         <div className="recent-head">
           <h2>More from the <span className="em">blog</span></h2>

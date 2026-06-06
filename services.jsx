@@ -4,11 +4,11 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
 /* Pair each service with a longer "what it's for" line + who it suits */
 const SERVICE_DETAIL = {
   "initial-assessment": { for:"Best place to start", points:["Full history & movement assessment","Clear diagnosis and honest plan","45 minutes, one-to-one"] },
-  "follow-up":          { for:"Continuing care", points:["Hands-on treatment","Plan reviewed & progressed","Booked around you"] },
+  "follow-up":          { for:"Continuing care", points:["Hands-on treatment","Plan reviewed & progressed","30 minute session"] },
   "rehabilitation":     { for:"Rebuild & prevent", points:["Progressive loading programme","Strength, mobility & control","Return-to-activity focus"] },
-  "acupuncture":        { for:"Add-on to treatment", points:["Western medical acupuncture","Pain & muscle tension relief","Always after assessment"] },
+  "acupuncture":        { for:"Pain relief treatment", points:["Modern Dry Needling","Pain & muscle tension relief","Always after assessment"] },
   "sports-massage":     { for:"Recovery & performance", points:["Deep tissue & trigger point","Improved mobility","Pre / post event"] },
-  "home-visits":        { for:"Care that comes to you", points:["Ideal post-surgery","Familiar environment","Across Maldon & nearby"] },
+  "home-visits":        { for:"Care that comes to you", points:["Ideal post-surgery","Ideal for mobility and falls","Maldon & surrounding areas"] },
 };
 
 const STEPS = [
@@ -16,6 +16,7 @@ const STEPS = [
   { n:"02", t:"Plan", d:"A clear, personalised treatment plan you understand and trust, mapped to what matters to you." },
   { n:"03", t:"Treat", d:"Hands-on treatment, acupuncture and targeted rehab — adapted as you progress." },
   { n:"04", t:"Progress", d:"We track outcomes and build lasting strength so you stay well beyond the clinic." },
+  { n:"05", t:"Refer", d:"If you need more, we refer back to your GP with a clinic letter and liaise with our network of orthopaedic, paediatric and sport & exercise medicine consultants." },
 ];
 
 function PageHero(){
@@ -87,7 +88,7 @@ function Process(){
         <div className="sec-head">
           <div className="sec-tag"><span className="bar"></span><span className="t">The process</span></div>
           <h2 className="sec-title">A clear path, <span className="em">start to finish.</span></h2>
-          <p className="sec-blurb">No guesswork and no open-ended treatment — you'll always know where you are and what comes next.</p>
+          <p className="sec-blurb">No guesswork and no open-ended treatment — you'll always know where you are and what comes next. And if your recovery needs more than physiotherapy, we'll guide the next step.</p>
         </div>
         <div className="step-grid">
           {STEPS.map(s => (
@@ -118,12 +119,12 @@ function CTABand(){
               <p>Start with an Initial Assessment and we'll guide you to the right plan — or call and we'll happily talk it through first.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
               <div className="final-meta">
                 <div className="row"><b>Mon–Fri</b> 7am–8pm</div>
                 <div className="row"><b>Saturday</b> 8am–2pm</div>
-                <div className="row"><b>Visit</b> The Old Ironworks, Maldon</div>
+                <div className="row"><b>Visit</b> Gracie Barra Studio, The Old Ironworks, Maldon CM9 4LE</div>
               </div>
             </div>
           </div>
@@ -140,7 +141,6 @@ function App(){
       <Nav active="services"/>
       <PageHero/>
       <Accred/>
-      <Intro/>
       <ServicesGrid/>
       <Process/>
       <CTABand/>

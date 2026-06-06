@@ -15,7 +15,7 @@
     );
   }
 
-  function MobileMenu({ mainNav, services, conditionGroups, whoWeHelp, Icon }){
+  function MobileMenu({ mainNav, services, conditionGroups, conditions, whoWeHelp, Icon }){
     const [open, setOpen] = useState(false);
     const [acc, setAcc] = useState(null);
 
@@ -39,8 +39,8 @@
       const P = (window.BW && window.BW.PAGES) || {};
       const svcBase = P.services || "";
       const condBase = P.conditions || "";
-      if (dd === "services") return services.map(s => ({ label:s.name, href:`${svcBase}#service-${s.slug}` }));
-      if (dd === "conditions") return [...conditionGroups.map(g => ({ label:g.title, href:condBase })), { label:"All conditions", href:condBase, strong:true }];
+      if (dd === "services") return services.map(s => ({ label:s.name, href:`service-${s.slug}.html` }));
+      if (dd === "conditions") return [...conditions.map(c => ({ label:c.name, href:`condition-${c.slug}.html` })), { label:"All conditions", href:condBase, strong:true }];
       if (dd === "who") return whoWeHelp.map(w => ({ label:w.name, href:w.href }));
       return [];
     };
@@ -81,9 +81,9 @@
           <div className="m-foot">
             <a className="btn m-book" href={(window.BW && window.BW.BOOKING_URL) || "#contact"} target="_blank" rel="noopener" onClick={close}>Book Now <Arrow/></a>
             <div className="m-contact">
-              <a href="tel:+441621000000">01621 000 000</a>
-              <a href="mailto:hello@blackwaterphysio.co.uk">hello@blackwaterphysio.co.uk</a>
-              <span>14 Maldon Road, Maldon, Essex</span>
+              <a href="tel:+447790717056">07790 717056</a>
+              <a href="mailto:info@blackwaterphysiotherapy.co.uk">info@blackwaterphysiotherapy.co.uk</a>
+              <span>The Old Ironworks, Maldon CM9 4LE</span>
             </div>
           </div>
         </aside>

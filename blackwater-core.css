@@ -79,7 +79,7 @@
   .nav.scrolled .nav-brand .name{max-width:0;opacity:0;margin-left:0;overflow:hidden}
 
   /* Floating Book Now — fixed tab, centre-right of viewport, brand green */
-  .nav-book-float{position:fixed;right:0;top:50%;transform:translateY(-50%);display:inline-flex;flex-direction:column;align-items:center;gap:8px;padding:18px 12px;border-radius:12px 0 0 12px;background:var(--green);color:#fff;font-family:var(--manrope);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;box-shadow:0 8px 26px -8px rgba(0,128,128,.7);transition:transform .25s ease, box-shadow .25s ease, background .2s ease, padding .25s ease;z-index:60;writing-mode:vertical-rl}
+  .nav-book-float{position:fixed;right:0;top:25%;transform:translateY(-50%);display:inline-flex;flex-direction:column;align-items:center;gap:8px;padding:18px 12px;border-radius:12px 0 0 12px;background:var(--green);color:#fff;font-family:var(--manrope);font-weight:700;font-size:12px;letter-spacing:.18em;text-transform:uppercase;box-shadow:0 8px 26px -8px rgba(0,128,128,.7);transition:transform .25s ease, box-shadow .25s ease, background .2s ease, padding .25s ease;z-index:60;writing-mode:vertical-rl}
   .nav-book-float .lbl{writing-mode:vertical-rl;transform:rotate(180deg)}
   .nav-book-float svg{transform:rotate(-90deg)}
   .nav-book-float:hover{background:var(--green-deep);transform:translateY(-50%) translateX(-3px);box-shadow:0 14px 34px -10px rgba(0,128,128,.8)}
@@ -293,9 +293,15 @@
   .ccol .sub{font-family:var(--manrope);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,.75)}
   .ccol.trad .sub{color:var(--slate)}
   .ccol ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;flex:1}
-  .ccol li{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid rgba(255,255,255,.18);font-family:var(--manrope);font-size:15.5px;line-height:1.4;font-weight:500;color:#fff}
+  .ccol li{display:flex;gap:14px;align-items:flex-start;padding:16px 14px;margin:0 -14px;border-radius:10px;border-top:1px solid rgba(255,255,255,.18);font-family:var(--manrope);font-size:15.5px;line-height:1.4;font-weight:500;color:#fff;transition:background .25s ease, transform .25s ease}
+  .ccol.bw li:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+  .ccol.trad li:hover{background:rgba(47,174,170,.06);transform:translateX(4px)}
+  .ccol li .ico{transition:transform .25s ease}
+  .ccol li:hover .ico{transform:scale(1.12)}
   .ccol.trad li{border-top-color:var(--line);color:var(--slate)}
   .ccol li:first-child{border-top:0}
+  .ccol li + li{border-top:1px solid rgba(255,255,255,.18)}
+  .ccol.trad li + li{border-top-color:var(--line)}
   .ccol li .ico{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;flex:0 0 auto;margin-top:1px;background:#fff;color:var(--teal);font-size:13px;font-weight:700;font-family:var(--manrope)}
   .ccol.trad li .ico{background:transparent;border:1.5px solid #c5cccf;color:#9aa1a4}
 

@@ -8,7 +8,7 @@ const CONTENT = {
     heroPos:"72% 22%",
     lead:"A thorough first appointment to understand your pain, your history and your goals — ending with a clear diagnosis and an honest plan.",
     overview:"Your Initial Assessment is the foundation of everything that follows. We take the time to listen, examine how you move, and identify the root cause of your symptoms — not just the pain itself. You'll leave understanding what's going on, what we can do about it, and exactly what the next steps are.",
-    duration:"45–60 minutes", price:"One-to-one", best:"New patients & new problems",
+    duration:"45 minutes", price:"One-to-one", best:"New patients & new problems",
     expect:[
       ["Listen","A detailed conversation about your symptoms, history, work, sport and daily life."],
       ["Assess","A hands-on physical and movement assessment to find the root cause."],
@@ -29,7 +29,7 @@ const CONTENT = {
     heroPos:"center 22%",
     lead:"Focused treatment sessions that build on your assessment, track progress and adapt the plan as you recover.",
     overview:"Follow-Up sessions are where recovery happens. Each visit reviews how you're progressing, delivers hands-on treatment, and moves your plan forward — so every appointment has a purpose and you always know what's next.",
-    duration:"30–45 minutes", price:"One-to-one", best:"Continuing an existing plan",
+    duration:"30 minutes", price:"One-to-one", best:"Continuing an existing plan",
     expect:[
       ["Review","Check progress since your last visit and adjust based on how you've responded."],
       ["Treat","Hands-on treatment, acupuncture or soft-tissue work as needed."],
@@ -39,17 +39,16 @@ const CONTENT = {
     forYou:["You've had an Initial Assessment with us","You're working through a treatment plan","You want hands-on treatment plus progression","You're building back towards a goal"],
     includes:["Progress review","Hands-on treatment","Updated rehabilitation programme","Clear next steps"],
     faqs:[
-      ["How many sessions will I need?","It varies — we'll give you an honest estimate at your assessment and review it as you go. We aim to make you independent, not dependent."],
-      ["How often should I come?","Often weekly or fortnightly at first, spacing out as you improve. We'll agree what's right for you."],
+      ["How many sessions will I need?","Our goal is to help you recover as efficiently as possible, not to keep you coming back unnecessarily. We'll recommend follow-up appointments only when they add value and support your progress."],
     ],
     related:["initial-assessment","rehabilitation","acupuncture"],
   },
   "rehabilitation": {
     tag:"Rebuild & prevent",
     heroPos:"center 30%",
-    lead:"Progressive, structured exercise sessions that rebuild strength, mobility and confidence — and keep symptoms from coming back.",
+    lead:"Focused, longer, progressive sessions that rebuild strength, mobility and confidence — and keep symptoms from coming back.",
     overview:"Rehabilitation is how short-term relief becomes lasting results. We build a progressive programme around your goals — loading the right tissues, restoring movement and control — so you don't just feel better, you stay better and return to what matters.",
-    duration:"30–45 minutes", price:"One-to-one", best:"Returning to activity & prevention",
+    duration:"45–60 minutes", price:"One-to-one", best:"Returning to activity & prevention",
     expect:[
       ["Baseline","Measure strength, mobility and control to set a clear starting point."],
       ["Programme","A progressive, individualised exercise plan matched to your goal."],
@@ -67,9 +66,9 @@ const CONTENT = {
   "acupuncture": {
     tag:"An add-on to your plan",
     heroPos:"center 20%",
-    lead:"Western medical acupuncture used within your physiotherapy plan to ease pain, relax tight muscles and support healing.",
+    lead:"Western medical acupuncture used within your physiotherapy plan to ease pain, relax tight muscles and support recovery.",
     overview:"Acupuncture can be a valuable part of treatment for certain conditions — helping to reduce pain and muscle tension so you can move and progress more comfortably. We use it as one tool within a wider, assessment-led plan, never in isolation.",
-    duration:"30–45 minutes", price:"One-to-one", best:"Pain & muscle tension relief",
+    duration:"30 minutes", price:"One-to-one", best:"Pain & muscle tension relief",
     expect:[
       ["Assess","We confirm acupuncture is suitable and right for your condition."],
       ["Treat","Fine, sterile, single-use needles placed to target pain and tension."],
@@ -87,19 +86,19 @@ const CONTENT = {
   "sports-massage": {
     tag:"Recovery & performance",
     heroPos:"72% 24%",
-    lead:"Hands-on soft-tissue treatment to release tension, improve mobility and support recovery and performance.",
-    overview:"Sports massage isn't just for athletes. Deep-tissue and trigger-point work helps release tight, overloaded muscles, improve how you move and aid recovery — whether you're training hard, sat at a desk, or easing general tension.",
-    duration:"30–60 minutes", price:"One-to-one", best:"Tension, mobility & recovery",
+    lead:"Targeted soft-tissue therapy to reduce pain, release tightness, improve mobility, and support recovery and performance.",
+    overview:"Sports massage isn't just for athletes. Targeted techniques help ease aches and pains, reduce muscle tension, improve movement, and support recovery — whether you're training hard, working at a desk, or simply feeling tight and stiff.",
+    duration:"30–60 minutes", price:"One-to-one", best:"Pain, tension, mobility & recovery",
     expect:[
       ["Discuss","A quick chat about problem areas, training and goals."],
-      ["Treat","Targeted deep-tissue and trigger-point soft-tissue work."],
+      ["Treat","Targeted soft-tissue work."],
       ["Release","Improve tissue quality, mobility and comfort."],
       ["Advise","Stretches and self-care to maintain the benefit."],
     ],
     forYou:["You feel tight, stiff or overloaded","You train and want to aid recovery","You carry desk-related tension","You want to complement your treatment plan"],
     includes:["Targeted soft-tissue treatment","Mobility-focused techniques","Self-care & stretching advice","Pre / post-event options"],
     faqs:[
-      ["Is it the same as a relaxing massage?","It's more targeted and therapeutic — focused on specific tissues and movement, though it can still feel great."],
+      ["Is it the same as a relaxing massage?","It's more targeted and therapeutic — focused on specific tissues and movement, though it can still feel great. But, we can adapt pressure to meet your needs."],
       ["Should I book this or an assessment?","If you have a specific injury or pain, start with an Initial Assessment. For general tension and recovery, sports massage is ideal."],
     ],
     related:["initial-assessment","acupuncture","rehabilitation"],
@@ -108,7 +107,7 @@ const CONTENT = {
     tag:"Care that comes to you",
     heroPos:"center 28%",
     lead:"Assessment-led physiotherapy in your own home — ideal after surgery, or when getting to the clinic is difficult.",
-    overview:"Home visits bring the full Blackwater approach to your front door. Particularly valuable after surgery or for those with reduced mobility, we assess, treat and build a rehabilitation plan in the comfort and familiarity of your own environment.",
+    overview:"Home visits bring the full Blackwater Physiotherapy approach to your front door. Particularly valuable after surgery or for those with reduced mobility we assess, treat and build a rehabilitation plan in the comfort and familiarity of your own environment.",
     duration:"45–60 minutes", price:"In your home", best:"Post-surgery & reduced mobility",
     expect:[
       ["Visit","We come to you, anywhere across Maldon and the surrounding area."],
@@ -119,7 +118,7 @@ const CONTENT = {
     forYou:["You're recovering from an operation","Getting to the clinic is difficult","You'd benefit from rehab in your own space","You're supporting an older relative's recovery"],
     includes:["Home-based assessment & treatment","Practical exercises using what you have","Mobility & independence focus","Coordination with other care where needed"],
     faqs:[
-      ["What areas do you cover?","Maldon and the surrounding villages. Get in touch with your postcode and we'll confirm."],
+      ["What areas do you cover?","Maldon and the surrounding areas. Get in touch with your postcode and we'll confirm."],
       ["Is there an extra charge?","Home visits are priced to reflect travel and time — we'll be transparent about cost when you book."],
     ],
     related:["initial-assessment","rehabilitation","follow-up"],
@@ -209,9 +208,9 @@ function Body(){
             <h3>Book {svc.name}</h3>
             <p>Same-week appointments usually available. We'll confirm by phone before your visit.</p>
             <a className="btn btn-primary btn-block" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={13}/></a>
-            <a className="btn btn-outline btn-block" href="tel:+441621000000">01621 000 000</a>
+            <a className="btn btn-outline btn-block" href="tel:+447790717056">07790 717056</a>
             <div className="side-meta">
-              <div><Icon name="home" size={15}/> The Old Ironworks, Maldon</div>
+              <div><Icon name="home" size={15}/> Gracie Barra Studio, The Old Ironworks, Maldon CM9 4LE</div>
               <div><Icon name="refresh" size={15}/> Mon–Fri 7am–8pm · Sat 8am–2pm</div>
             </div>
           </div>
@@ -257,7 +256,7 @@ function CTABand(){
               <p>Book online in under two minutes, or call and we'll happily talk through whether this is the right starting point for you.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
             </div>
           </div>

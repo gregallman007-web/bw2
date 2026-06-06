@@ -16,7 +16,7 @@ function PageHero(){
         <p className="page-hero-sub">Book online in under two minutes, call us, or send a message — we reply within one working day.</p>
         <div className="page-hero-actions">
           <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-          <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+          <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
         </div>
       </div>
     </section>
@@ -25,9 +25,9 @@ function PageHero(){
 
 function InfoCards(){
   const items = [
-    { ic:"home", l:"Clinic", v:<>The Old Ironworks,<br/>Maldon, Essex CM9 4LE</>, sub:"Free on-site parking" },
-    { ic:"phone", l:"Phone", v:<a href="tel:+441621000000">01621 000 000</a>, sub:"Mon–Fri, 7am–8pm" },
-    { ic:"mail", l:"Email", v:<a href="mailto:hello@blackwaterphysiotherapy.co.uk">hello@blackwaterphysiotherapy.co.uk</a>, sub:"We reply within 1 working day" },
+    { ic:"home", l:"Clinic", v:<>First Floor, Gracie Barra Studio,<br/>The Old Ironworks, Maldon CM9 4LE</>, sub:"Free on-site parking" },
+    { ic:"phone", l:"Phone", v:<><a href="tel:+447790717056">07790 717056</a><br/><a href="tel:+447468333745">07468 333745</a></>, sub:"Mon–Fri, 7am–8pm" },
+    { ic:"mail", l:"Email", v:<a href="mailto:info@blackwaterphysiotherapy.co.uk">info@blackwaterphysiotherapy.co.uk</a>, sub:"We reply within 1 working day" },
     { ic:"refresh", l:"Opening hours", v:<>Mon–Fri · 7am–8pm<br/>Sat · 8am–2pm · Sun closed</>, sub:null },
   ];
   return (

@@ -29,7 +29,7 @@
     { slug:"follow-up", name:"Follow Up", img:"assets/services/follow-up.webp",
       blurb:"Ongoing treatment sessions that review progress and adapt your plan as you recover.", icon:"refresh" },
     { slug:"rehabilitation", name:"Rehabilitation Session", img:"assets/services/rehabilitation.webp",
-      blurb:"Focused, progressive exercise to rebuild strength, mobility and confidence — and keep symptoms from returning.", icon:"activity" },
+      blurb:"Focused, longer, progressive exercise to rebuild strength, mobility and confidence — and keep symptoms from returning.", icon:"activity" },
     { slug:"acupuncture", name:"Acupuncture", img:"assets/services/acupuncture.webp",
       blurb:"Fine, sterile needling used within your physiotherapy plan to ease pain, relax tight muscles and support healing.", icon:"needle" },
     { slug:"sports-massage", name:"Sports Massage", img:"assets/services/sports-massage.webp",
@@ -45,6 +45,15 @@
     { title:"Longer-term", items:["Persistent Pain","Work-Related Pain"] },
   ];
 
+  const CONDITIONS = [
+    { name:"Back & Neck Pain", slug:"back-neck-pain" },
+    { name:"Shoulder Pain",    slug:"shoulder-pain" },
+    { name:"Knee & Hip Pain",  slug:"knee-hip-pain" },
+    { name:"Sports Injuries",  slug:"sports-injuries" },
+    { name:"Other Joint Pain", slug:"other-joint-pain" },
+    { name:"Post-Op",          slug:"post-op" },
+  ];
+
   const WHO_WE_HELP = [
     { name:"General population", href:PAGES.who + "#general" },
     { name:"Older adults",       href:PAGES.who + "#older-adults" },
@@ -53,8 +62,8 @@
   ];
 
   const CLINICIANS = [
-    { slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director", img:"assets/team.webp", pos:"25% center" },
-    { slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director", img:"assets/team.webp", pos:"75% center" },
+    { slug:"cam", name:"Cam Ward", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team.webp", pos:"25% center" },
+    { slug:"stef", name:"Stefano De Felice", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team.webp", pos:"75% center" },
     { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.webp", pos:"center", placeholder:true },
   ];
 
@@ -113,14 +122,14 @@
         {dd === "services" && (
           <div className="nav-dd">
             {SERVICES.map(s => (
-              <a key={s.slug} href={PAGES.services + "#service-" + s.slug}>{s.name}<span className="arr">→</span></a>
+              <a key={s.slug} href={"service-" + s.slug + ".html"}>{s.name}<span className="arr">→</span></a>
             ))}
           </div>
         )}
         {dd === "conditions" && (
           <div className="nav-dd">
-            {CONDITION_GROUPS.map(g => (
-              <a key={g.title} href={PAGES.conditions}>{g.title}<span className="arr">→</span></a>
+            {CONDITIONS.map(c => (
+              <a key={c.slug} href={"condition-" + c.slug + ".html"}>{c.name}<span className="arr">→</span></a>
             ))}
             <a href={PAGES.conditions} style={{borderTop:"1px solid var(--line)",marginTop:6,paddingTop:12,color:"var(--teal)",fontWeight:700}}>All conditions<span className="arr">→</span></a>
           </div>
@@ -163,6 +172,7 @@
               mainNav={model.map(n => ({...n, dd:n.dd}))}
               services={SERVICES}
               conditionGroups={CONDITION_GROUPS}
+              conditions={CONDITIONS}
               whoWeHelp={WHO_WE_HELP}
               Icon={Icon}
             />
@@ -192,15 +202,15 @@
               <h5>Services</h5>
               <ul>
                 {SERVICES.map(s => (
-                  <li key={s.slug}><a href={PAGES.services + "#service-" + s.slug}>{s.name}</a></li>
+                  <li key={s.slug}><a href={"service-" + s.slug + ".html"}>{s.name}</a></li>
                 ))}
               </ul>
             </div>
             <div>
               <h5>Conditions</h5>
               <ul>
-                {CONDITION_GROUPS.map(g => (
-                  <li key={g.title}><a href={PAGES.conditions}>{g.title}</a></li>
+                {CONDITIONS.map(c => (
+                  <li key={c.slug}><a href={"condition-" + c.slug + ".html"}>{c.name}</a></li>
                 ))}
                 <li><a href={PAGES.conditions}>All conditions →</a></li>
               </ul>
@@ -301,5 +311,5 @@
   }
 
   window.BW = { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
-                SERVICES, CONDITION_GROUPS, WHO_WE_HELP, CLINICIANS, REVIEWS };
+                SERVICES, CONDITION_GROUPS, CONDITIONS, WHO_WE_HELP, CLINICIANS, REVIEWS };
 })();

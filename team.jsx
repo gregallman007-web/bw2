@@ -2,32 +2,38 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL 
 
 const TEAM = [
   {
-    slug:"cam", name:"Cam", role:"Lead Physiotherapist · Co-Director",
+    slug:"cam", name:"Cam Ward", role:"Clinic Owner & Lead Physiotherapist",
     img:"assets/team.webp", pos:"25% center",
     bio:[
-      "Cam is a musculoskeletal physiotherapist with extensive experience across the NHS and elite sport. He co-founded Blackwater Physiotherapy to deliver the kind of thorough, unhurried care that genuinely changes outcomes.",
-      "He has a special interest in complex spinal pain and running rehabilitation, and is known for building clear, goal-focused plans around each patient's work, sport and daily life."
+      "Cam Ward is the founder and lead physiotherapist at Blackwater Physiotherapy, with a strong background in musculoskeletal care across both the NHS and private practice.",
+      "After graduating with a BSc (Hons) in Physiotherapy from the University of Hertfordshire in 2017, Cam has continued to develop his expertise through advanced postgraduate training at the University of Essex. He currently works as a Musculoskeletal Team Lead within the NHS, giving him extensive experience in diagnosing and treating a wide range of injuries and conditions.",
+      "Alongside his NHS role, Cam has worked in private practice and sport, including with Colchester United Football Club Academy teams, and as part of the England Men's 30s Touch Rugby World Cup medical team in 2024.",
+      "Cam has a special interest in lower limb injuries, helping patients recover from issues such as knee pain, ankle injuries, and running-related problems — whether you're an athlete or simply looking to get back to everyday activities pain-free.",
+      "He is registered with the Health and Care Professions Council (HCPC) and is a member of the Chartered Society of Physiotherapy (MCSP), ensuring high standards of care and evidence-based treatment."
     ],
-    specialisms:["Complex spinal pain","Running rehabilitation","Sports injuries","Return to performance"],
-    creds:[["MSc","Advanced Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
+    specialisms:["Lower limb injuries","Knee & ankle pain","Running injuries","Return to performance"],
+    creds:[["BSc (Hons)","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
   {
-    slug:"stef", name:"Stef", role:"Lead Physiotherapist · Co-Director",
+    slug:"stef", name:"Stefano De Felice", role:"Clinic Owner & Lead Physiotherapist",
     img:"assets/team.webp", pos:"75% center",
     bio:[
-      "Stef is an MSK specialist with experience spanning private practice, the NHS and sport. As co-director, he's helped shape Blackwater's calm, evidence-based approach to treatment.",
-      "Methodical and reassuring, he focuses on long-term outcomes and clear communication — making sure every patient understands their diagnosis and feels confident in their plan."
+      "Stef is co-founder and lead physiotherapist at Blackwater Physiotherapy, bringing a well-rounded mix of clinical and sporting experience to his role. He first completed a degree in Sports Therapy in 2020 before going on to qualify with a master's degree in Physiotherapy in 2022, developing a strong focus on musculoskeletal health.",
+      "Alongside running the clinic, Stef works as a Specialist MSK Physiotherapist within a respected London sports medicine setting, where he regularly manages a wide variety of injuries and conditions. His experience spans the NHS, private practice, and performance sport, including work with Stevenage FC, Chelmsford City FC Academy, and athletes competing at an elite level — such as those representing England's U16 Ice Hockey team.",
+      "Over time, Stef has developed a particular clinical interest in upper limb conditions, especially shoulder and elbow injuries, as well as hip-related pain and running injuries. He enjoys working with people of all ages and activity levels, tailoring rehabilitation to suit individual goals.",
+      "Stef is committed to helping patients return to what matters most to them — whether that's everyday activities or high-level performance — using a combination of evidence-based practice and a personalised, patient-focused approach. He is registered with the Health and Care Professions Council (HCPC) and is a member of the Chartered Society of Physiotherapy (MCSP)."
     ],
-    specialisms:["Musculoskeletal pain","Persistent pain","Post-injury rehab","Movement & strength"],
-    creds:[["BSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
+    specialisms:["Shoulder & elbow injuries","Hip-related pain","Running injuries","Performance sport"],
+    creds:[["MSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
   {
     slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist",
     img:"assets/team-laurie.webp", pos:"center", placeholder:true,
     bio:[
-      "Laurie is an experienced physiotherapist specialising in post-surgical rehabilitation and complex conditions, with a strong background in both hospital and community care. After graduating with a BSc (Hons) in Physiotherapy from the University of Hertfordshire in 2017, he has developed significantly within the NHS.",
-      "He currently works at Basildon University Hospital as Team Lead for Surgical and Vascular services, supporting patients recovering from major operations to regain movement, strength and confidence. Laurie also leads therapy coordination for the vascular hub within Mid and South Essex NHS Foundation Trust and runs a specialist outpatient amputee clinic.",
-      "Alongside hospital care, Laurie has several years of community experience, treating patients at home and helping them restore independence — guiding people through every stage of recovery with clear, supportive rehabilitation tailored to their goals."
+      "Laurie is an experienced physiotherapist specialising in post-surgical rehabilitation and complex conditions, with a strong background in both hospital and community care.",
+      "After graduating with a BSc (Hons) in Physiotherapy from the University of Hertfordshire in 2017, Laurie has developed significantly within the NHS, currently working at Basildon University Hospital as the Team Lead for Surgical and Vascular services. Laurie supports patients in their recovery after major operations — helping them regain movement, strength, and confidence. He also leads therapy coordination for the vascular hub within Mid and South Essex NHS Foundation Trust and runs a specialist outpatient amputee clinic, supporting individuals as they learn to walk again and adapt to life after limb loss.",
+      "In addition to hospital-based care, Laurie has several years of experience working in the community, treating patients in their own homes and helping them restore independence in everyday life.",
+      "Laurie is passionate about guiding patients through every stage of recovery, providing clear, supportive rehabilitation tailored to each individual's goals — whether that's getting back on your feet after surgery or returning to day-to-day activities safely and confidently."
     ],
     specialisms:["Post-surgical rehabilitation","Complex conditions","Amputee rehabilitation","Community & home care"],
     creds:[["BSc (Hons)","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
@@ -44,7 +50,7 @@ function PageHero(){
         </nav>
         <div className="page-eyebrow"><span className="bar"></span>Our team</div>
         <h1>Meet your <span className="em">team.</span></h1>
-        <p className="page-hero-sub">Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating juniors.</p>
+        <p className="page-hero-sub">Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating staff.</p>
         <div className="page-hero-actions">
           <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book an appointment <Icon name="arrow" size={14}/></a>
         </div>
@@ -97,7 +103,7 @@ function CTABand(){
               <p>Book a thorough initial assessment with one of our team — and stay with the same clinician throughout your recovery.</p>
               <div className="final-actions">
                 <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-                <a className="btn btn-outline-light" href="tel:+441621000000">01621 000 000</a>
+                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
               </div>
             </div>
           </div>
