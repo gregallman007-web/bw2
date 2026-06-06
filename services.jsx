@@ -53,7 +53,7 @@ function Intro(){
 
 function ServicesGrid(){
   return (
-    <section className="sec" id="services-grid" style={{paddingTop:0}}>
+    <section className="sec" id="services-grid">
       <div className="wrap">
         <div className="svc-media-grid">
           {SERVICES.map((s, i) => {
