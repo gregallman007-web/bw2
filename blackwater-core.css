@@ -502,7 +502,12 @@
   .foot-accred .row{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px 14px;height:54px}
   .foot-accred .row img{max-height:28px;max-width:100%;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1) opacity(.7);transition:filter .3s ease}
   .foot-accred .row:hover img{filter:brightness(0) invert(1) opacity(1)}
-  .foot-brand-bottom{justify-content:center;margin:48px 0 8px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
+  .foot-brand-bottom{justify-content:center;margin:48px 0 8px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08);text-decoration:none}
+  .foot-brand-bottom:hover .name{color:var(--teal)}
+  .foot-brand-bottom .name{transition:color .2s ease}
+  .foot-social{display:flex;justify-content:center;gap:12px;margin:22px 0 0}
+  .foot-social .soc{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);cursor:pointer;transition:all .2s ease}
+  .foot-social .soc:hover{color:#fff;background:var(--teal);border-color:var(--teal);transform:translateY(-2px)}
 
   .fbottom{display:flex;justify-content:space-between;padding-top:32px;font-family:var(--manrope);font-size:11.5px;color:rgba(255,255,255,.35);font-weight:500;letter-spacing:.06em}
   .fbottom a:hover{color:rgba(255,255,255,.7)}

@@ -1,6 +1,7 @@
 const { useState, useEffect, useRef, useMemo } = React;
 const BW_PAGES = window.BW && window.BW.PAGES || {};
 const BW_BOOKING = window.BW && window.BW.BOOKING_URL || "#contact";
+const BW_SocialIcon = window.BW && window.BW.SocialIcon;
 
 /* ========================= DATA ========================= */
 const ROTATING = ["stronger.", "faster.", "fully.", "for good.", "with confidence."];
@@ -886,15 +887,21 @@ function Footer() {
           </div>
         </div>
 
-        <div className="fbrand foot-brand-bottom">
-          <div className="mark"><img src="assets/logo-bp-full.webp" alt="Blackwater Physiotherapy" /></div>
+        <a className="fbrand foot-brand-bottom" href={BW_PAGES.home || "Blackwater Physiotherapy.html"} aria-label="Blackwater Physiotherapy — home">
+          <div className="mark"><img src="assets/logo-bp-square.webp" alt="Blackwater Physiotherapy" /></div>
           <div className="name">Blackwater<span>Physiotherapy</span></div>
+        </a>
+
+        <div className="foot-social" aria-label="Social media">
+          {["instagram","linkedin","facebook","youtube"].map(n => (
+            <span className="soc" key={n} aria-label={n} role="img">{BW_SocialIcon && <BW_SocialIcon name={n}/>}</span>
+          ))}
         </div>
 
         <div className="fbottom">
           <span>© 2026 Blackwater Physiotherapy Ltd · Maldon, Essex</span>
           <span>HCPC reg. PH106842</span>
-          <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+          <span><a href="Privacy.html">Privacy</a> · <a href="Terms.html">Terms</a></span>
         </div>
       </div>
     </footer>);

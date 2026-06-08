@@ -96,6 +96,18 @@
     return <svg {...common}>{paths[name] || null}</svg>;
   };
 
+  /* ---------- SOCIAL ICONS (brand glyphs, filled) ---------- */
+  const SocialIcon = ({name}) => {
+    const common = {width:18, height:18, viewBox:"0 0 24 24", fill:"currentColor"};
+    const paths = {
+      instagram: <><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.21 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5.01-4.74.07-.9.04-1.38.19-1.71.32-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.13.33-.28.81-.32 1.71C3.21 8.5 3.2 8.85 3.2 12s.01 3.5.07 4.74c.04.9.19 1.38.32 1.71.17.43.37.74.69 1.06.32.32.63.52 1.06.69.33.13.81.28 1.71.32 1.24.06 1.59.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.71-.32.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.13-.33.28-.81.32-1.71.06-1.24.07-1.59.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.32-1.71a2.86 2.86 0 0 0-.69-1.06 2.86 2.86 0 0 0-1.06-.69c-.33-.13-.81-.28-1.71-.32C15.5 4.01 15.15 4 12 4zm0 3.06A4.94 4.94 0 1 1 12 16.94 4.94 4.94 0 0 1 12 7.06zm0 1.8a3.14 3.14 0 1 0 0 6.28 3.14 3.14 0 0 0 0-6.28zm5.13-2.18a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"/></>,
+      linkedin: <><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 8.5h3.8V21H3V8.5zM9.5 8.5h3.6v1.7h.05c.5-.95 1.7-1.95 3.5-1.95 3.75 0 4.45 2.45 4.45 5.65V21h-3.8v-5.4c0-1.3 0-2.95-1.8-2.95s-2.1 1.4-2.1 2.85V21H9.5V8.5z"/></>,
+      facebook: <><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></>,
+      youtube: <><path d="M23.5 6.5a3 3 0 0 0-2.1-2.12C19.5 3.86 12 3.86 12 3.86s-7.5 0-9.4.52A3 3 0 0 0 .5 6.5 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.5 3 3 0 0 0 2.1 2.12c1.9.52 9.4.52 9.4.52s7.5 0 9.4-.52a3 3 0 0 0 2.1-2.12A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.5zM9.6 15.5v-7l6.2 3.5-6.2 3.5z"/></>,
+    };
+    return <svg {...common}>{paths[name] || null}</svg>;
+  };
+
   /* ---------- NAV ---------- */
   function navModel(activeKey){
     return [
@@ -225,15 +237,21 @@
             </div>
           </div>
 
-          <div className="fbrand foot-brand-bottom">
+          <a className="fbrand foot-brand-bottom" href={PAGES.home} aria-label="Blackwater Physiotherapy — home">
             <div className="mark"><img src="assets/logo-bp-square.webp" alt="Blackwater Physiotherapy"/></div>
             <div className="name">Blackwater<span>Physiotherapy</span></div>
+          </a>
+
+          <div className="foot-social" aria-label="Social media">
+            {["instagram","linkedin","facebook","youtube"].map(n => (
+              <span className="soc" key={n} aria-label={n} role="img"><SocialIcon name={n}/></span>
+            ))}
           </div>
 
           <div className="fbottom">
             <span>© 2026 Blackwater Physiotherapy Ltd · Maldon, Essex</span>
             <span>HCPC reg. PH106842</span>
-            <span><a href="#">Privacy</a> · <a href="#">Terms</a></span>
+            <span><a href="Privacy.html">Privacy</a> · <a href="Terms.html">Terms</a></span>
           </div>
         </div>
       </footer>
@@ -310,6 +328,6 @@
     }, []);
   }
 
-  window.BW = { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
+  window.BW = { Icon, SocialIcon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
                 SERVICES, CONDITION_GROUPS, CONDITIONS, WHO_WE_HELP, CLINICIANS, REVIEWS };
 })();
