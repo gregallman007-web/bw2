@@ -23,7 +23,7 @@ const FAQ_GROUPS = [
   {
     title:"Treatment & payment",
     items:[
-      ["How much does it cost?","Initial Assessment £60, Follow-Up £50, Rehabilitation £40 (30 min) / £60 (60 min), Acupuncture £40, Sports Massage £40, and Home Visits £70 (30 min) / £80 (45 min). We'll always be clear about cost before you book."],
+      ["How much does it cost?","Initial Assessment £60, Follow-Up £50, Rehabilitation £40 (30 min) / £60 (60 min), Acupuncture £40, Sports Massage £40 / £60, and Home Visits £70 (30 min) / £80 (45 min). We'll always be clear about cost before you book."],
       ["Do you accept private health insurance?","Yes — we work with Bupa, AXA, Aviva, WPA, HCML and Proclaim Group, among others. Please bring your policy and authorisation details, and check any referral requirements with your insurer."],
       ["Do you offer home visits?","Yes. Home visits bring assessment-led physiotherapy to your own home — ideal after surgery or when getting to the clinic is difficult. See our Home Visits service for details."],
       ["What conditions do you treat?","We treat a wide range of musculoskeletal problems — back and neck pain, sciatica, joint and sports injuries, post-operative rehab and persistent pain. If you're unsure, get in touch and we'll advise."],

@@ -9,7 +9,7 @@ const { Icon, Nav, Footer, BookTab, useScrollMotion, PAGES, BOOKING_URL } = wind
    this page styles whatever Gutenberg/classic markup the post uses.
    ------------------------------------------------------------------- */
 const POST = {
-  category:"Back & Neck",
+  category:"Neck & Back",
   title:"Lower back pain: when should you see a physio?",
   date:"2 June 2026",
   updated:"2 June 2026",
@@ -26,7 +26,7 @@ const POST = {
   ],
   related:[
     { label:"Initial Assessment", href:"service-initial-assessment.html" },
-    { label:"Back Pain", href:"condition-back-neck-pain.html" },
+    { label:"Back Pain", href:"condition-neck-back-pain.html" },
     { label:"Rehabilitation Session", href:"service-rehabilitation.html" },
   ],
 };

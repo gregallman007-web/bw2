@@ -7,7 +7,7 @@ const SERVICE_DETAIL = {
   "follow-up":          { for:"Continuing care", cost:"£50", points:["Hands-on treatment","Plan reviewed & progressed","30 minute session"] },
   "rehabilitation":     { for:"Rebuild & prevent", cost:"£40 / £60", points:["Progressive loading programme","Strength, mobility & control","Return-to-activity focus"] },
   "acupuncture":        { for:"Pain relief treatment", cost:"£40", points:["Modern Dry Needling","Pain & muscle tension relief","Always after assessment"] },
-  "sports-massage":     { for:"Recovery & performance", cost:"£40", points:["Deep tissue & trigger point","Improved mobility","Pre / post event"] },
+  "sports-massage":     { for:"Recovery & performance", cost:"£40 / £60", points:["Deep tissue & trigger point","Improved mobility","Pre / post event"] },
   "home-visits":        { for:"Care that comes to you", cost:"£70 / £80", points:["Ideal post-surgery","Ideal for mobility and falls","Maldon & surrounding areas"] },
 };
 

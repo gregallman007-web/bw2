@@ -2,12 +2,12 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL 
 
 /* Featured conditions with detail pages */
 const FEATURED = [
-{ slug: "back-neck-pain", name: "Back & Neck Pain", img: "assets/conditions/back-pain.webp", pos: "center",
+{ slug: "neck-back-pain", name: "Neck & Back Pain", img: "assets/conditions/back-pain.webp", pos: "center",
   blurb: "From sudden strain to long-standing stiffness, headaches or pain into the arm — we find the driver and get you moving freely again." },
 { slug: "shoulder-pain", name: "Shoulder Pain", img: "assets/conditions/neck-shoulder-pain.webp", pos: "center",
   blurb: "Stiffness, weakness or pain reaching and lifting — assessed and treated so the shoulder moves freely again." },
-{ slug: "knee-hip-pain", name: "Knee & Hip Pain", img: "assets/conditions/knee-pain.webp", pos: "center",
-  blurb: "Knee and hip pain — from wear-and-tear to sudden injury — managed and rehabilitated." },
+{ slug: "hip-knee-pain", name: "Hip & Knee Pain", img: "assets/conditions/knee-pain.webp", pos: "center",
+  blurb: "Hip and knee pain — from wear-and-tear to sudden injury — managed and rehabilitated." },
 { slug: "other-joint-pain", name: "Other Joint Pain", img: "assets/conditions/running-injuries.webp", pos: "center 35%",
   blurb: "Ankle, foot, elbow, wrist and other joint pain — assessed thoroughly and rehabilitated properly." },
 { slug: "sports-injuries", name: "Sports Injuries", img: "assets/conditions/back-pain-active.webp", pos: "center",

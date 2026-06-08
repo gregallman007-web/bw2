@@ -3,9 +3,9 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
 const svcName = (slug) => (SERVICES.find(s => s.slug === slug) || {}).name || slug;
 
 const COND = {
-  "back-neck-pain": {
-    name:"Back & Neck Pain", img:"assets/conditions/back-pain.webp", pos:"center", tag:"Back & neck",
-    lead:"From sudden strain to long-standing stiffness, headaches or pain into the arm — back and neck pain responds well to the right approach.",
+  "neck-back-pain": {
+    name:"Neck & Back Pain", img:"assets/conditions/back-pain.webp", pos:"center", tag:"Neck & back",
+    lead:"From sudden strain to long-standing stiffness, headaches or pain into the arm — neck and back pain responds well to the right approach.",
     overview:"Most back pain improves with the right approach, but that doesn't make it any less frustrating. Whether it came on suddenly or has built up over time, we assess how your spine, muscles, and movement are working together, identify what's driving the pain, and give you a clear plan to settle it and prevent it returning.\n\nNeck pain can develop for many reasons, from long days at work to sport, injury, or simply building up over time. Common symptoms include stiffness, headaches, and pain that travels into the arm.\n\nWhether your symptoms started suddenly or built up over time, we assess the neck, shoulder, and upper back as a whole. Treatment focuses on reducing pain, improving movement, and helping you return to normal activities without ongoing flare-ups.",
     symptoms:["Aching or sharp back pain","Neck stiffness or restricted turning","Headaches or pain into the arm","Muscle spasm or tightness"],
     seek:["Pain following a fall or injury","Pain with numbness, tingling or weakness","Pain that wakes you at night","Symptoms that aren't improving"],
@@ -21,10 +21,10 @@ const COND = {
     related:["initial-assessment","rehabilitation","sports-massage"],
     faqs:[["Will it get better on its own?","Some shoulder pain settles, but the right plan speeds recovery and reduces the chance of it returning."],["Can you help if it's been there a while?","Yes — even long-standing shoulder pain usually responds well to assessment-led treatment and strengthening."]],
   },
-  "knee-hip-pain": {
-    name:"Knee & Hip Pain", img:"assets/conditions/knee-pain.webp", pos:"center", tag:"Knee & hip",
-    lead:"From wear-and-tear to sudden injury, knee and hip pain responds well to a thorough assessment and a proper plan.",
-    overview:"Knee and hip pain can come from injury, overload or age-related change, and often affects walking, stairs, sport and sleep. Whether it came on suddenly or built up over time, we assess how the joint and surrounding muscles are working together, identify what's driving the pain, and build a clear, progressive plan that reduces pain, restores function and keeps you active — frequently avoiding the need for more invasive options.",
+  "hip-knee-pain": {
+    name:"Hip & Knee Pain", img:"assets/conditions/knee-pain.webp", pos:"center", tag:"Hip & knee",
+    lead:"From wear-and-tear to sudden injury, hip and knee pain responds well to a thorough assessment and a proper plan.",
+    overview:"Hip and knee pain can come from injury, overload or age-related change, and often affects walking, stairs, sport and sleep. Whether it came on suddenly or built up over time, we assess how the joint and surrounding muscles are working together, identify what's driving the pain, and build a clear, progressive plan that reduces pain, restores function and keeps you active — frequently avoiding the need for more invasive options.",
     symptoms:["Pain on stairs, squatting or walking","Swelling or stiffness","Clicking, catching or giving way","Pain after activity or at night"],
     seek:["A locked or unstable joint","Significant swelling after injury","Inability to bear weight","Pain that's steadily worsening"],
     related:["initial-assessment","rehabilitation","sports-massage"],

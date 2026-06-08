@@ -7,7 +7,7 @@ const { Icon, Nav, Footer, BookTab, useScrollMotion, PAGES, BOOKING_URL } = wind
    below mirrors the design the Theme Builder archive template should use.
    ------------------------------------------------------------------- */
 const POSTS = [
-  { slug:"blog-post", cat:"Back & Neck", title:"Lower back pain: when should you see a physio?", img:"assets/conditions/back-pain.webp",
+  { slug:"blog-post", cat:"Neck & Back", title:"Lower back pain: when should you see a physio?", img:"assets/conditions/back-pain.webp",
     excerpt:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     date:"2 June 2026", read:"5 min read", author:"Cam" },
   { slug:"blog-post", cat:"Getting started", title:"What actually happens at your first appointment", img:"assets/services/initial-assessment.webp",
@@ -18,7 +18,7 @@ const POSTS = [
     date:"12 May 2026", read:"6 min read", author:"Laurie" },
 ];
 
-const CATEGORIES = ["All", "Getting started", "Back & Neck", "Sports", "Recovery"];
+const CATEGORIES = ["All", "Getting started", "Neck & Back", "Sports", "Recovery"];
 const PAGE_SIZE = 6; // archive shows up to 6 per page; pagination appears once exceeded
 
 function PageHero(){

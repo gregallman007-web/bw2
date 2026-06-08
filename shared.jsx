@@ -46,9 +46,9 @@
   ];
 
   const CONDITIONS = [
-    { name:"Back & Neck Pain", slug:"back-neck-pain" },
+    { name:"Neck & Back Pain", slug:"neck-back-pain" },
     { name:"Shoulder Pain",    slug:"shoulder-pain" },
-    { name:"Knee & Hip Pain",  slug:"knee-hip-pain" },
+    { name:"Hip & Knee Pain",  slug:"hip-knee-pain" },
     { name:"Sports Injuries",  slug:"sports-injuries" },
     { name:"Other Joint Pain", slug:"other-joint-pain" },
     { name:"Post-Op",          slug:"post-op" },
@@ -243,14 +243,13 @@
           </a>
 
           <div className="foot-social" aria-label="Social media">
-            {["instagram","linkedin","facebook","youtube"].map(n => (
-              <span className="soc" key={n} aria-label={n} role="img"><SocialIcon name={n}/></span>
+            {[["instagram","https://www.instagram.com/blackwaterphysiotherapy"],["facebook","https://www.facebook.com/share/14ScM7tHX52/"]].map(([n,href]) => (
+              <a className="soc" key={n} href={href} target="_blank" rel="noopener" aria-label={n}><SocialIcon name={n}/></a>
             ))}
           </div>
 
           <div className="fbottom">
-            <span>© 2026 Blackwater Physiotherapy Ltd · Maldon, Essex</span>
-            <span>HCPC reg. PH106842</span>
+            <span>© 2026 Blackwater Physiotherapy · Maldon, Essex</span>
             <span><a href="Privacy.html">Privacy</a> · <a href="Terms.html">Terms</a></span>
           </div>
         </div>

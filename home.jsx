@@ -27,7 +27,7 @@ const SERVICES = [
 
 const QUAD_CONDITIONS = [
 { name: "Sports Injuries", icon: "🏃" },
-{ name: "Back & Neck Pain", icon: "🔻" },
+{ name: "Neck & Back Pain", icon: "🔻" },
 { name: "Post-Op Rehab", icon: "✚" },
 { name: "Chronic Pain", icon: "◐" }];
 
@@ -39,9 +39,9 @@ const CONDITION_GROUPS = [
 { title: "Longer-term", items: ["Persistent Pain", "Work-Related Pain"] }];
 
 const CONDITIONS = [
-{ name: "Back & Neck Pain", slug: "back-neck-pain" },
+{ name: "Neck & Back Pain", slug: "neck-back-pain" },
 { name: "Shoulder Pain", slug: "shoulder-pain" },
-{ name: "Knee & Hip Pain", slug: "knee-hip-pain" },
+{ name: "Hip & Knee Pain", slug: "hip-knee-pain" },
 { name: "Sports Injuries", slug: "sports-injuries" },
 { name: "Other Joint Pain", slug: "other-joint-pain" },
 { name: "Post-Op", slug: "post-op" }];
@@ -255,7 +255,7 @@ function QuadRow() {
             <div className="qhead"><h3>Conditions We Treat</h3></div>
             <div className="icon-grid">
               <div className="icon-box"><div className="ic"><Icon name="activity" size={18} /></div><div className="nm">Sports Injuries</div></div>
-              <div className="icon-box"><div className="ic"><Icon name="spine" size={18} /></div><div className="nm">Back & Neck Pain</div></div>
+              <div className="icon-box"><div className="ic"><Icon name="spine" size={18} /></div><div className="nm">Neck & Back Pain</div></div>
               <div className="icon-box"><div className="ic"><Icon name="plus" size={18} /></div><div className="nm">Post-Op Rehab</div></div>
               <div className="icon-box"><div className="ic"><Icon name="pulse" size={18} /></div><div className="nm">Chronic Pain</div></div>
             </div>
@@ -386,12 +386,12 @@ function About() {
             <div className="about-quotes">
               <figure className="quote-card">
                 <span className="qmark">“</span>
-                <blockquote>[Patient quote one — client to provide copy.]</blockquote>
+                <blockquote>Blackwater Physiotherapy has been brilliant. They listen to my concerns, bring a wealth of experience and care, and identified the underlying issue while making me feel completely at ease. The treatment has made a noticeable difference — I highly recommend them.</blockquote>
                 <figcaption><span className="stars">★★★★★</span><span className="src">Google review</span></figcaption>
               </figure>
               <figure className="quote-card">
                 <span className="qmark">“</span>
-                <blockquote>[Patient quote two — client to provide copy.]</blockquote>
+                <blockquote>Three visits and a really positive experience. They're friendly, set realistic expectations and explain everything clearly. I always leave with sensible, practical advice — and they don't book appointments for the sake of it. I've gained real confidence in managing my recovery.</blockquote>
                 <figcaption><span className="stars">★★★★★</span><span className="src">Google review</span></figcaption>
               </figure>
             </div>
@@ -893,14 +893,13 @@ function Footer() {
         </a>
 
         <div className="foot-social" aria-label="Social media">
-          {["instagram","linkedin","facebook","youtube"].map(n => (
-            <span className="soc" key={n} aria-label={n} role="img">{BW_SocialIcon && <BW_SocialIcon name={n}/>}</span>
+          {[["instagram","https://www.instagram.com/blackwaterphysiotherapy"],["facebook","https://www.facebook.com/share/14ScM7tHX52/"]].map(([n,href]) => (
+            <a className="soc" key={n} href={href} target="_blank" rel="noopener" aria-label={n}>{BW_SocialIcon && <BW_SocialIcon name={n}/>}</a>
           ))}
         </div>
 
         <div className="fbottom">
-          <span>© 2026 Blackwater Physiotherapy Ltd · Maldon, Essex</span>
-          <span>HCPC reg. PH106842</span>
+          <span>© 2026 Blackwater Physiotherapy · Maldon, Essex</span>
           <span><a href="Privacy.html">Privacy</a> · <a href="Terms.html">Terms</a></span>
         </div>
       </div>
