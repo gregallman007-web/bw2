@@ -89,7 +89,7 @@ const CONTENT = {
     heroPos:"72% 24%",
     lead:"Targeted soft-tissue therapy to reduce pain, release tightness, improve mobility, and support recovery and performance.",
     overview:"Sports massage isn't just for athletes. Targeted techniques help ease aches and pains, reduce muscle tension, improve movement, and support recovery — whether you're training hard, working at a desk, or simply feeling tight and stiff.",
-    duration:"30–60 minutes", price:"One-to-one", cost:"£40", best:"Pain, tension, mobility & recovery",
+    duration:"30–60 minutes", price:"One-to-one", cost:"£40 / £60", best:"Pain, tension, mobility & recovery",
     expect:[
       ["Discuss","A quick chat about problem areas, training and goals."],
       ["Treat","Targeted soft-tissue work."],
@@ -181,11 +181,15 @@ function Body(){
           </div>
 
           <div className="block two-col">
-            <div>
+            <div className="fy-col">
               <h2 className="block-h">Is it right for you?</h2>
               <ul className="ticks big">
                 {c.forYou.map(p => <li key={p}><Icon name="check" size={15} stroke={3}/>{p}</li>)}
               </ul>
+              <div className="fy-note">
+                <p>Not sure if this is the right fit? Book an Initial Assessment and we'll recommend the best route for you — no obligation.</p>
+                <a className="fy-link" href={BOOKING_URL} target="_blank" rel="noopener">Book an assessment <Icon name="arrow" size={13}/></a>
+              </div>
             </div>
             <div className="includes-card">
               <h3>What's included</h3>
