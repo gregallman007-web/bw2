@@ -8,10 +8,10 @@ const FEATURED = [
   blurb: "Stiffness, weakness or pain reaching and lifting — assessed and treated so the shoulder moves freely again." },
 { slug: "knee-hip-pain", name: "Knee & Hip Pain", img: "assets/conditions/knee-pain.webp", pos: "center",
   blurb: "Knee and hip pain — from wear-and-tear to sudden injury — managed and rehabilitated." },
-{ slug: "sports-injuries", name: "Sports Injuries", img: "assets/conditions/back-pain-active.webp", pos: "center",
-  blurb: "Running injuries, muscle strains and overuse problems — diagnosed and built back to full activity." },
 { slug: "other-joint-pain", name: "Other Joint Pain", img: "assets/conditions/running-injuries.webp", pos: "center 35%",
   blurb: "Ankle, foot, elbow, wrist and other joint pain — assessed thoroughly and rehabilitated properly." },
+{ slug: "sports-injuries", name: "Sports Injuries", img: "assets/conditions/back-pain-active.webp", pos: "center",
+  blurb: "Running injuries, muscle strains and overuse problems — diagnosed and built back to full activity." },
 { slug: "post-op", name: "Post-Op", img: "assets/services/rehabilitation.webp", pos: "center",
   blurb: "Structured recovery after surgery to restore strength, movement and confidence — safely." }];
 
@@ -33,7 +33,7 @@ function PageHero() {
         </nav>
         <div className="page-eyebrow"><span className="bar"></span>Conditions</div>
         <h1>Conditions <span className="em">we treat.</span></h1>
-        <p className="page-hero-sub">Whether you're dealing with back pain, a sports injury, recovering from surgery, or persistent discomfort, we create a personalized plan to help you recover and stay active</p>
+        <p className="page-hero-sub">Whether you're dealing with back pain, a sports injury, recovering from surgery, or persistent discomfort, we create a personalised plan to help you recover and stay active</p>
         <div className="page-hero-actions">
           <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book an assessment <Icon name="arrow" size={14} /></a>
           <a className="btn btn-outline-light" href="#featured">Explore</a>

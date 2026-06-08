@@ -3,12 +3,12 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL,
 
 /* Pair each service with a longer "what it's for" line + who it suits */
 const SERVICE_DETAIL = {
-  "initial-assessment": { for:"Best place to start", points:["Full history & movement assessment","Clear diagnosis and honest plan","45 minutes, one-to-one"] },
-  "follow-up":          { for:"Continuing care", points:["Hands-on treatment","Plan reviewed & progressed","30 minute session"] },
-  "rehabilitation":     { for:"Rebuild & prevent", points:["Progressive loading programme","Strength, mobility & control","Return-to-activity focus"] },
-  "acupuncture":        { for:"Pain relief treatment", points:["Modern Dry Needling","Pain & muscle tension relief","Always after assessment"] },
-  "sports-massage":     { for:"Recovery & performance", points:["Deep tissue & trigger point","Improved mobility","Pre / post event"] },
-  "home-visits":        { for:"Care that comes to you", points:["Ideal post-surgery","Ideal for mobility and falls","Maldon & surrounding areas"] },
+  "initial-assessment": { for:"Best place to start", cost:"£60", points:["Full history & movement assessment","Clear diagnosis and honest plan","45 minutes, one-to-one"] },
+  "follow-up":          { for:"Continuing care", cost:"£50", points:["Hands-on treatment","Plan reviewed & progressed","30 minute session"] },
+  "rehabilitation":     { for:"Rebuild & prevent", cost:"£40 / £60", points:["Progressive loading programme","Strength, mobility & control","Return-to-activity focus"] },
+  "acupuncture":        { for:"Pain relief treatment", cost:"£40", points:["Modern Dry Needling","Pain & muscle tension relief","Always after assessment"] },
+  "sports-massage":     { for:"Recovery & performance", cost:"£40", points:["Deep tissue & trigger point","Improved mobility","Pre / post event"] },
+  "home-visits":        { for:"Care that comes to you", cost:"£70 / £80", points:["Ideal post-surgery","Ideal for mobility and falls","Maldon & surrounding areas"] },
 };
 
 const STEPS = [
@@ -70,7 +70,10 @@ function ServicesGrid(){
                   <ul className="ticks">
                     {(d.points||[]).map(p => <li key={p}><Icon name="check" size={13} stroke={3}/>{p}</li>)}
                   </ul>
-                  <a className="mlink" href={"service-" + s.slug + ".html"}>Learn more <Icon name="arrow" size={13}/></a>
+                  <div className="svc-cardfoot">
+                    {d.cost && <span className="svc-price">{d.cost}</span>}
+                    <a className="mlink" href={"service-" + s.slug + ".html"}>Learn more <Icon name="arrow" size={13}/></a>
+                  </div>
                 </div>
               </article>
             );

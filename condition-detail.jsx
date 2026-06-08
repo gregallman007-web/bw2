@@ -6,7 +6,7 @@ const COND = {
   "back-neck-pain": {
     name:"Back & Neck Pain", img:"assets/conditions/back-pain.webp", pos:"center", tag:"Back & neck",
     lead:"From sudden strain to long-standing stiffness, headaches or pain into the arm — back and neck pain responds well to the right approach.",
-    overview:"Most back pain improves with the right approach, but that doesn't make it any less frustrating. Whether it came on suddenly or has built up over time, we assess how your spine, muscles, and movement are working together, identify what's driving the pain, and give you a clear plan to settle it and prevent it returning. Neck pain can develop for many reasons, from long days at work to sport, injury, or simply building up over time. Common symptoms include stiffness, headaches, and pain that travels into the arm. Whether your symptoms started suddenly or built up over time, we assess the neck, shoulder, and upper back as a whole. Treatment focuses on reducing pain, improving movement, and helping you return to normal activities without ongoing flare-ups.",
+    overview:"Most back pain improves with the right approach, but that doesn't make it any less frustrating. Whether it came on suddenly or has built up over time, we assess how your spine, muscles, and movement are working together, identify what's driving the pain, and give you a clear plan to settle it and prevent it returning.\n\nNeck pain can develop for many reasons, from long days at work to sport, injury, or simply building up over time. Common symptoms include stiffness, headaches, and pain that travels into the arm.\n\nWhether your symptoms started suddenly or built up over time, we assess the neck, shoulder, and upper back as a whole. Treatment focuses on reducing pain, improving movement, and helping you return to normal activities without ongoing flare-ups.",
     symptoms:["Aching or sharp back pain","Neck stiffness or restricted turning","Headaches or pain into the arm","Muscle spasm or tightness"],
     seek:["Pain following a fall or injury","Pain with numbness, tingling or weakness","Pain that wakes you at night","Symptoms that aren't improving"],
     related:["initial-assessment","rehabilitation","sports-massage"],
@@ -90,7 +90,9 @@ function Body(){
         <div className="detail-main">
           <div className="block">
             <div className="sec-tag"><span className="bar"></span><span className="t">Overview</span></div>
-            <p className="detail-lead">{c.overview}</p>
+            {c.overview.split("\n\n").filter(s => s.trim()).map((para, idx) => (
+              <p className="detail-lead" key={idx} style={idx > 0 ? {marginTop:18} : null}>{para.trim()}</p>
+            ))}
           </div>
           <div className="block two-col">
             <div className="panel">

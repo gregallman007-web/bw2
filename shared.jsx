@@ -226,7 +226,7 @@
           </div>
 
           <div className="fbrand foot-brand-bottom">
-            <div className="mark"><img src="assets/logo-bp-full.webp" alt="Blackwater Physiotherapy"/></div>
+            <div className="mark"><img src="assets/logo-bp-square.webp" alt="Blackwater Physiotherapy"/></div>
             <div className="name">Blackwater<span>Physiotherapy</span></div>
           </div>
 

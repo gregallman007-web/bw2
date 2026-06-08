@@ -11,7 +11,7 @@ const TEAM = [
       "Cam has a special interest in lower limb injuries, helping patients recover from issues such as knee pain, ankle injuries, and running-related problems — whether you're an athlete or simply looking to get back to everyday activities pain-free.",
       "He is registered with the Health and Care Professions Council (HCPC) and is a member of the Chartered Society of Physiotherapy (MCSP), ensuring high standards of care and evidence-based treatment."
     ],
-    specialisms:["Lower limb injuries","Knee & ankle pain","Running injuries","Return to performance"],
+    specialisms:["Knee, foot & ankle","Sports rehabilitation","Post-op rehabilitation"],
     creds:[["BSc (Hons)","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
   {
@@ -23,7 +23,7 @@ const TEAM = [
       "Over time, Stef has developed a particular clinical interest in upper limb conditions, especially shoulder and elbow injuries, as well as hip-related pain and running injuries. He enjoys working with people of all ages and activity levels, tailoring rehabilitation to suit individual goals.",
       "Stef is committed to helping patients return to what matters most to them — whether that's everyday activities or high-level performance — using a combination of evidence-based practice and a personalised, patient-focused approach. He is registered with the Health and Care Professions Council (HCPC) and is a member of the Chartered Society of Physiotherapy (MCSP)."
     ],
-    specialisms:["Shoulder & elbow injuries","Hip-related pain","Running injuries","Performance sport"],
+    specialisms:["Shoulder, elbow & hip","Running-related injuries"],
     creds:[["MSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
   {
@@ -35,7 +35,7 @@ const TEAM = [
       "In addition to hospital-based care, Laurie has several years of experience working in the community, treating patients in their own homes and helping them restore independence in everyday life.",
       "Laurie is passionate about guiding patients through every stage of recovery, providing clear, supportive rehabilitation tailored to each individual's goals — whether that's getting back on your feet after surgery or returning to day-to-day activities safely and confidently."
     ],
-    specialisms:["Post-surgical rehabilitation","Complex conditions","Amputee rehabilitation","Community & home care"],
+    specialisms:["Fall prevention","Mobility improvement","Balance development"],
     creds:[["BSc (Hons)","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
 ];

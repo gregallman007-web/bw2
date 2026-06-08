@@ -8,10 +8,10 @@ const CONTENT = {
     heroPos:"72% 22%",
     lead:"A thorough first appointment to understand your pain, your history and your goals — ending with a clear diagnosis and an honest plan.",
     overview:"Your Initial Assessment is the foundation of everything that follows. We take the time to listen, examine how you move, and identify the root cause of your symptoms — not just the pain itself. You'll leave understanding what's going on, what we can do about it, and exactly what the next steps are.",
-    duration:"45 minutes", price:"One-to-one", best:"New patients & new problems",
+    duration:"45 minutes", price:"One-to-one", cost:"£60", best:"New patients & new problems",
     expect:[
       ["Listen","A detailed conversation about your symptoms, history, work, sport and daily life."],
-      ["Assess","A hands-on physical and movement assessment to find the root cause."],
+      ["Assess","A hands-on physical and movement assessment to pinpoint the root cause — and set clear, shared goals for your recovery."],
       ["Diagnose","A clear explanation of what's going on, in language that makes sense."],
       ["Plan","A personalised treatment plan and practical next steps you can start straight away."],
     ],
@@ -21,6 +21,7 @@ const CONTENT = {
       ["Do I need a GP referral?","No — you can book directly. If you're using private insurance, check whether your policy needs a referral first."],
       ["What should I wear?","Comfortable clothing you can move in. We may ask to see the area we're treating, so loose layers help."],
       ["Will I get treatment on the first visit?","Usually yes — where it's appropriate we'll begin treatment and give you something practical to take away."],
+      ["How many sessions will I need?","Our goal is to help you recover as efficiently as possible, not to keep you coming back unnecessarily. We'll recommend follow-up appointments only when they add value and support your progress."],
     ],
     related:["follow-up","rehabilitation","sports-massage"],
   },
@@ -29,7 +30,7 @@ const CONTENT = {
     heroPos:"center 22%",
     lead:"Focused treatment sessions that build on your assessment, track progress and adapt the plan as you recover.",
     overview:"Follow-Up sessions are where recovery happens. Each visit reviews how you're progressing, delivers hands-on treatment, and moves your plan forward — so every appointment has a purpose and you always know what's next.",
-    duration:"30 minutes", price:"One-to-one", best:"Continuing an existing plan",
+    duration:"30 minutes", price:"One-to-one", cost:"£50", best:"Continuing an existing plan",
     expect:[
       ["Review","Check progress since your last visit and adjust based on how you've responded."],
       ["Treat","Hands-on treatment, acupuncture or soft-tissue work as needed."],
@@ -48,7 +49,7 @@ const CONTENT = {
     heroPos:"center 30%",
     lead:"Focused, longer, progressive sessions that rebuild strength, mobility and confidence — and keep symptoms from coming back.",
     overview:"Rehabilitation is how short-term relief becomes lasting results. We build a progressive programme around your goals — loading the right tissues, restoring movement and control — so you don't just feel better, you stay better and return to what matters.",
-    duration:"45–60 minutes", price:"One-to-one", best:"Returning to activity & prevention",
+    duration:"30–60 minutes", price:"One-to-one", cost:"£40 / £60", best:"Returning to activity & prevention",
     expect:[
       ["Baseline","Measure strength, mobility and control to set a clear starting point."],
       ["Programme","A progressive, individualised exercise plan matched to your goal."],
@@ -68,7 +69,7 @@ const CONTENT = {
     heroPos:"center 20%",
     lead:"Western medical acupuncture used within your physiotherapy plan to ease pain, relax tight muscles and support recovery.",
     overview:"Acupuncture can be a valuable part of treatment for certain conditions — helping to reduce pain and muscle tension so you can move and progress more comfortably. We use it as one tool within a wider, assessment-led plan, never in isolation.",
-    duration:"30 minutes", price:"One-to-one", best:"Pain & muscle tension relief",
+    duration:"30 minutes", price:"One-to-one", cost:"£40", best:"Pain & muscle tension relief",
     expect:[
       ["Assess","We confirm acupuncture is suitable and right for your condition."],
       ["Treat","Fine, sterile, single-use needles placed to target pain and tension."],
@@ -88,7 +89,7 @@ const CONTENT = {
     heroPos:"72% 24%",
     lead:"Targeted soft-tissue therapy to reduce pain, release tightness, improve mobility, and support recovery and performance.",
     overview:"Sports massage isn't just for athletes. Targeted techniques help ease aches and pains, reduce muscle tension, improve movement, and support recovery — whether you're training hard, working at a desk, or simply feeling tight and stiff.",
-    duration:"30–60 minutes", price:"One-to-one", best:"Pain, tension, mobility & recovery",
+    duration:"30–60 minutes", price:"One-to-one", cost:"£40", best:"Pain, tension, mobility & recovery",
     expect:[
       ["Discuss","A quick chat about problem areas, training and goals."],
       ["Treat","Targeted soft-tissue work."],
@@ -108,7 +109,7 @@ const CONTENT = {
     heroPos:"center 28%",
     lead:"Assessment-led physiotherapy in your own home — ideal after surgery, or when getting to the clinic is difficult.",
     overview:"Home visits bring the full Blackwater Physiotherapy approach to your front door. Particularly valuable after surgery or for those with reduced mobility we assess, treat and build a rehabilitation plan in the comfort and familiarity of your own environment.",
-    duration:"45–60 minutes", price:"In your home", best:"Post-surgery & reduced mobility",
+    duration:"30 / 45 minutes", price:"In your home", cost:"£70 / £80", best:"Post-surgery & reduced mobility",
     expect:[
       ["Visit","We come to you, anywhere across Maldon and the surrounding area."],
       ["Assess","A full assessment adapted to your home environment."],
@@ -146,6 +147,7 @@ function PageHero(){
         </div>
         <div className="hero-facts">
           <div className="fact"><span className="l">Duration</span><span className="v">{c.duration}</span></div>
+          <div className="fact"><span className="l">Price</span><span className="v">{c.cost}</span></div>
           <div className="fact"><span className="l">Format</span><span className="v">{c.price}</span></div>
           <div className="fact"><span className="l">Best for</span><span className="v">{c.best}</span></div>
         </div>
@@ -187,6 +189,7 @@ function Body(){
             </div>
             <div className="includes-card">
               <h3>What's included</h3>
+              <div className="price-tag"><span className="pt-amount">{c.cost}</span><span className="pt-note">{c.price === "In your home" ? "30 / 45 min visit" : "per session"}</span></div>
               <ul className="ticks">
                 {c.includes.map(p => <li key={p}><Icon name="check" size={13} stroke={3}/>{p}</li>)}
               </ul>
