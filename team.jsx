@@ -23,7 +23,7 @@ const TEAM = [
       "Over time, Stef has developed a particular clinical interest in upper limb conditions, especially shoulder and elbow injuries, as well as hip-related pain and running injuries. He enjoys working with people of all ages and activity levels, tailoring rehabilitation to suit individual goals.",
       "Stef is committed to helping patients return to what matters most to them — whether that's everyday activities or high-level performance — using a combination of evidence-based practice and a personalised, patient-focused approach. He is registered with the Health and Care Professions Council (HCPC) and is a member of the Chartered Society of Physiotherapy (MCSP)."
     ],
-    specialisms:["Shoulder, elbow & hip","Running-related injuries"],
+    specialisms:["Shoulder, elbow & hip","Sports injury rehab","Running injuries"],
     creds:[["MSc","Physiotherapy"],["HCPC","Registered"],["MCSP","Member"]],
   },
   {

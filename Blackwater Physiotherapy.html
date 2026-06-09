@@ -364,7 +364,12 @@
   .tbody{padding:30px 30px 26px;display:flex;flex-direction:column;gap:14px}
   .tbody .role{font-family:var(--manrope);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700}
   .tbody h3{font-size:42px;color:var(--ink);font-weight:600;line-height:.95;letter-spacing:.01em}
+  .tbody h3 .tname-link{color:inherit;text-decoration:none;transition:color .2s ease}
+  .tbody h3 .tname-link:hover{color:var(--teal-deep)}
   .tbody p{font-family:var(--body);font-size:14.5px;line-height:1.6;color:var(--slate);max-width:40ch}
+  .tspec{display:flex;flex-wrap:wrap;gap:8px}
+  .tspec-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-family:var(--manrope);font-size:12px;font-weight:600;color:var(--ink)}
+  .tspec-chip .dot{width:5px;height:5px;border-radius:50%;background:var(--teal)}
   .tcreds{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:18px;border-top:1px solid var(--line)}
   .tcred{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:6px;background:var(--teal-pale);font-family:var(--manrope);font-size:11px;font-weight:700;letter-spacing:.04em;color:var(--ink)}
   .tcred b{color:var(--teal);font-weight:800}
@@ -375,6 +380,7 @@
   .tc-track{display:flex;transition:transform .6s cubic-bezier(.6,.02,.2,1)}
   .tc-slide{min-width:0;box-sizing:border-box;padding:0 12px}
   .tc-slide .tcard{height:100%;min-height:380px}
+  @media (min-width:1101px){ .tc-slide .tphoto{aspect-ratio:auto;height:100%} }
   .tc-nav{display:flex;align-items:center;justify-content:space-between;margin-top:28px}
   .tc-dots{display:flex;gap:8px}
   .tc-dots .d{width:9px;height:9px;border-radius:50%;background:#cad2d4;border:0;padding:0;cursor:pointer;transition:all .25s ease}

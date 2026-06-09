@@ -48,9 +48,9 @@ const CONDITIONS = [
 
 
 const CLINICIANS = [
-{ slug: "cam", name: "Cam", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "25% center", teaser: "Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in complex spinal pain and running rehabilitation.", creds: [["MSc", "Advanced Physio"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
-{ slug: "stef", name: "Stef", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "75% center", teaser: "MSK specialist with private, NHS and sporting experience. Calm, methodical approach focused on long-term outcomes.", creds: [["BSc", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
-{ slug: "laurie", name: "Laurie Clarke", role: "Senior Physiotherapist", img: "assets/team-laurie.webp", pos: "center", placeholder: true, teaser: "Specialist in post-surgical rehabilitation and complex conditions. Team Lead for Surgical & Vascular services at Basildon University Hospital, with extensive NHS and community experience helping patients regain movement, strength and confidence.", creds: [["BSc", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] }];
+{ slug: "cam", name: "Cam", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "25% center", teaser: "Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in lower-limb injuries and post-op recovery.", specialisms: ["Knee, foot & ankle", "Sports rehabilitation", "Post-op rehabilitation"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
+{ slug: "stef", name: "Stef", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "75% center", teaser: "MSK physiotherapist with experience across private practice, NHS and professional sport. Special interest in upper limb and sports injuries.", specialisms: ["Shoulder, elbow & hip", "Sports injury rehab", "Running injuries"], creds: [["MSc", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
+{ slug: "laurie", name: "Laurie Clarke", role: "Senior Physiotherapist", img: "assets/team-laurie.webp", pos: "center", placeholder: true, teaser: "Specialist in post-surgical rehabilitation and complex conditions, with extensive NHS and community experience helping patients regain movement, strength and confidence.", specialisms: ["Fall prevention", "Mobility improvement", "Balance development"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] }];
 
 
 const COMPARISON = [
@@ -587,8 +587,11 @@ function Team() {
                     </div>
                     <div className="tbody">
                       <div className="role">{c.role}</div>
-                      <h3>{c.name}</h3>
+                      <h3><a href={(BW_PAGES.team || "Team.html") + "#" + c.slug} className="tname-link">{c.name}</a></h3>
                       <p>{c.teaser}</p>
+                      <div className="tspec">
+                        {c.specialisms.map((s) => <span className="tspec-chip" key={s}><span className="dot"></span>{s}</span>)}
+                      </div>
                       <div className="tcreds">
                         {c.creds.map(([k, v]) => <span className="tcred" key={k}><b>{k}</b>{v}</span>)}
                       </div>
