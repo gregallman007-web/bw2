@@ -1,106 +1,139 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Running Injuries — Blackwater Physiotherapy, Maldon</title>
-<meta name="description" content="Physiotherapy for running injuries in Maldon, Essex — shin, Achilles, ITB and overuse injuries diagnosed and built back to mileage." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="blackwater-core.css">
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<style>
-  /* ===== Page hero ===== */
-  .page-hero{position:relative;color:#fff;overflow:hidden;min-height:520px}
-  .page-hero-photo{position:absolute;inset:0;z-index:0;background:#0b1517 center 30%/cover no-repeat}
-  .page-hero-photo::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg, rgba(11,21,23,.92) 0%, rgba(11,21,23,.64) 40%, rgba(11,21,23,.24) 70%, rgba(11,21,23,.08) 100%), linear-gradient(0deg, rgba(11,21,23,.5) 0%, transparent 30%)}
-  .page-hero-photo::after{content:"";position:absolute;inset:0;z-index:2;background:repeating-linear-gradient(115deg, rgba(255,255,255,.02) 0 2px, transparent 2px 6px), radial-gradient(ellipse 50% 70% at 82% 38%, rgba(47,174,170,.16), transparent 60%);mix-blend-mode:screen}
-  .page-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(47,174,170,.6) 30%,rgba(47,174,170,.6) 70%,transparent);z-index:3}
-  .page-hero-body{position:relative;z-index:2;padding-top:120px;padding-bottom:64px;max-width:1320px}
-  .crumb{display:flex;align-items:center;gap:10px;font-family:var(--manrope);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:24px;flex-wrap:wrap}
-  .crumb a{color:rgba(255,255,255,.6)}
-  .crumb a:hover{color:#fff}
-  .crumb span[aria-current]{color:var(--teal)}
-  .page-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--manrope);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#a8e4e1;margin-bottom:20px}
-  .page-eyebrow .bar{width:32px;height:2px;background:var(--teal)}
-  .page-hero-body h1{font-family:var(--teko);text-transform:uppercase;color:#fff;font-size:clamp(48px,8vw,104px);line-height:.9;letter-spacing:.005em;font-weight:600;margin:0;max-width:16ch;text-shadow:0 2px 22px rgba(11,21,23,.45)}
-  .page-hero-sub{margin-top:22px;max-width:56ch;font-family:var(--body);font-size:clamp(16px,2vw,20px);line-height:1.5;color:rgba(255,255,255,.82);font-weight:300}
-  .page-hero-actions{display:flex;gap:24px;align-items:center;margin-top:34px;flex-wrap:wrap}
+const { useState } = React;
+const { Icon, Nav, Footer, BookTab, useScrollMotion, PAGES, BOOKING_URL } = window.BW;
 
-  /* ===== Detail body ===== */
-  .detail-grid{display:grid;grid-template-columns:1fr 360px;gap:56px;align-items:start}
-  .detail-main{display:flex;flex-direction:column;gap:48px;min-width:0}
-  .block-h{font-family:var(--teko);text-transform:uppercase;font-size:clamp(32px,4vw,46px);line-height:.95;letter-spacing:.01em;color:var(--ink);font-weight:600;margin:0 0 24px}
-  .detail-lead{font-family:var(--body);font-size:clamp(17px,2vw,21px);line-height:1.6;color:var(--ink);font-weight:400;margin:14px 0 0}
-  .sec-tag{display:flex;align-items:center;gap:10px;margin-bottom:6px}
-  .sec-tag .bar{width:32px;height:2px;background:var(--teal)}
-  .sec-tag .t{font-family:var(--manrope);font-size:12px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;color:var(--teal)}
+const MAP_SRC = "https://maps.google.com/maps?q=The%20Old%20Ironworks%2C%20Maldon%2C%20Essex%20CM9%204LE&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
-  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
-  .panel.warn{background:linear-gradient(165deg,#fdf4ee,#fff)}
-  .panel h3{font-family:var(--teko);text-transform:uppercase;font-size:22px;letter-spacing:.02em;color:var(--ink);margin:0 0 16px;font-weight:600}
-  .ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
-  .ticks li{display:flex;align-items:flex-start;gap:10px;font-family:var(--body);font-size:15px;color:var(--ink);line-height:1.4}
-  .ticks li svg{flex:0 0 auto;margin-top:3px;color:var(--teal)}
-  .panel.warn .ticks li svg{color:#d98a4e}
+function PageHero(){
+  return (
+    <section className="page-hero">
+      <div className="page-hero-photo" style={{backgroundImage:"url('assets/clinic/contact-hero.webp')"}} role="img" aria-label="Physiotherapy assessment at Blackwater Physiotherapy"></div>
+      <div className="wrap page-hero-body">
+        <nav className="crumb" aria-label="Breadcrumb">
+          <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">Contact</span>
+        </nav>
+        <div className="page-eyebrow"><span className="bar"></span>Get in touch</div>
+        <h1>Let's <span className="em">talk.</span></h1>
+        <p className="page-hero-sub">Book online in under two minutes, call us, or send a message — we reply within one working day.</p>
+        <div className="page-hero-actions">
+          <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
+          <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  .howto{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .ht{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
-  .ht::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.6,.2,1)}
-  .ht:hover::before{transform:scaleX(1)}
-  .ht .n{font-family:var(--teko);font-size:30px;color:var(--teal);font-weight:600;line-height:1}
-  .ht h4{font-family:var(--teko);text-transform:uppercase;font-size:21px;letter-spacing:.02em;color:var(--ink);margin:0;font-weight:600}
-  .ht p{font-family:var(--body);font-size:13.5px;line-height:1.5;color:var(--slate);margin:0}
+function InfoCards(){
+  const items = [
+    { ic:"home", l:"Clinic", v:<>First Floor, Gracie Barra Studio,<br/>The Old Ironworks, Maldon CM9 4LE</>, sub:"Free on-site parking" },
+    { ic:"phone", l:"Phone", v:<><a href="tel:+447790717056">07790 717056</a><br/><a href="tel:+447468333745">07468 333745</a></>, sub:"Mon–Fri, 7am–8pm" },
+    { ic:"mail", l:"Email", v:<a href="mailto:info@blackwaterphysiotherapy.co.uk">info@blackwaterphysiotherapy.co.uk</a>, sub:"We reply within 1 working day" },
+    { ic:"refresh", l:"Opening hours", v:<>Mon–Fri · 7am–8pm<br/>Sat · 8am–2pm · Sun closed</>, sub:null },
+  ];
+  return (
+    <div className="ci-grid">
+      {items.map(it => (
+        <div className="ci-card" key={it.l}>
+          <div className="ci-ic"><Icon name={it.ic} size={18}/></div>
+          <div className="ci-l">{it.l}</div>
+          <div className="ci-v">{it.v}</div>
+          {it.sub && <div className="ci-sub">{it.sub}</div>}
+        </div>
+      ))}
+    </div>
+  );
+}
 
-  .faqs{display:flex;flex-direction:column;gap:12px}
-  .faq{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
-  .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:none;border:0;cursor:pointer;font-family:var(--manrope);font-size:16px;font-weight:600;color:var(--ink);text-align:left}
-  .faq-ic{font-family:var(--teko);font-size:28px;color:var(--teal);line-height:1;flex:0 0 auto}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-  .faq.open .faq-a{max-height:240px}
-  .faq-a p{margin:0;padding:0 24px 22px;font-family:var(--body);font-size:15px;line-height:1.6;color:var(--slate)}
+function EnquiryForm(){
+  const [form, setForm] = useState({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
+  const [status, setStatus] = useState("");
+  const set = (k,v) => setForm(f => ({...f, [k]:v}));
+  const submit = (e) => {
+    e.preventDefault();
+    if (!form.first || !form.email || !form.message){ setStatus("Please fill in your name, email and message."); return; }
+    if (!form.consent){ setStatus("Please tick the consent box."); return; }
+    setStatus("ok:Thanks — we'll be in touch within one working day.");
+    setForm({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
+  };
+  const ok = status.startsWith("ok:");
+  return (
+    <form className="form-card" onSubmit={submit} noValidate>
+      <div className="head">
+        <div className="lbl">Send a message</div>
+        <h3>Tell us how we can help.</h3>
+        <p>Short message, quick reply. We'll suggest a route in or book you straight in.</p>
+      </div>
+      <div className="form">
+        <div className="form-row">
+          <div className="field"><label htmlFor="first">First name</label><input id="first" type="text" value={form.first} onChange={e=>set("first",e.target.value)} placeholder="Jane"/></div>
+          <div className="field"><label htmlFor="last">Last name</label><input id="last" type="text" value={form.last} onChange={e=>set("last",e.target.value)} placeholder="Smith"/></div>
+        </div>
+        <div className="form-row">
+          <div className="field"><label htmlFor="email">Email</label><input id="email" type="email" value={form.email} onChange={e=>set("email",e.target.value)} placeholder="jane@example.co.uk"/></div>
+          <div className="field"><label htmlFor="phone">Phone (optional)</label><input id="phone" type="tel" value={form.phone} onChange={e=>set("phone",e.target.value)} placeholder="07000 000000"/></div>
+        </div>
+        <div className="field">
+          <label htmlFor="topic">What can we help with?</label>
+          <select id="topic" value={form.topic} onChange={e=>set("topic",e.target.value)}>
+            <option>Initial Assessment</option>
+            <option>Follow-Up Session</option>
+            <option>Rehabilitation Session</option>
+            <option>Acupuncture</option>
+            <option>Sports Massage</option>
+            <option>Home Visits</option>
+            <option>Insurance / billing enquiry</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div className="field">
+          <label htmlFor="message">Message</label>
+          <textarea id="message" value={form.message} onChange={e=>set("message",e.target.value)} placeholder="A short summary of what's going on, and when you're free…"></textarea>
+        </div>
+        <label className="form-consent">
+          <input type="checkbox" checked={form.consent} onChange={e=>set("consent",e.target.checked)}/>
+          <span>I'm happy for Blackwater Physiotherapy to contact me about my enquiry. We never share your details.</span>
+        </label>
+        <div className="form-submit">
+          <button type="submit" className="btn btn-on-dark">Send message <Icon name="arrow" size={12}/></button>
+          {status && <span className={"form-status " + (ok ? "ok" : "")}>{ok ? status.slice(3) : status}</span>}
+        </div>
+      </div>
+    </form>
+  );
+}
 
-  .detail-side{position:sticky;top:120px}
-  .side-card{background:var(--ink);color:#fff;border-radius:16px;padding:32px;position:relative;overflow:hidden}
-  .side-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%, rgba(47,174,170,.35), transparent 60%);pointer-events:none}
-  .side-card>*{position:relative}
-  .side-eyebrow{font-family:var(--manrope);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:700}
-  .side-card h3{font-family:var(--teko);text-transform:uppercase;font-size:30px;letter-spacing:.02em;color:#fff;margin:8px 0 12px;font-weight:600;line-height:1}
-  .side-card p{font-family:var(--body);font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.7);margin:0 0 18px}
-  .side-card .btn{margin-bottom:10px}
-  .btn-outline.btn-block{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
-  .btn-outline.btn-block:hover{box-shadow:inset 0 0 0 1.5px #fff;background:rgba(255,255,255,.08)}
-  .side-rel{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;gap:4px}
-  .sr-label{font-family:var(--manrope);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:700;margin-bottom:8px}
-  .sr-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;font-family:var(--manrope);font-size:14.5px;font-weight:600;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
-  .sr-link:last-child{border-bottom:0}
-  .sr-link svg{color:var(--teal);transition:transform .2s ease}
-  .sr-link:hover svg{transform:translateX(4px)}
+function ContactMain(){
+  return (
+    <section className="sec contact-main" id="contact">
+      <div className="wrap">
+        <div className="sec-head">
+          <div className="sec-tag"><span className="bar"></span><span className="t">Visit &amp; contact</span></div>
+          <h2 className="sec-title">Find us in <span className="em">Maldon.</span></h2>
+          <p className="sec-blurb">Ground-floor clinic at The Old Ironworks with free parking, a short walk from Maldon High Street.</p>
+        </div>
+        <InfoCards/>
+        <div className="contact-cols">
+          <div className="map-card">
+            <iframe src={MAP_SRC} title="Map to Blackwater Physiotherapy, Maldon" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <EnquiryForm/>
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  @media (max-width:1000px){
-    .detail-grid{grid-template-columns:1fr;gap:40px}
-    .detail-side{position:static}
-    .howto{grid-template-columns:repeat(2,1fr)}
-    .page-hero{min-height:0}
-  }
-  @media (max-width:600px){
-    .two-col{grid-template-columns:1fr}
-    .howto{grid-template-columns:1fr}
-    .page-hero-body{padding-top:104px;padding-bottom:52px}
-  }
-</style>
-<script>window.SEO={title:'Running Injuries — Blackwater Physiotherapy, Maldon',description:'Physiotherapy for running injuries in Maldon, Essex — shin, Achilles, ITB and overuse injuries diagnosed and built back to mileage.',path:'condition-other-joint-pain.html',type:'page',crumb:'Conditions',image:'assets/conditions/conditions-hero.webp'};</script>
-<script src="seo.js"></script>
-</head>
-<body>
-<div id="root"></div>
-<script>window.CONDITION_SLUG = "other-joint-pain";</script>
-<script type="text/babel" src="mobile-menu.jsx"></script>
-<script type="text/babel" src="shared.jsx"></script>
-<script type="text/babel" src="condition-detail.jsx"></script>
-</body>
-</html>
+function App(){
+  useScrollMotion();
+  return (
+    <div>
+      <Nav active="contact"/>
+      <PageHero/>
+      <ContactMain/>
+      <Footer/>
+      <BookTab/>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);

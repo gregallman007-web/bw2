@@ -1,139 +1,47 @@
-const { useState } = React;
-const { Icon, Nav, Footer, BookTab, useScrollMotion, PAGES, BOOKING_URL } = window.BW;
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Privacy Policy — Blackwater Physiotherapy, Maldon</title>
+<meta name="description" content="Privacy Policy for Blackwater Physiotherapy, Maldon — how we collect, use and protect your personal information." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="blackwater-core.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  .legal-hero{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+  .legal-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 85% 20%, rgba(47,174,170,.28), transparent 60%);pointer-events:none}
+  .legal-hero .wrap{position:relative;padding-top:128px;padding-bottom:56px}
+  .crumb{display:flex;align-items:center;gap:10px;font-family:var(--manrope);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.55);margin-bottom:22px;flex-wrap:wrap}
+  .crumb a{color:rgba(255,255,255,.55)}.crumb a:hover{color:#fff}.crumb span[aria-current]{color:var(--teal)}
+  .page-eyebrow{display:inline-flex;align-items:center;gap:12px;font-family:var(--manrope);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:#a8e4e1;margin-bottom:18px}
+  .page-eyebrow .bar{width:32px;height:2px;background:var(--teal)}
+  .legal-hero h1{font-family:var(--teko);text-transform:uppercase;color:#fff;font-size:clamp(44px,7vw,84px);line-height:.95;letter-spacing:.01em;font-weight:600;margin:0}
+  .legal-updated{font-family:var(--manrope);font-size:13px;color:rgba(255,255,255,.6);font-weight:500;margin:16px 0 0}
 
-const MAP_SRC = "https://maps.google.com/maps?q=The%20Old%20Ironworks%2C%20Maldon%2C%20Essex%20CM9%204LE&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  .legal-wrap{max-width:820px;margin:0 auto}
+  .legal-intro{font-family:var(--body);font-size:clamp(17px,2vw,20px);line-height:1.65;color:var(--ink);font-weight:400;margin:0 0 40px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+  .legal-sections{display:flex;flex-direction:column;gap:32px}
+  .legal-block h2{font-family:var(--teko);text-transform:uppercase;font-size:clamp(22px,2.6vw,28px);letter-spacing:.02em;color:var(--ink);font-weight:600;margin:0 0 10px;line-height:1.05}
+  .legal-block p{font-family:var(--body);font-size:16px;line-height:1.7;color:#3a444a;margin:0}
+  .legal-note{margin-top:40px;padding:22px 24px;background:linear-gradient(165deg,#eef5f4,#f7fafa);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:12px}
+  .legal-note p{margin:0;font-family:var(--body);font-size:15.5px;line-height:1.6;color:var(--ink)}
+  .legal-note a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
-function PageHero(){
-  return (
-    <section className="page-hero">
-      <div className="page-hero-photo" style={{backgroundImage:"url('assets/clinic/contact-hero.webp')"}} role="img" aria-label="Physiotherapy assessment at Blackwater Physiotherapy"></div>
-      <div className="wrap page-hero-body">
-        <nav className="crumb" aria-label="Breadcrumb">
-          <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">Contact</span>
-        </nav>
-        <div className="page-eyebrow"><span className="bar"></span>Get in touch</div>
-        <h1>Let's <span className="em">talk.</span></h1>
-        <p className="page-hero-sub">Book online in under two minutes, call us, or send a message — we reply within one working day.</p>
-        <div className="page-hero-actions">
-          <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14}/></a>
-          <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function InfoCards(){
-  const items = [
-    { ic:"home", l:"Clinic", v:<>First Floor, Gracie Barra Studio,<br/>The Old Ironworks, Maldon CM9 4LE</>, sub:"Free on-site parking" },
-    { ic:"phone", l:"Phone", v:<><a href="tel:+447790717056">07790 717056</a><br/><a href="tel:+447468333745">07468 333745</a></>, sub:"Mon–Fri, 7am–8pm" },
-    { ic:"mail", l:"Email", v:<a href="mailto:info@blackwaterphysiotherapy.co.uk">info@blackwaterphysiotherapy.co.uk</a>, sub:"We reply within 1 working day" },
-    { ic:"refresh", l:"Opening hours", v:<>Mon–Fri · 7am–8pm<br/>Sat · 8am–2pm · Sun closed</>, sub:null },
-  ];
-  return (
-    <div className="ci-grid">
-      {items.map(it => (
-        <div className="ci-card" key={it.l}>
-          <div className="ci-ic"><Icon name={it.ic} size={18}/></div>
-          <div className="ci-l">{it.l}</div>
-          <div className="ci-v">{it.v}</div>
-          {it.sub && <div className="ci-sub">{it.sub}</div>}
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function EnquiryForm(){
-  const [form, setForm] = useState({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
-  const [status, setStatus] = useState("");
-  const set = (k,v) => setForm(f => ({...f, [k]:v}));
-  const submit = (e) => {
-    e.preventDefault();
-    if (!form.first || !form.email || !form.message){ setStatus("Please fill in your name, email and message."); return; }
-    if (!form.consent){ setStatus("Please tick the consent box."); return; }
-    setStatus("ok:Thanks — we'll be in touch within one working day.");
-    setForm({ first:"", last:"", email:"", phone:"", topic:"Initial Assessment", message:"", consent:false });
-  };
-  const ok = status.startsWith("ok:");
-  return (
-    <form className="form-card" onSubmit={submit} noValidate>
-      <div className="head">
-        <div className="lbl">Send a message</div>
-        <h3>Tell us how we can help.</h3>
-        <p>Short message, quick reply. We'll suggest a route in or book you straight in.</p>
-      </div>
-      <div className="form">
-        <div className="form-row">
-          <div className="field"><label htmlFor="first">First name</label><input id="first" type="text" value={form.first} onChange={e=>set("first",e.target.value)} placeholder="Jane"/></div>
-          <div className="field"><label htmlFor="last">Last name</label><input id="last" type="text" value={form.last} onChange={e=>set("last",e.target.value)} placeholder="Smith"/></div>
-        </div>
-        <div className="form-row">
-          <div className="field"><label htmlFor="email">Email</label><input id="email" type="email" value={form.email} onChange={e=>set("email",e.target.value)} placeholder="jane@example.co.uk"/></div>
-          <div className="field"><label htmlFor="phone">Phone (optional)</label><input id="phone" type="tel" value={form.phone} onChange={e=>set("phone",e.target.value)} placeholder="07000 000000"/></div>
-        </div>
-        <div className="field">
-          <label htmlFor="topic">What can we help with?</label>
-          <select id="topic" value={form.topic} onChange={e=>set("topic",e.target.value)}>
-            <option>Initial Assessment</option>
-            <option>Follow-Up Session</option>
-            <option>Rehabilitation Session</option>
-            <option>Acupuncture</option>
-            <option>Sports Massage</option>
-            <option>Home Visits</option>
-            <option>Insurance / billing enquiry</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div className="field">
-          <label htmlFor="message">Message</label>
-          <textarea id="message" value={form.message} onChange={e=>set("message",e.target.value)} placeholder="A short summary of what's going on, and when you're free…"></textarea>
-        </div>
-        <label className="form-consent">
-          <input type="checkbox" checked={form.consent} onChange={e=>set("consent",e.target.checked)}/>
-          <span>I'm happy for Blackwater Physiotherapy to contact me about my enquiry. We never share your details.</span>
-        </label>
-        <div className="form-submit">
-          <button type="submit" className="btn btn-on-dark">Send message <Icon name="arrow" size={12}/></button>
-          {status && <span className={"form-status " + (ok ? "ok" : "")}>{ok ? status.slice(3) : status}</span>}
-        </div>
-      </div>
-    </form>
-  );
-}
-
-function ContactMain(){
-  return (
-    <section className="sec contact-main" id="contact">
-      <div className="wrap">
-        <div className="sec-head">
-          <div className="sec-tag"><span className="bar"></span><span className="t">Visit &amp; contact</span></div>
-          <h2 className="sec-title">Find us in <span className="em">Maldon.</span></h2>
-          <p className="sec-blurb">Ground-floor clinic at The Old Ironworks with free parking, a short walk from Maldon High Street.</p>
-        </div>
-        <InfoCards/>
-        <div className="contact-cols">
-          <div className="map-card">
-            <iframe src={MAP_SRC} title="Map to Blackwater Physiotherapy, Maldon" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-          <EnquiryForm/>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function App(){
-  useScrollMotion();
-  return (
-    <div>
-      <Nav active="contact"/>
-      <PageHero/>
-      <ContactMain/>
-      <Footer/>
-      <BookTab/>
-    </div>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  @media (max-width:600px){.legal-hero .wrap{padding-top:104px}}
+</style>
+<script>window.SEO={title:'Privacy Policy — Blackwater Physiotherapy, Maldon',description:'Privacy Policy for Blackwater Physiotherapy, Maldon — how we collect, use and protect your personal information.',path:'Privacy.html',type:'page',crumb:'Privacy',image:'assets/about-hero-2.webp'};</script>
+<script src="seo.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>window.LEGAL_PAGE = "privacy";</script>
+<script type="text/babel" src="mobile-menu.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="legal.jsx"></script>
+</body>
+</html>
