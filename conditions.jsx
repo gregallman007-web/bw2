@@ -1,149 +1,123 @@
-const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL } = window.BW;
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Welcome to Blackwater Physiotherapy: expert care, personal approach — Blackwater Physiotherapy</title>
+<meta name="description" content="Get to know Blackwater Physiotherapy in Maldon, Essex — our story, our values and our patient-first, evidence-based approach to physiotherapy." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="blackwater-core.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  /* ===== Post header ===== */
+  .post-hero{position:relative;background:var(--bg)}
+  .post-hero .wrap{padding-top:120px;padding-bottom:36px}
+  .crumb{display:flex;align-items:center;gap:10px;font-family:var(--manrope);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--slate);margin-bottom:22px;flex-wrap:wrap}
+  .crumb a{color:var(--slate)}.crumb a:hover{color:var(--teal)}.crumb span[aria-current]{color:var(--teal)}
+  .ph-cat{display:inline-block;background:var(--teal-pale);color:var(--teal-deep);font-family:var(--manrope);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:7px 14px;border-radius:999px}
+  .post-hero h1{font-family:var(--teko);text-transform:uppercase;font-size:clamp(40px,6vw,82px);line-height:.95;letter-spacing:.005em;color:var(--ink);font-weight:600;margin:18px 0 0;max-width:20ch}
+  .ph-meta{display:flex;align-items:center;gap:12px;margin-top:22px;font-family:var(--manrope);font-size:13.5px;color:var(--slate);font-weight:600;flex-wrap:wrap}
+  .pm-author{display:inline-flex;align-items:center;gap:10px;color:var(--ink)}
+  .pm-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9bd8d6,var(--teal));color:#fff;display:grid;place-items:center;font-family:var(--teko);font-size:16px;font-weight:600}
+  .pm-dot{color:var(--line)}
+  .post-featured{height:clamp(280px,42vw,540px);background:#1b3a3d center/cover no-repeat;border-radius:16px;margin-top:32px;box-shadow:0 34px 64px -36px rgba(22,25,27,.4)}
+  .post-hero .wrap:has(+ .post-featured){padding-bottom:0}
 
-/* Featured conditions with detail pages */
-const FEATURED = [
-{ slug: "neck-back-pain", name: "Neck & Back Pain", img: "assets/conditions/back-pain.webp", pos: "center",
-  blurb: "From sudden strain to long-standing stiffness, headaches or pain into the arm — we find the driver and get you moving freely again." },
-{ slug: "shoulder-pain", name: "Shoulder Pain", img: "assets/conditions/neck-shoulder-pain.webp", pos: "center",
-  blurb: "Stiffness, weakness or pain reaching and lifting — assessed and treated so the shoulder moves freely again." },
-{ slug: "hip-knee-pain", name: "Hip & Knee Pain", img: "assets/conditions/knee-pain.webp", pos: "center",
-  blurb: "Hip and knee pain — from wear-and-tear to sudden injury — managed and rehabilitated." },
-{ slug: "other-joint-pain", name: "Other Joint Pain", img: "assets/conditions/running-injuries.webp", pos: "center 35%",
-  blurb: "Ankle, foot, elbow, wrist and other joint pain — assessed thoroughly and rehabilitated properly." },
-{ slug: "sports-injuries", name: "Sports Injuries", img: "assets/conditions/back-pain-active.webp", pos: "center",
-  blurb: "Running injuries, muscle strains and overuse problems — diagnosed and built back to full activity." },
-{ slug: "post-op", name: "Post-Op", img: "assets/services/rehabilitation.webp", pos: "center",
-  blurb: "Structured recovery after surgery to restore strength, movement and confidence — safely." }];
+  /* ===== Two-column article with sidebar ===== */
+  .post-layout{display:grid;grid-template-columns:1fr 320px;gap:56px;align-items:start}
+  .post-main{min-width:0}
+  .entry-content{font-family:var(--body);color:var(--ink)}
+  .entry-content .lead{font-size:21px;line-height:1.55;color:var(--ink);font-weight:400;margin:0 0 28px}
+  .entry-content p{font-size:17px;line-height:1.75;color:var(--slate);margin:0 0 22px}
+  .entry-content h2{font-family:var(--teko);text-transform:uppercase;font-size:clamp(28px,3.4vw,38px);line-height:1;letter-spacing:.01em;color:var(--ink);font-weight:600;margin:40px 0 16px}
+  .entry-content h3{font-family:var(--teko);text-transform:uppercase;font-size:24px;letter-spacing:.02em;color:var(--ink);font-weight:600;margin:30px 0 12px}
+  .entry-content ul,.entry-content ol{margin:0 0 22px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+  .entry-content ul li{position:relative;padding-left:26px;font-size:17px;line-height:1.6;color:var(--slate)}
+  .entry-content ul li::before{content:"";position:absolute;left:6px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+  .entry-content blockquote{margin:28px 0;padding:20px 26px;border-left:4px solid var(--teal);background:var(--teal-pale);border-radius:0 10px 10px 0;font-style:italic;font-size:18px;line-height:1.5;color:var(--ink)}
+  .entry-content a{color:var(--teal-deep);text-decoration:underline;text-underline-offset:2px}
 
+  .post-footer{margin:40px 0 0;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .post-tags{display:flex;align-items:center;gap:12px}
+  .pt-label{font-family:var(--manrope);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:700}
+  .pt{font-family:var(--manrope);font-size:13px;font-weight:600;color:var(--teal-deep);background:var(--teal-pale);padding:7px 14px;border-radius:999px}
+  .share-bar{display:flex;align-items:center;gap:12px}
+  .sb-label{font-family:var(--manrope);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);font-weight:700}
+  .sb-btns{display:flex;gap:8px}
+  .sb-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);display:grid;place-items:center;transition:all .2s ease}
+  .sb-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff;transform:translateY(-2px)}
 
-const GROUPS = [
-{ n: "01", title: "Spine & nerve pain", items: ["Back Pain", "Neck Pain", "Sciatica", "Postural pain"] },
-{ n: "02", title: "Joint & movement", items: ["Knee Pain", "Hip Pain", "Shoulder Pain", "Mobility issues"] },
-{ n: "03", title: "Sport & activity", items: ["Running Injuries", "Sport Injuries", "Muscle strains", "Tendon pain"] },
-{ n: "04", title: "Longer-term & recovery", items: ["Persistent Pain", "Post-Operative Rehab", "Work-related aches", "Arthritis"] }];
+  /* Sticky side */
+  .post-side{position:sticky;top:120px;display:flex;flex-direction:column;gap:18px}
+  .side-card{background:var(--ink);color:#fff;border-radius:16px;padding:30px;position:relative;overflow:hidden}
+  .side-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 100% 0%, rgba(47,174,170,.35), transparent 60%);pointer-events:none}
+  .side-card>*{position:relative}
+  .side-eyebrow{font-family:var(--manrope);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  .side-card h3{font-family:var(--teko);text-transform:uppercase;font-size:28px;letter-spacing:.02em;color:#fff;margin:8px 0 12px;font-weight:600;line-height:1}
+  .side-card p{font-family:var(--body);font-size:14px;line-height:1.55;color:rgba(255,255,255,.7);margin:0 0 18px}
+  .side-card .btn{margin-bottom:10px}
+  .btn-outline.btn-block{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.35)}
+  .btn-outline.btn-block:hover{box-shadow:inset 0 0 0 1.5px #fff;background:rgba(255,255,255,.08)}
+  .rel-card-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+  .rc-label{font-family:var(--manrope);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);font-weight:700;display:block;margin-bottom:8px}
+  .rc-link{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0;font-family:var(--manrope);font-size:14.5px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+  .rc-link:last-child{border-bottom:0}
+  .rc-link svg{color:var(--teal);transition:transform .2s ease}
+  .rc-link:hover svg{transform:translateX(4px)}
 
+  /* Recent posts */
+  .recent-sec{background:linear-gradient(180deg,#eef5f4,var(--bg));padding-top:120px;padding-bottom:40px}
+  .recent-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:48px;flex-wrap:wrap}
+  .recent-head h2{font-family:var(--teko);text-transform:uppercase;font-size:clamp(32px,4vw,52px);line-height:.95;letter-spacing:.01em;color:var(--ink);font-weight:600;margin:0}
+  .recent-head h2 .em{color:var(--teal)}
+  .recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .post-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.6,.2,1),box-shadow .3s ease,border-color .25s ease}
+  .post-card:hover{transform:translateY(-6px);box-shadow:0 30px 56px -30px rgba(22,25,27,.4);border-color:rgba(47,174,170,.4)}
+  .pc-photo{aspect-ratio:16/10;background:#1b3a3d center/cover no-repeat;position:relative}
+  .pc-cat{position:absolute;left:14px;top:14px;background:rgba(11,21,23,.62);backdrop-filter:blur(6px);color:#fff;font-family:var(--manrope);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 12px;border-radius:999px}
+  .pc-body{padding:22px;display:flex;flex-direction:column;gap:9px;flex:1}
+  .pc-meta{font-family:var(--manrope);font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--slate);font-weight:600}
+  .pc-body h3{font-family:var(--teko);text-transform:uppercase;font-size:24px;line-height:1.02;letter-spacing:.01em;color:var(--ink);font-weight:600;margin:0}
+  .pc-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--manrope);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:700;margin-top:auto;padding-top:6px}
+  .pc-link svg{transition:transform .2s ease}
+  .post-card:hover .pc-link svg{transform:translateX(4px)}
 
-function PageHero() {
-  return (
-    <section className="page-hero">
-      <div className="page-hero-photo" style={{ backgroundImage: "url('assets/conditions/conditions-hero.webp')" }} role="img" aria-label="Conditions we treat at Blackwater Physiotherapy"></div>
-      <div className="wrap page-hero-body">
-        <nav className="crumb" aria-label="Breadcrumb">
-          <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">Conditions</span>
-        </nav>
-        <div className="page-eyebrow"><span className="bar"></span>Conditions</div>
-        <h1>Conditions <span className="em">we treat.</span></h1>
-        <p className="page-hero-sub">Whether you're dealing with back pain, a sports injury, recovering from surgery, or persistent discomfort, we create a personalised plan to help you recover and stay active</p>
-        <div className="page-hero-actions">
-          <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book an assessment <Icon name="arrow" size={14} /></a>
-          <a className="btn btn-outline-light" href="#featured">Explore</a>
-        </div>
-      </div>
-    </section>);
+  /* Author box */
+  .author-box{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px}
+  .au-photo{width:120px;height:120px;border-radius:50%;background:#1b3a3d center/cover no-repeat;flex:0 0 auto}
+  .au-label{font-family:var(--manrope);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:700}
+  .author-box h3{font-family:var(--teko);text-transform:uppercase;font-size:32px;letter-spacing:.02em;color:var(--ink);font-weight:600;margin:6px 0 0;line-height:1}
+  .au-role{font-family:var(--manrope);font-size:12.5px;letter-spacing:.04em;color:var(--teal-deep);font-weight:600;margin-top:4px}
+  .author-box p{font-family:var(--body);font-size:15px;line-height:1.6;color:var(--slate);margin:14px 0 0;max-width:60ch}
+  .au-link{display:inline-flex;align-items:center;gap:8px;font-family:var(--manrope);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:700;margin-top:14px}
 
-}
-
-function Intro() {
-  return (
-    <section className="sec intro-sec">
-      <div className="wrap intro-grid">
-        <div className="sec-tag"><span className="bar"></span><span className="t">Where to start</span></div>
-        <h2 className="sec-title">Not sure if we can <span className="em">help?</span></h2>
-        <p className="intro-lead">If it affects how you move or how you feel day-to-day, it's worth a conversation. Most of what we see is <strong>pain, ache or injuries</strong> affecting muscles, joints, tendons and nerves. Below are the areas we treat most often; if yours isn't listed, it's almost certainly still something we can help with.</p>
-      </div>
-    </section>);
-
-}
-
-function Featured() {
-  return (
-    <section className="sec" id="featured" style={{ paddingTop: 0 }}>
-      <div className="wrap">
-        <div className="sec-head">
-          <div className="sec-tag"><span className="bar"></span><span className="t">Commonly treated</span></div>
-          <h2 className="sec-title">Find <span className="em">your</span> way in.</h2>
-          <p className="sec-blurb">Recognise what's bothering you and jump straight to how we'd assess and treat it.</p>
-        </div>
-        <div className="cond-grid">
-          {FEATURED.map((c) =>
-          <a className="cond-card" href={"condition-" + c.slug + ".html"} key={c.slug}>
-              <div className="cc-photo" style={{ backgroundImage: `url('${c.img}')`, backgroundPosition: c.pos }}></div>
-              <div className="cc-body">
-                <h3>{c.name}</h3>
-                <p>{c.blurb}</p>
-                <span className="cc-link">How we help <Icon name="arrow" size={13} /></span>
-              </div>
-            </a>
-          )}
-        </div>
-      </div>
-    </section>);
-
-}
-
-function Groups() {
-  return (
-    <section className="sec groups-sec">
-      <div className="wrap">
-        <div className="sec-head">
-          <div className="sec-tag"><span className="bar"></span><span className="t">By area</span></div>
-          <h2 className="sec-title">The full <span className="em">picture.</span></h2>
-          <p className="sec-blurb">A broader view of what we assess and treat, grouped by area of the body and type of problem.</p>
-        </div>
-        <div className="grp-grid">
-          {GROUPS.map((g) =>
-          <div className="grp" key={g.n}>
-              <div className="grp-head"><span className="grp-n">{g.n}</span><h3>{g.title}</h3></div>
-              <ul>{g.items.map((i) => <li key={i}><span className="dot"></span>{i}</li>)}</ul>
-            </div>
-          )}
-        </div>
-        <div className="grp-foot">
-          <span>Don't see your condition? It's almost certainly something we treat.</span>
-          <a className="btn btn-primary" href={BOOKING_URL} target="_blank" rel="noopener">Book an assessment <Icon name="arrow" size={13} /></a>
-        </div>
-      </div>
-    </section>);
-
-}
-
-function CTABand() {
-  return (
-    <section className="sec" style={{ paddingTop: 0 }}>
-      <div className="wrap">
-        <div className="final">
-          <div className="final-photo" style={{ backgroundImage: "url('assets/clinic/treatment-room.webp')" }}><div className="pin">Maldon · Essex</div></div>
-          <div className="final-body">
-            <h2>Let's find the <span className="em">root cause.</span></h2>
-            <div className="final-side">
-              <p>A thorough initial assessment is the fastest way to understand what's going on and what to do about it.</p>
-              <div className="final-actions">
-                <a className="btn btn-primary btn-primary-xl" href={BOOKING_URL} target="_blank" rel="noopener">Book online <Icon name="arrow" size={14} /></a>
-                <a className="btn btn-outline-light" href="tel:+447790717056">07790 717056</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>);
-
-}
-
-function App() {
-  useScrollMotion();
-  return (
-    <div>
-      <Nav active="conditions" />
-      <PageHero />
-      <Accred />
-      <Intro />
-      <Featured />
-      <Groups />
-      <CTABand />
-      <Footer />
-      <BookTab />
-    </div>);
-
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  @media (max-width:1000px){
+    .post-layout{grid-template-columns:1fr;gap:40px}
+    .post-side{position:static;flex-direction:row;flex-wrap:wrap}
+    .post-side>*{flex:1;min-width:260px}
+    .recent-grid{grid-template-columns:repeat(2,1fr)}
+    .page-hero{min-height:0}
+  }
+  @media (max-width:600px){
+    .post-hero .wrap{padding-top:104px}
+    .author-box{grid-template-columns:1fr;text-align:center;justify-items:center}
+    .recent-grid{grid-template-columns:1fr}
+    .post-footer{flex-direction:column;align-items:flex-start}
+  }
+</style>
+<script>window.SEO={title:'Welcome to Blackwater Physiotherapy: expert care, personal approach — Blackwater Physiotherapy',description:'Get to know Blackwater Physiotherapy in Maldon, Essex — our story, our values and our patient-first, evidence-based approach to physiotherapy.',path:'blog-welcome.html',type:'article',crumb:'Blog',image:'assets/team.webp'};</script>
+<script src="seo.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script src="blog-data.js"></script>
+<script>window.POST_SLUG="blog-welcome";</script>
+<script type="text/babel" src="mobile-menu.jsx"></script>
+<script type="text/babel" src="shared.jsx"></script>
+<script type="text/babel" src="blog-post.jsx"></script>
+</body>
+</html>
