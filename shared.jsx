@@ -62,9 +62,9 @@
   ];
 
   const CLINICIANS = [
-    { slug:"cam", name:"Cam Ward", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team.webp", pos:"25% center" },
-    { slug:"stef", name:"Stefano De Felice", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team.webp", pos:"75% center" },
-    { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.webp", pos:"center", placeholder:true },
+    { slug:"cam", name:"Cam Ward", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team-cam.webp", pos:"center top" },
+    { slug:"stef", name:"Stefano De Felice", role:"Clinic Owner & Lead Physiotherapist", img:"assets/team-stef.webp", pos:"center top" },
+    { slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist", img:"assets/team-laurie.webp", pos:"center top" },
   ];
 
   const REVIEWS = [
@@ -268,7 +268,6 @@
     { name:"AXA", src:"assets/insurance/axa.webp" },
     { name:"Aviva", src:"assets/insurance/aviva.webp" },
     { name:"WPA", src:"assets/insurance/wpa.webp" },
-    { name:"HCML", src:"assets/insurance/hcml.webp" },
     { name:"Proclaim Group", src:"assets/insurance/proclaim.webp" },
   ];
   function Accred(){

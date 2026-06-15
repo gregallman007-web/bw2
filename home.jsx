@@ -48,9 +48,9 @@ const CONDITIONS = [
 
 
 const CLINICIANS = [
-{ slug: "cam", name: "Cam", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "25% center", teaser: "Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in lower-limb injuries and post-op recovery.", specialisms: ["Knee, foot & ankle", "Sports rehabilitation", "Post-op rehabilitation"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
-{ slug: "stef", name: "Stef", role: "Lead Physiotherapist · Co-Director", img: "assets/team.webp", pos: "75% center", teaser: "MSK physiotherapist with experience across private practice, NHS and professional sport. Special interest in upper limb and sports injuries.", specialisms: ["Shoulder, elbow & hip", "Sports injury rehab", "Running injuries"], creds: [["MSc", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
-{ slug: "laurie", name: "Laurie Clarke", role: "Senior Physiotherapist", img: "assets/team-laurie.webp", pos: "center", placeholder: true, teaser: "Specialist in post-surgical rehabilitation and complex conditions, with extensive NHS and community experience helping patients regain movement, strength and confidence.", specialisms: ["Fall prevention", "Mobility improvement", "Balance development"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] }];
+{ slug: "cam", name: "Cam", role: "Lead Physiotherapist · Co-Director", img: "assets/team-cam.webp", pos: "center 18%", teaser: "Musculoskeletal physiotherapist with NHS and elite-sport experience. Special interest in lower-limb injuries and post-op recovery.", specialisms: ["Knee, foot & ankle", "Sports rehabilitation", "Post-op rehabilitation"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
+{ slug: "stef", name: "Stef", role: "Lead Physiotherapist · Co-Director", img: "assets/team-stef.webp", pos: "center 14%", teaser: "MSK physiotherapist with experience across private practice, NHS and professional sport. Special interest in upper limb and sports injuries.", specialisms: ["Shoulder, elbow & hip", "Sports injury rehab", "Running injuries"], creds: [["MSc", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] },
+{ slug: "laurie", name: "Laurie", role: "Senior Physiotherapist", img: "assets/team-laurie.webp", pos: "center 26%", teaser: "Specialist in post-surgical rehabilitation and complex conditions, with extensive NHS and community experience helping patients regain movement, strength and confidence.", specialisms: ["Fall prevention", "Mobility improvement", "Balance development"], creds: [["BSc (Hons)", "Physiotherapy"], ["HCPC", "Registered"], ["MCSP", "Member"]] }];
 
 
 const COMPARISON = [
@@ -328,7 +328,6 @@ const INSURERS = [
 { name: "AXA", src: "assets/insurance/axa.webp" },
 { name: "Aviva", src: "assets/insurance/aviva.webp" },
 { name: "WPA", src: "assets/insurance/wpa.webp" },
-{ name: "HCML", src: "assets/insurance/hcml.webp" },
 { name: "Proclaim Group", src: "assets/insurance/proclaim.webp" }];
 
 
@@ -567,13 +566,6 @@ function Team() {
     <section className="sec" id="team" style={{ paddingTop: 0 }}>
       <div className="wrap">
         <SecHead tag="05 — Team" title={<>Meet <span className="em">your</span> team.</>} blurb="No locums, no rotating staff. The person who assesses you is the person who treats you." />
-        <div className="team-hero">
-          <img src="assets/team.webp" alt="The Blackwater Physiotherapy team" />
-          <div className="caption">
-            <div className="l">Your team</div>
-            <div className="t">Cam · Stef · Laurie</div>
-          </div>
-        </div>
 
         <div className="team-carousel">
           <div className="tc-viewport">

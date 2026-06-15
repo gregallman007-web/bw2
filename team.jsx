@@ -3,7 +3,7 @@ const { Icon, Nav, Footer, Accred, BookTab, useScrollMotion, PAGES, BOOKING_URL 
 const TEAM = [
   {
     slug:"cam", name:"Cam Ward", role:"Clinic Owner & Lead Physiotherapist",
-    img:"assets/team.webp", pos:"25% center",
+    img:"assets/team-cam.webp", pos:"center 18%",
     bio:[
       "Cam Ward is the founder and lead physiotherapist at Blackwater Physiotherapy, with a strong background in musculoskeletal care across both the NHS and private practice.",
       "After graduating with a BSc (Hons) in Physiotherapy from the University of Hertfordshire in 2017, Cam has continued to develop his expertise through advanced postgraduate training at the University of Essex. He currently works as a Musculoskeletal Team Lead within the NHS, giving him extensive experience in diagnosing and treating a wide range of injuries and conditions.",
@@ -16,7 +16,7 @@ const TEAM = [
   },
   {
     slug:"stef", name:"Stefano De Felice", role:"Clinic Owner & Lead Physiotherapist",
-    img:"assets/team.webp", pos:"75% center",
+    img:"assets/team-stef.webp", pos:"center 14%",
     bio:[
       "Stef is co-founder and lead physiotherapist at Blackwater Physiotherapy, bringing a well-rounded mix of clinical and sporting experience to his role. He first completed a degree in Sports Therapy in 2020 before going on to qualify with a master's degree in Physiotherapy in 2022, developing a strong focus on musculoskeletal health.",
       "Alongside running the clinic, Stef works as a Specialist MSK Physiotherapist within a respected London sports medicine setting, where he regularly manages a wide variety of injuries and conditions. His experience spans the NHS, private practice, and performance sport, including work with Stevenage FC, Chelmsford City FC Academy, and athletes competing at an elite level — such as those representing England's U16 Ice Hockey team.",
@@ -28,7 +28,7 @@ const TEAM = [
   },
   {
     slug:"laurie", name:"Laurie Clarke", role:"Senior Physiotherapist",
-    img:"assets/team-laurie.webp", pos:"center", placeholder:true,
+    img:"assets/team-laurie.webp", pos:"center 26%",
     bio:[
       "Laurie is an experienced physiotherapist specialising in post-surgical rehabilitation and complex conditions, with a strong background in both hospital and community care.",
       "After graduating with a BSc (Hons) in Physiotherapy from the University of Hertfordshire in 2017, Laurie has developed significantly within the NHS, currently working at Basildon University Hospital as the Team Lead for Surgical and Vascular services. Laurie supports patients in their recovery after major operations — helping them regain movement, strength, and confidence. He also leads therapy coordination for the vascular hub within Mid and South Essex NHS Foundation Trust and runs a specialist outpatient amputee clinic, supporting individuals as they learn to walk again and adapt to life after limb loss.",
