@@ -19,7 +19,7 @@ const COMPARISON = [
 function PageHero(){
   return (
     <section className="page-hero">
-      <div className="page-hero-photo" style={{backgroundImage:"url('assets/about-hero-2.webp')"}} role="img" aria-label="Blackwater Physiotherapy co-directors at Maldon harbour"></div>
+      <div className="page-hero-photo" style={{backgroundImage:"url('assets/team-hero.webp')"}} role="img" aria-label="The Blackwater Physiotherapy team"></div>
       <div className="wrap page-hero-body">
         <nav className="crumb" aria-label="Breadcrumb">
           <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">About</span>
@@ -108,17 +108,21 @@ function TeamTeaser(){
     <section className="sec" style={{paddingTop:0}}>
       <div className="wrap">
         <div className="team-teaser">
-          <div className="tt-photo" style={{backgroundImage:"url('assets/team.webp')"}}></div>
+          <div className="tt-photo" style={{backgroundImage:"url('assets/team-reception.webp')"}}></div>
           <div className="tt-body">
-            <div className="sec-tag"><span className="bar"></span><span className="t">The team</span></div>
-            <h2>Meet your <span className="em">clinicians.</span></h2>
-            <p>Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating staff.</p>
-            <ul className="tt-list">
-              {CLINICIANS.map(c => (
-                <li key={c.slug}><b>{c.name}</b><span>{c.role}</span></li>
-              ))}
-            </ul>
-            <a className="btn btn-primary" href={PAGES.team}>Meet the team <Icon name="arrow" size={13}/></a>
+            <div className="tt-inner">
+              <div className="tt-lead">
+                <div className="sec-tag"><span className="bar"></span><span className="t">The team</span></div>
+                <h2>Meet your <span className="em">clinicians.</span></h2>
+                <p className="tt-intro">Three experienced physiotherapists, one consistent standard of care. The person who assesses you is the person who treats you — no locums, no rotating staff.</p>
+                <a className="btn btn-primary" href={PAGES.team}>Meet the team <Icon name="arrow" size={13}/></a>
+              </div>
+              <ul className="tt-list">
+                {CLINICIANS.map(c => (
+                  <li key={c.slug}><b>{c.name}</b><span>{c.role}</span></li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
