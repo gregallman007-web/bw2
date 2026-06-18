@@ -43,7 +43,7 @@ const TEAM = [
 function PageHero(){
   return (
     <section className="page-hero">
-      <div className="page-hero-photo" style={{backgroundImage:"url('assets/team.webp')"}} role="img" aria-label="The Blackwater Physiotherapy team"></div>
+      <div className="page-hero-photo" style={{backgroundImage:"url('assets/about-hero-team.webp')"}} role="img" aria-label="The Blackwater Physiotherapy team"></div>
       <div className="wrap page-hero-body">
         <nav className="crumb" aria-label="Breadcrumb">
           <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">Team</span>

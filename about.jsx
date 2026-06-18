@@ -19,7 +19,7 @@ const COMPARISON = [
 function PageHero(){
   return (
     <section className="page-hero">
-      <div className="page-hero-photo" style={{backgroundImage:"url('assets/team-hero.webp')"}} role="img" aria-label="The Blackwater Physiotherapy team"></div>
+      <div className="page-hero-photo" style={{backgroundImage:"url('assets/about-hero-team.webp')"}} role="img" aria-label="The Blackwater Physiotherapy team at the Maldon clinic"></div>
       <div className="wrap page-hero-body">
         <nav className="crumb" aria-label="Breadcrumb">
           <a href={PAGES.home}>Home</a><span>/</span><span aria-current="page">About</span>
@@ -48,7 +48,7 @@ function WhoWeAre(){
           <p>We focus on the root cause of symptoms rather than pain alone, using hands-on treatment, tailored rehabilitation, and clear guidance to support recovery across Essex, including Maldon, Chelmsford, and surrounding areas.</p>
         </div>
         <div className="about-figure">
-          <div className="af-photo" style={{backgroundImage:"url('assets/clinic/treatment-room.webp')"}}></div>
+          <div className="af-photo" style={{backgroundImage:"url('assets/services/sports-massage.webp')"}}></div>
         </div>
       </div>
     </section>
@@ -108,7 +108,7 @@ function TeamTeaser(){
     <section className="sec" style={{paddingTop:0}}>
       <div className="wrap">
         <div className="team-teaser">
-          <div className="tt-photo" style={{backgroundImage:"url('assets/team-reception.webp')"}}></div>
+          <div className="tt-photo" style={{backgroundImage:"url('assets/entrance-reception.webp')"}}></div>
           <div className="tt-body">
             <div className="tt-inner">
               <div className="tt-lead">

@@ -15,8 +15,8 @@ window.BLOG_POSTS = {
     author: "Cam",
     authorRole: "Lead Physiotherapist · Co-Director",
     authorBio: "Cam co-founded Blackwater Physiotherapy to deliver thorough, unhurried care across Maldon and Essex, with a special interest in lower-limb injuries and post-op recovery.",
-    img: "assets/team.webp",
-    imgPos: "center 20%",
+    img: "assets/blog/welcome.webp",
+    imgPos: "center 30%",
     answer: "At Blackwater Physiotherapy, we believe everyone deserves to move well, feel confident in their body, and enjoy the activities that matter most to them.",
     related: [
       { label: "Initial Assessment", href: "service-initial-assessment.html" },
@@ -144,7 +144,7 @@ window.BLOG_POSTS = {
     author: "Cam",
     authorRole: "Lead Physiotherapist · Co-Director",
     authorBio: "Cam co-founded Blackwater Physiotherapy to deliver thorough, unhurried care across Maldon and Essex, with a special interest in lower-limb injuries and post-op recovery.",
-    img: "assets/about-hero-2.webp",
+    img: "assets/blog/honest.webp",
     answer: "At Blackwater Physiotherapy, we believe that great healthcare starts with honesty.",
     related: [
       { label: "Our approach", href: "About.html" },
